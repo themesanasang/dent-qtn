@@ -1,0 +1,9 @@
+{
+    "jscodehints.detectedExclusions": [
+        "E:/xampp/htdocs/dent-qtn/assets/js/app.js",
+        "E:/xampp/htdocs/dent-qtn/gulpfile.js",
+        "E:/xampp/htdocs/dent-qtn/vendor/phpunit/php-code-coverage/src/CodeCoverage/Report/HTML/Renderer/Template/js/respond.min.js",
+        "E:/xampp/htdocs/dent-qtn/vendor/phpunit/php-code-coverage/src/CodeCoverage/Report/HTML/Renderer/Template/js/nv.d3.min.js",
+        "E:/xampp/htdocs/dent-qtn/assets/js/dataTables.materialize.js"
+    ]
+}

@@ -1,0 +1,31 @@
+ <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">ระบบคัดกรองความเสี่ยงโรคมะเร็งช่องปาก</h5>
+            <p class="grey-text text-lighten-4">
+                คุณสามารถลงข้อมูลการคัดกรองความเสี่ยงโรคมะเร็งช่องปาก ในระบบได้ตามส่วนที่กำหนด
+                ระบบจะเก็บข้อมูลเพื่อไปช่วยในการประมวนผลต่อไป
+                (ระบบแสดงผลได้ทุกขนาดหน้าจอ, ใช้งานได้ดีบน Google-Chrome และ Firefox และ IE 10+)
+            </p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">เมนู</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="{!! url('screen') !!}">คัดกรอง</a></li>   
+              <li><a class="grey-text text-lighten-3" href="{!! url('screen.list') !!}">รายการคัดกรอง</a></li>    
+              <li><a class="grey-text text-lighten-3" href="#!">รายงาน</a></li>
+              <li><a class="grey-text text-lighten-3" href="{!! url('user') !!}/editprofile/{{ Crypt::encrypt(Session::get('uid')) }}">ข้อมูลส่วนตัว</a></li>
+               @if( Session::get('status') == '1' )    
+                    <li><a class="grey-text text-lighten-3" href="{!! url('user') !!}">จัดการผู้ใช้</a></li> 
+               @endif
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+            © 2015 ThemeSanasang, All rights reserved.     
+        </div>
+      </div>
+</footer>

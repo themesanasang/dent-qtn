@@ -1,0 +1,999 @@
+(function(){
+    
+    
+    
+    
+     $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+            $('.scrollup').fadeIn();
+        } else {
+            $('.scrollup').fadeOut();
+        }
+    });
+    
+    
+      
+     
+     /**
+     * check error login
+     */
+    $('#username, #password').keydown(function() {
+        $('#error-login').hide();
+    });
+    
+    
+    
+    
+    
+    /**
+     * sideNav Menu
+     */
+    $(".button-collapse").sideNav();
+    
+    
+    
+    
+    /**
+     * tab sticky
+     */ 
+   $(".center-tab").sticky({
+       topSpacing:60,
+       bottomSpacing:480
+   });
+  
+   $("html, body").animate({
+        scrollTop: 0
+    }, 600);    
+   $('.tab-top').click(function(){
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+        return true;
+   });    
+    
+    
+    
+    
+    
+    /**
+     * check ie
+     */
+    check_ie();
+    
+    
+    
+    
+     /**
+     * loaded page
+     */
+	setTimeout(function(){
+		$('body').addClass('loaded');
+		$('h1').css('color','#212121');
+	}, 700);
+    
+    
+    
+    
+    
+         
+      var $searchbar  = $('#searchbar');
+    
+      $('#wrapper-content').on('click', function(e){
+          if($searchbar.is(":visible")) {
+               $searchbar.slideToggle(300, function(){
+                // callback after search bar animation
+              });
+          }
+      });
+
+      $('#searchtoggl').on('click', function(e){
+        e.preventDefault();         
+
+        if($(this).attr('id') == 'searchtoggl') {
+          if(!$searchbar.is(":visible")) { 
+                         
+          } else {             
+            
+          }
+
+          $searchbar.slideToggle(300, function(){
+            // callback after search bar animation
+          });
+        }
+      });
+    
+    
+    
+    
+     /**
+     * ================= form
+     */
+    $('select').material_select(); 
+    
+    $( "select option:first-child" ).attr("disabled", "");
+    $( "select option:first-child" ).attr("selected", "");
+    
+    $("#fullname, #user_part4").on("keypress", function(e) {
+       
+        var allowedEng = true; //อนุญาตให้คีย์อังกฤษ
+        var allowedThai = true; //อนุญาตให้คีย์ไทย
+        var allowedNum = false; //อนุญาตให้คีย์ตัวเลข
+        
+        var k = e.keyCode || e.which;
+        
+        /* เช็คตัวเลข 0-9 */
+        if (k>=48 && k<=57) { return allowedNum; }
+
+        /* เช็คคีย์อังกฤษ a-z, A-Z */
+        if ((k>=65 && k<=90) || (k>=97 && k<=122)) { return allowedEng; }
+
+        /* เช็คคีย์ไทย ทั้งแบบ non-unicode และ unicode */
+        if ((k>=161 && k<=255) || (k>=3585 && k<=3675)) { return allowedThai; }
+        
+    });
+    var creditInput = document.getElementById('cid');
+      if (creditInput) {
+        new Formatter(creditInput, {
+            'pattern': '{{9}}-{{9999}}-{{99999}}-{{9}}-{{99}}'
+        });
+      }
+    var ageInput = document.getElementById('age');
+      if (ageInput) {
+        new Formatter(ageInput, {
+            'pattern': '{{999}}'
+        });
+      }
+    var eageInput = document.getElementById('e-age');
+      if (eageInput) {
+        new Formatter(eageInput, {
+            'pattern': '{{999}}'
+        });
+      }
+    var telInput = document.getElementById('tel');
+      if (telInput) {
+        new Formatter(telInput, {
+            'pattern': '{{999}}-{{999999}}'
+        });
+      }
+    var etelInput = document.getElementById('e-tel');
+      if (etelInput) {
+        new Formatter(etelInput, {
+            'pattern': '{{999}}-{{999999}}'
+        });
+      }
+    var mobileInput = document.getElementById('mobile');
+      if (mobileInput) {
+        new Formatter(mobileInput, {
+            'pattern': '{{99}}-{{9999}}-{{9999}}'
+        });
+      }
+    var emobileInput = document.getElementById('e-mobile');
+      if (emobileInput) {
+        new Formatter(emobileInput, {
+            'pattern': '{{99}}-{{9999}}-{{9999}}'
+        });
+      }
+    
+   
+    
+    
+    
+    
+    
+    //----school
+     $('#textschool, #e-textschool').hide();
+    $('#school1, #school2, #school3, #school4, #school5').click(function(){
+        $('#textschool').hide();
+    });  
+    $('#school6').click(function(){
+        $('#textschool').show();
+    });
+    $('#e-school1, #e-school2, #e-school3, #e-school4, #e-school5').click(function(){
+        $('#e-textschool').hide();
+    });  
+    $('#e-school6').click(function(){
+        $('#e-textschool').show();
+    });
+    if( $('#e-school6').is(":checked") ){
+        $('#e-textschool').show();
+    }
+    
+    
+    
+    
+    
+    
+    //---work
+    $('#textwork, #e-textwork').hide(); 
+    $('#work1, #work2, #work3, #work4, #work5').click(function(){
+        $('#textwork').hide();
+    });  
+     $('#work6').click(function(){
+        $('#textwork').show();
+    });
+    $('#e-work1, #e-work2, #e-work3, #e-work4, #e-work5').click(function(){
+        $('#e-textwork').hide();
+    });  
+     $('#e-work6').click(function(){
+        $('#e-textwork').show();
+    });
+    if( $('#e-work6').is(":checked") ){
+        $('#e-textwork').show();
+    }
+       
+    
+    
+    
+    
+    
+    //-----เลือกจังหวัด
+    $('#chwpart').change(function() { 
+        $.get( "getAmphur/"+$('#chwpart').val(), function( data ) {
+             $('#amppart').html( data );            
+        });   
+        
+        $('#tmbpart').html( '<option value="" disabled selected>กรุณาเลือก</option>' );  
+    });
+    $('#amppart').change(function() {  
+        $.get( "getDistrict/"+$('#chwpart').val()+'/'+$('#amppart').val(), function( data ) {
+             $('#tmbpart').html( data );            
+        });     
+    });
+    //-----เลือกจังหวัด Edit
+    $('#e-chwpart').change(function() { 
+        $.get( "../getAmphur/"+$('#e-chwpart').val(), function( data ) {
+             $('#e-amppart').html( data );            
+        });   
+        
+        $('#e-tmbpart').html( '<option value="" disabled selected>กรุณาเลือก</option>' );  
+    });
+    $('#e-amppart').change(function() {  
+        $.get( "../getDistrict/"+$('#e-chwpart').val()+'/'+$('#e-amppart').val(), function( data ) {
+             $('#e-tmbpart').html( data );            
+        });     
+    });
+
+    //------user
+    //-----เลือกจังหวัด
+    $('#u-chwpart').change(function() { 
+        $.get( "getAmphur/"+$('#u-chwpart').val(), function( data ) {
+             $('#u-amppart').html( data );            
+        });   
+        
+        $('#u-tmbpart').html( '<option value="" disabled selected>กรุณาเลือก</option>' );  
+    });
+    $('#u-amppart').change(function() {  
+        $.get( "getDistrict/"+$('#u-chwpart').val()+'/'+$('#u-amppart').val(), function( data ) {
+             $('#u-tmbpart').html( data );            
+        });     
+    });
+    //-----เลือกจังหวัด Edit
+    $('#ue-chwpart').change(function() { 
+        $.get( "../getAmphur/"+$('#ue-chwpart').val(), function( data ) {
+             $('#ue-amppart').html( data );            
+        });   
+        
+        $('#ue-tmbpart').html( '<option value="" disabled selected>กรุณาเลือก</option>' );  
+    });
+    $('#ue-amppart').change(function() {  
+        $.get( "../getDistrict/"+$('#ue-chwpart').val()+'/'+$('#ue-amppart').val(), function( data ) {
+             $('#ue-tmbpart').html( data );            
+        });     
+    });
+    
+    
+    
+    
+    
+    
+    
+    //-----smoking
+    $('#smokingday').attr("disabled", "");
+    $('#smokinglong').attr("disabled", "");
+    $('#smokingstop').attr("disabled", "");
+    $('#smoking1').click(function(){
+        $('#smokingday').attr("disabled", "");
+        $('#smokinglong').attr("disabled", "");
+        $('#smokingstop').attr("disabled", ""); 
+    });
+    $('#smoking2').click(function(){
+          $('#smokingday').removeAttr("disabled", "");
+          $('#smokinglong').removeAttr("disabled", "");
+          $('#smokingstop').attr("disabled", ""); 
+          $('#smokingday').focus();
+    });
+    $('#smoking3').click(function(){
+         $('#smokingstop').removeAttr("disabled", ""); 
+         $('#smokingday').attr("disabled", "");
+         $('#smokinglong').attr("disabled", "");
+         $('#smokingstop').focus();
+    });
+    
+    //-----smoking Edit
+    $('#e-smokingday').attr("disabled", "");
+    $('#e-smokinglong').attr("disabled", "");
+    $('#e-smokingstop').attr("disabled", "");
+    $('#e-smoking1').click(function(){
+        $('#e-smokingday').attr("disabled", "");
+        $('#e-smokinglong').attr("disabled", "");
+        $('#e-smokingstop').attr("disabled", ""); 
+    });
+    $('#e-smoking2').click(function(){
+          $('#e-smokingday').removeAttr("disabled", "");
+          $('#e-smokinglong').removeAttr("disabled", "");
+          $('#e-smokingstop').attr("disabled", ""); 
+          $('#e-smokingday').focus();
+    });
+    $('#e-smoking3').click(function(){
+         $('#e-smokingstop').removeAttr("disabled", ""); 
+         $('#e-smokingday').attr("disabled", "");
+         $('#e-smokinglong').attr("disabled", "");
+         $('#e-smokingstop').focus();
+    });
+    if( $('#e-smokingstop').val() != '' ){      
+        $('#e-smokingstop').removeAttr("disabled", "");
+    }
+    if( $('#e-smokingday').val() != '' ){
+        $('#e-smokingday').removeAttr("disabled", "");
+    }
+    if( $('#e-smokinglong').val() != '' ){
+        $('#e-smokinglong').removeAttr("disabled", "");
+    }
+    
+    
+    
+    
+    
+    
+     //-----hasnus
+    $('#nuslong').attr("disabled", "");
+    $('#nusstop').attr("disabled", "");
+    $('#hasnus1').click(function(){
+         $('#nuslong').attr("disabled", "");
+         $('#nusstop').attr("disabled", "");
+    });
+    $('#hasnus2').click(function(){
+          $('#nuslong').removeAttr("disabled", "");
+          $('#nuslong').focus();
+          $('#nusstop').attr("disabled", ""); 
+    });
+    $('#hasnus3').click(function(){
+         $('#nusstop').removeAttr("disabled", ""); 
+         $('#nusstop').focus();
+         $('#nuslong').attr("disabled", "");
+    });
+    
+    //-----hasnus Edit
+    $('#e-nuslong').attr("disabled", "");
+    $('#e-nusstop').attr("disabled", "");
+    $('#e-hasnus1').click(function(){
+         $('#e-nuslong').attr("disabled", "");
+         $('#e-nusstop').attr("disabled", "");
+    });
+    $('#e-hasnus2').click(function(){
+          $('#e-nuslong').removeAttr("disabled", "");
+          $('#e-nuslong').focus();
+          $('#e-nusstop').attr("disabled", ""); 
+    });
+    $('#e-hasnus3').click(function(){
+         $('#e-nusstop').removeAttr("disabled", ""); 
+         $('#e-nusstop').focus();
+         $('#e-nuslong').attr("disabled", "");
+    });
+    if( $('#e-nusstop').val() != '' ){
+        $('#e-nusstop').removeAttr("disabled", "");
+    }
+    if( $('#e-nuslong').val() != '' ){
+        $('#e-nuslong').removeAttr("disabled", "");
+    }
+    
+    
+    
+    
+    
+    
+     //-----hasareca
+    $('#arecalong').attr("disabled", "");
+    $('#arecastop').attr("disabled", "");
+    $('#hasareca1').click(function(){
+         $('#arecalong').attr("disabled", "");
+         $('#arecastop').attr("disabled", "");
+    });
+    $('#hasareca2').click(function(){
+          $('#arecalong').removeAttr("disabled", "");
+          $('#arecalong').focus();
+          $('#arecastop').attr("disabled", ""); 
+    });
+    $('#hasareca3').click(function(){
+         $('#arecastop').removeAttr("disabled", ""); 
+         $('#arecastop').focus();
+         $('#arecalong').attr("disabled", "");
+    });
+    
+     //-----hasareca Edit
+    $('#e-arecalong').attr("disabled", "");
+    $('#e-arecastop').attr("disabled", "");
+    $('#e-hasareca1').click(function(){
+         $('#e-arecalong').attr("disabled", "");
+         $('#e-arecastop').attr("disabled", "");
+    });
+    $('#e-hasareca2').click(function(){
+          $('#e-arecalong').removeAttr("disabled", "");
+          $('#e-arecalong').focus();
+          $('#e-arecastop').attr("disabled", ""); 
+    });
+    $('#e-hasareca3').click(function(){
+         $('#e-arecastop').removeAttr("disabled", ""); 
+         $('#e-arecastop').focus();
+         $('#e-arecalong').attr("disabled", "");
+    });
+     if( $('#e-arecastop').val() != '' ){
+        $('#e-arecastop').removeAttr("disabled", "");
+    }
+    if( $('#e-arecalong').val() != '' ){
+        $('#e-arecalong').removeAttr("disabled", "");
+    }
+    
+    
+    
+    
+    
+    
+    
+    //------alcohol
+    $('#drinktype1, #drinktype2, #drinktype3, #drinktype4, #drinktype5, #drinktypetext').attr("disabled", "");
+    $('#drinkunittext, #drinkunit1, #drinkunit2, #drinkunit3, #drinkunit4, #drinkunit5, #drinkunit6').attr("disabled", "");
+    $('#alcohollong').attr("disabled", "");
+    $('#alcoholstop').attr("disabled", "");
+    $('#alcohol1').click(function(){
+        $('#drinktype1, #drinktype2, #drinktype3, #drinktype4, #drinktype5, #drinktypetext').attr("disabled", "");
+        $('#drinkunittext, #drinkunit1, #drinkunit2, #drinkunit3, #drinkunit4, #drinkunit5, #drinkunit6').attr("disabled", "");
+        $('#alcohollong').attr("disabled", ""); 
+        $('#alcoholstop').attr("disabled", "");
+    });
+    $('#alcohol2').click(function(){
+        $('#drinktype1, #drinktype2, #drinktype3, #drinktype4, #drinktype5').removeAttr("disabled", "");
+        $('#drinkunittext, #drinkunit1, #drinkunit2, #drinkunit3, #drinkunit4, #drinkunit5, #drinkunit6').removeAttr("disabled", "");
+        $('#alcohollong').removeAttr("disabled", "");  
+        
+        $('#drinktypetext').attr("disabled", "");
+        
+        $('#alcoholstop').attr("disabled", "");
+    });
+     $('#drinktype1, #drinktype2, #drinktype3, #drinktype4').click(function(){
+         $('#drinktypetext').attr("disabled", "");
+    }); 
+    $('#drinktype5').click(function(){
+         $('#drinktypetext').removeAttr("disabled", "");
+        $('#drinktypetext').focus();
+    });   
+    $('#alcohol3').click(function(){
+        $('#drinktype1, #drinktype2, #drinktype3, #drinktype4, #drinktype5, #drinktypetext').attr("disabled", "");
+        $('#drinkunittext, #drinkunit1, #drinkunit2, #drinkunit3, #drinkunit4, #drinkunit5, #drinkunit6').attr("disabled", "");
+        $('#alcohollong').attr("disabled", "");
+        $('#alcoholstop').removeAttr("disabled", "");
+        $('#alcoholstop').focus();
+    });
+    
+    //------alcohol Edit
+    $('#e-drinktype1, #e-drinktype2, #e-drinktype3, #e-drinktype4, #e-drinktype5, #e-drinktypetext').attr("disabled", "");
+    $('#e-drinkunittext, #e-drinkunit1, #e-drinkunit2, #e-drinkunit3, #e-drinkunit4, #e-drinkunit5, #e-drinkunit6').attr("disabled", "");
+    $('#e-alcohollong').attr("disabled", "");
+    $('#e-alcoholstop').attr("disabled", "");
+    $('#e-alcohol1').click(function(){
+        $('#e-drinktype1, #e-drinktype2, #e-drinktype3, #e-drinktype4, #e-drinktype5, #e-drinktypetext').attr("disabled", "");
+        $('#e-drinkunittext, #e-drinkunit1, #e-drinkunit2, #e-drinkunit3, #e-drinkunit4, #e-drinkunit5, #e-drinkunit6').attr("disabled", "");
+        $('#e-alcohollong').attr("disabled", ""); 
+        $('#e-alcoholstop').attr("disabled", "");
+    });
+    $('#e-alcohol2').click(function(){
+        $('#e-drinktype1, #e-drinktype2, #e-drinktype3, #e-drinktype4, #e-drinktype5').removeAttr("disabled", "");
+        $('#e-drinkunittext, #e-drinkunit1, #e-drinkunit2, #e-drinkunit3, #e-drinkunit4, #e-drinkunit5, #e-drinkunit6').removeAttr("disabled", "");
+        $('#e-alcohollong').removeAttr("disabled", "");  
+        
+        $('#e-drinktypetext').attr("disabled", "");
+        
+        $('#e-alcoholstop').attr("disabled", "");
+    });
+     $('#e-drinktype1, #e-drinktype2, #e-drinktype3, #e-drinktype4').click(function(){
+         $('#e-drinktypetext').attr("disabled", "");
+    }); 
+    $('#e-drinktype5').click(function(){
+         $('#e-drinktypetext').removeAttr("disabled", "");
+        $('#e-drinktypetext').focus();
+    });   
+    $('#e-alcohol3').click(function(){
+        $('#e-drinktype1, #e-drinktype2, #e-drinktype3, #e-drinktype4, #e-drinktype5, #e-drinktypetext').attr("disabled", "");
+        $('#e-drinkunittext, #e-drinkunit1, #e-drinkunit2, #e-drinkunit3, #e-drinkunit4, #e-drinkunit5, #e-drinkunit6').attr("disabled", "");
+        $('#e-alcohollong').attr("disabled", "");
+        $('#e-alcoholstop').removeAttr("disabled", "");
+        $('#e-alcoholstop').focus();
+    });
+    if( $('#e-alcohol2').is(":checked") ){
+        $('#e-drinktype1, #e-drinktype2, #e-drinktype3, #e-drinktype4, #e-drinktype5').removeAttr("disabled", "");
+        $('#e-drinkunittext, #e-drinkunit1, #e-drinkunit2, #e-drinkunit3, #e-drinkunit4, #e-drinkunit5, #e-drinkunit6').removeAttr("disabled", "");
+        $('#e-alcohollong').removeAttr("disabled", "");  
+        
+        $('#e-drinktypetext').attr("disabled", "");
+        
+        $('#e-alcoholstop').attr("disabled", "");
+    }
+    if( $('#e-alcoholstop').val() != '' ){
+        $('#e-alcoholstop').removeAttr("disabled", "");
+    }
+    
+    
+    
+    
+    
+    
+    
+    //-----hascancer
+    $('#cancer1, #cancer2, #cancer3, #cancer4, #textcancer').attr("disabled", "");
+     $('#hascancer1').click(function(){
+         $('#cancer1, #cancer2, #cancer3, #cancer4, #textcancer').attr("disabled", "");
+    }); 
+    $('#hascancer2').click(function(){
+         $('#cancer1, #cancer2, #cancer3, #cancer4').removeAttr("disabled", "");
+    });
+    $('#cancer1, #cancer2, #cancer3').click(function(){
+         $('#textcancer').attr("disabled", "");
+    }); 
+    $('#cancer4').click(function(){
+         $('#textcancer').removeAttr("disabled", "");
+         $('#textcancer').focus();
+    }); 
+    
+    //-----hascancer Edit
+    $('#e-cancer1, #e-cancer2, #e-cancer3, #e-cancer4, #e-textcancer').attr("disabled", "");
+     $('#e-hascancer1').click(function(){
+         $('#e-cancer1, #e-cancer2, #e-cancer3, #e-cancer4, #e-textcancer').attr("disabled", "");
+    }); 
+    $('#e-hascancer2').click(function(){
+         $('#e-cancer1, #e-cancer2, #e-cancer3, #e-cancer4').removeAttr("disabled", "");
+    });
+    $('#e-cancer1, #e-cancer2, #e-cancer3').click(function(){
+         $('#e-textcancer').attr("disabled", "");
+    }); 
+    $('#e-cancer4').click(function(){
+         $('#e-textcancer').removeAttr("disabled", "");
+         $('#e-textcancer').focus();
+    }); 
+     if( $('#e-hascancer2').is(":checked") ){
+        $('#e-cancer1, #e-cancer2, #e-cancer3, #e-cancer4').removeAttr("disabled", "");
+     }
+    if( $('#e-textcancer').val() != '' ){
+        $('#e-textcancer').removeAttr("disabled", "");
+    }
+    
+    
+    
+    
+    
+    
+    
+    //-----sun
+    $('#worksun').attr("disabled", "");
+    $('#sun1').click(function(){
+         $('#worksun').attr("disabled", "");
+    }); 
+    $('#sun2').click(function(){
+         $('#worksun').removeAttr("disabled", "");
+         $('#worksun').focus();
+    });
+    
+    //-----sun Edit
+    $('#e-worksun').attr("disabled", "");
+    $('#e-sun1').click(function(){
+         $('#e-worksun').attr("disabled", "");
+    }); 
+    $('#e-sun2').click(function(){
+         $('#e-worksun').removeAttr("disabled", "");
+         $('#e-worksun').focus();
+    }); 
+     if( $('#e-sun2').is(":checked") ){
+         $('#e-worksun').removeAttr("disabled", "");
+         $('#e-worksun').focus(); 
+     }
+    
+    
+    
+    
+    
+    //-----type_part3_5, 3_6
+     $('#part3_61, #part3_62, #part3_63, #part3_64, #textpart3_6').attr("disabled", "");
+     $('#part3_51').click(function(){
+         $('#part3_61, #part3_62, #part3_63, #part3_64, #textpart3_6').attr("disabled", "");
+    }); 
+    $('#part3_52').click(function(){
+         $('#part3_61, #part3_62, #part3_63, #part3_64').removeAttr("disabled", "");
+    });
+    $('#part3_61, #part3_62, #part3_63').click(function(){
+         $('#textpart3_6').attr("disabled", "");
+    }); 
+    $('#part3_64').click(function(){
+         $('#textpart3_6').removeAttr("disabled", "");
+         $('#textpart3_6').focus();
+    });
+    
+     //-----type_part3_5, 3_6 Edit
+     $('#e-part3_61, #e-part3_62, #e-part3_63, #e-part3_64, #e-textpart3_6').attr("disabled", "");
+     $('#e-part3_51').click(function(){
+         $('#e-part3_61, #e-part3_62, #e-part3_63, #e-part3_64, #e-textpart3_6').attr("disabled", "");
+    }); 
+    $('#e-part3_52').click(function(){
+         $('#e-part3_61, #e-part3_62, #e-part3_63, #e-part3_64').removeAttr("disabled", "");
+    });
+    $('#e-part3_61, #e-part3_62, #e-part3_63').click(function(){
+         $('#e-textpart3_6').attr("disabled", "");
+    }); 
+    $('#e-part3_64').click(function(){
+         $('#e-textpart3_6').removeAttr("disabled", "");
+         $('#e-textpart3_6').focus();
+    });
+     if( $('#e-part3_52').is(":checked") ){
+         $('#e-part3_61, #e-part3_62, #e-part3_63, #e-part3_64').removeAttr("disabled", "");
+     }
+    if( $('#e-textpart3_6').val() != '' ){
+        $('#e-textpart3_6').removeAttr("disabled", "");
+    }
+    
+    
+    
+    
+    
+    
+    //-------type_part4   
+    $('.datepicker').pickadate({
+        selectMonths: true,// Creates a dropdown to control month
+        selectYears: 15,// Creates a dropdown of 15 years to control year
+        // The title label to use for the month nav buttons
+        labelMonthNext: 'เดือนถัดไป',
+        labelMonthPrev: 'เดือนก่อนหน้า',
+        // The title label to use for the dropdown selectors
+        labelMonthSelect: 'เลือกเดือน',
+        labelYearSelect: 'เลือกปี',
+        // Months and weekdays
+        monthsFull: [ 'มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม' ],
+        monthsShort: [ 'ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.' ],
+        weekdaysFull: [ 'อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์' ],
+        weekdaysShort: [ 'อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส' ],
+        // Materialize modified
+        weekdaysLetter: [ 'อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส' ],
+        // Today and clear
+        today: 'วันนี้',
+        clear: 'ลบ',
+        close: 'ปิด',
+        // The format to show on the `input` element
+        format: 'd-mm-yyyy',
+        onOpen: function() {            
+            if( $('.datepicker').val() != "" ){  
+                var arrayDate=$('.datepicker').val().split("-");       
+                arrayDate[2] = parseInt(arrayDate[2]);  
+                $('.datepicker').val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);  
+            }  
+            setTimeout(function(){  
+                $.each($(".picker__select--year option"),function(j,k){                 
+                    var textYear = parseInt($(".picker__select--year option").eq(j).val())+543;  
+                    $(".picker__select--year option").eq(j).text(textYear);  
+                });              
+            },50); 
+            
+            $('.picker__year-display').html( parseInt($(".picker__select--year option:selected").val())+543 );
+        },
+        onSet: function(event) {   
+            /*if( $('.datepicker').val() != "" ){           
+                var arrayDate = $('.datepicker').val().split(" ");  
+                arrayDate[2] = parseInt(arrayDate[2]);  
+                $('.datepicker').val(arrayDate[0]+" "+arrayDate[1]+" "+arrayDate[2]);      
+             }  */
+             setTimeout(function(){  
+                $.each($(".picker__select--year option"),function(j,k){                 
+                    var textYear = parseInt($(".picker__select--year option").eq(j).val())+543;  
+                    $(".picker__select--year option").eq(j).text(textYear);  
+                });               
+            },50);  
+            
+            $('.picker__year-display').html( parseInt($(".picker__select--year option:selected").val())+543 );
+        },
+        onClose: function() {          
+            if( $('.datepicker').val() != "" ){           
+                var arrayDate = $('.datepicker').val().split("-");  
+                arrayDate[2] = parseInt(arrayDate[2]);  
+                $('.datepicker').val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);      
+            }  
+        }         
+    });
+    
+    
+    
+    
+    
+    //-------type_part4 1  
+    $('#part4_21, #part4_22, #part4_23, #part4_1text').attr("disabled", "");
+    $('#part4_11, #part4_12, #part4_14, #part4_15').click(function(){
+         $('#part4_21, #part4_22, #part4_23, #part4_1text').attr("disabled", "");
+    });   
+    $('#part4_13').click(function(){
+        $('#part4_21, #part4_22, #part4_23').removeAttr("disabled", "");
+        $('#part4_1text').attr("disabled", "");
+    });
+    $('#part4_16').click(function(){
+        $('#part4_1text').removeAttr("disabled", "");
+        $('#part4_1text').focus();
+        $('#part4_21, #part4_22, #part4_23').attr("disabled", "");
+    });
+    
+    //-------type_part4 1 Edit  
+    $('#e-part4_21, #e-part4_22, #e-part4_23, #e-part4_1text').attr("disabled", "");
+    $('#e-part4_11, #e-part4_12, #e-part4_14, #e-part4_15').click(function(){
+         $('#e-part4_21, #e-part4_22, #e-part4_23, #e-part4_1text').attr("disabled", "");
+    });   
+    $('#e-part4_13').click(function(){
+        $('#e-part4_21, #e-part4_22, #e-part4_23').removeAttr("disabled", "");
+        $('#e-part4_1text').attr("disabled", "");
+    });
+    $('#e-part4_16').click(function(){
+        $('#e-part4_1text').removeAttr("disabled", "");
+        $('#e-part4_1text').focus();
+        $('#e-part4_21, #e-part4_22, #e-part4_23').attr("disabled", "");
+    });
+    if( $('#e-part4_16').is(":checked") ){
+        $('#e-part4_1text').removeAttr("disabled", "");
+        $('#e-part4_1text').focus();
+        $('#e-part4_21, #e-part4_22, #e-part4_23').attr("disabled", "");
+    }
+    
+    
+    
+    
+    
+    //-------type_part4 2  
+    $('#part4_42_text, #part4_43_text, #part4_44_text').attr("disabled", "");   
+    $('#part4_41').click(function(){
+        $('#part4_41_text').removeAttr("disabled", "");
+        $('#part4_41_text').focus();
+        $(' #part4_42_text, #part4_43_text, #part4_44_text').attr("disabled", "");
+    });
+    $('#part4_42').click(function(){
+        $('#part4_42_text').removeAttr("disabled", "");
+        $('#part4_42_text').focus();
+        $(' #part4_41_text, #part4_43_text, #part4_44_text').attr("disabled", "");
+    });
+    $('#part4_43').click(function(){
+        $('#part4_43_text').removeAttr("disabled", "");
+        $('#part4_43_text').focus();
+        $(' #part4_41_text, #part4_42_text, #part4_44_text').attr("disabled", "");
+    });
+    $('#part4_44').click(function(){
+        $('#part4_44_text').removeAttr("disabled", "");
+        $('#part4_44_text').focus();
+        $(' #part4_41_text, #part4_42_text, #part4_43_text').attr("disabled", "");
+    });
+    
+    //-------type_part4 2  Edit 
+    $('#e-part4_42_text, #e-part4_43_text, #e-part4_44_text').attr("disabled", "");   
+    $('#e-part4_41').click(function(){
+        $('#e-part4_41_text').removeAttr("disabled", "");
+        $('#e-part4_41_text').focus();
+        $('#e-part4_42_text, #e-part4_43_text, #e-part4_44_text').attr("disabled", "");
+    });
+    $('#e-part4_42').click(function(){
+        $('#e-part4_42_text').removeAttr("disabled", "");
+        $('#e-part4_42_text').focus();
+        $('#e-part4_41_text, #e-part4_43_text, #e-part4_44_text').attr("disabled", "");
+    });
+    $('#e-part4_43').click(function(){
+        $('#e-part4_43_text').removeAttr("disabled", "");
+        $('#e-part4_43_text').focus();
+        $('#e-part4_41_text, #e-part4_42_text, #e-part4_44_text').attr("disabled", "");
+    });
+    $('#e-part4_44').click(function(){
+        $('#e-part4_44_text').removeAttr("disabled", "");
+        $('#e-part4_44_text').focus();
+        $('#e-part4_41_text, #e-part4_42_text, #e-part4_43_text').attr("disabled", "");
+    });
+    
+    if( $('#e-part4_41').is(":checked") ){
+        $('#e-part4_41_text').removeAttr("disabled", "");
+        $('#e-part4_41_text').focus();
+        $('#e-part4_42_text, #e-part4_43_text, #e-part4_44_text').attr("disabled", "");
+    }
+    if( $('#e-part4_42').is(":checked") ){
+        $('#e-part4_42_text').removeAttr("disabled", "");
+        $('#e-part4_42_text').focus();
+        $('#e-part4_41_text, #e-part4_43_text, #e-part4_44_text').attr("disabled", "");
+    }
+    if( $('#e-part4_43').is(":checked") ){
+         $('#e-part4_43_text').removeAttr("disabled", "");
+        $('#e-part4_43_text').focus();
+        $('#e-part4_41_text, #e-part4_42_text, #e-part4_44_text').attr("disabled", "");
+    }
+    if( $('#e-part4_44').is(":checked") ){
+        $('#e-part4_44_text').removeAttr("disabled", "");
+        $('#e-part4_44_text').focus();
+        $('#e-part4_41_text, #e-part4_42_text, #e-part4_43_text').attr("disabled", "");
+    }
+    
+    
+    
+    
+    
+    
+     //============= save data Confirm ===================//
+    //open popup
+	$('.cd-popup-trigger').on('click', function(event){
+		event.preventDefault();
+		$('.cd-popup').addClass('is-visible');
+	});
+	
+	//close popup
+	$('.cd-popup').on('click', function(event){
+		if( $(event.target).is('.cd-popup-close') || $(event.target).is('.cd-popup') ) {
+			event.preventDefault();
+			$(this).removeClass('is-visible');
+		}
+	});
+	//close popup when clicking the esc keyboard button
+	$(document).keyup(function(event){
+    	if(event.which=='27'){
+    		$('.cd-popup').removeClass('is-visible');
+	    }
+    });
+    $('.c-no').on('click', function(){	
+        $('.cd-popup').removeClass('is-visible');		
+	});
+    $('.c-ok').on('click', function(){	
+        $.ajax({type:'POST', url: 'screen', data:$('#screenform').serialize(),
+            success: function(result) {
+                $('.cd-popup').removeClass('is-visible');
+                
+                if ($.isEmptyObject(result.error)) {
+                   
+                    $('#er-fullname, #er-cid, #er-chwpart, #er-amppart, #er-tmbpart').removeClass('validate');
+                                     
+                    //=======save data ok========//
+                    if(result.success == 'ok')
+                    {              
+                        window.location.assign('screen');
+                    }                                                   
+                }
+                else{
+                     $('#er-fullname, #er-cid, #er-chwpart, #er-amppart, #er-tmbpart').removeClass('validate');
+                    
+                    //=======save data error========//
+                    for (var key in result.error) {
+                        if( typeof result.error.fullname !== "undefined" ){
+                            $('#er-fullname').addClass('validate');
+                        }
+                        if( typeof result.error.cid !== "undefined" ){
+                            $('#er-cid').addClass('validate');
+                        }
+                         if( typeof result.error.chwpart !== "undefined" ){
+                            $('#er-chwpart').addClass('validate');
+                        }
+                         if( typeof result.error.amppart !== "undefined" ){
+                            $('#er-amppart').addClass('validate');
+                        }
+                         if( typeof result.error.tmbpart !== "undefined" ){
+                            $('#er-tmbpart').addClass('validate');
+                        }
+                    }
+                }
+                
+                $("html, body").animate({
+                    scrollTop: 0
+                }, 600);
+                return true;
+                
+            }
+        });		
+	});
+    
+    
+    
+    
+    
+    
+    //============= userTable ===================//
+    
+    var userTable = $('#userTable').dataTable( {              
+        "bLengthChange": false,  
+        "ordering": true,
+        "iDisplayLength": 10,
+        "language": {
+            "lengthMenu": "",
+            "zeroRecords": "ไม่มีข้อมูล",
+            "info": "หน้า _PAGE_ จาก _PAGES_",
+            "infoEmpty": "ไม่มีข้อมูล",
+            "sSearch": "ค้นหา: "            
+        },"fnPreDrawCallback": function(oSettings, json) {   
+           //$('#userTable_filter').addClass('input-field');  
+        }
+    } );
+    
+     $('.btn-user-delete').bind('ajax:success', function(e, data, status, xhr){        	      		
+      	 $(e.target).closest('tr').remove();      	   
+	 });	
+    
+    
+    
+    
+    
+    
+    
+    //============= screenTable ===================//
+    
+    var userTable = $('#screenTable').dataTable( {              
+        "bLengthChange": false,  
+        "ordering": true,
+        "iDisplayLength": 10,
+        "language": {
+            "lengthMenu": "",
+            "zeroRecords": "ไม่มีข้อมูล",
+            "info": "หน้า _PAGE_ จาก _PAGES_",
+            "infoEmpty": "ไม่มีข้อมูล",
+            "sSearch": "ค้นหา: "            
+        },"fnPreDrawCallback": function(oSettings, json) {   
+           //$('#userTable_filter').addClass('input-field');  
+        }
+    } );
+    
+     $('.btn-screen-delete').bind('ajax:success', function(e, data, status, xhr){        	      		
+      	 $(e.target).closest('tr').remove();      	   
+	 });	
+    
+    
+    
+    
+    
+    
+     //============= searchTable ===================//
+    
+    var userTable = $('#searchTable').dataTable( {              
+        "bLengthChange": false,
+        "bFilter": false,
+        "ordering": true,
+        "iDisplayLength": 20,
+        "language": {
+            "lengthMenu": "",
+            "zeroRecords": "ไม่มีข้อมูล",
+            "info": "หน้า _PAGE_ จาก _PAGES_",
+            "infoEmpty": "ไม่มีข้อมูล",
+            "sSearch": "ค้นหา: "            
+        },"fnPreDrawCallback": function(oSettings, json) {   
+           //$('#userTable_filter').addClass('input-field');  
+        }
+    } );
+       	
+    
+    
+    
+    
+    
+    
+    
+    
+})();
+
+
+
+
+/**
+ * check ie
+ */
+function check_ie()
+{
+	var isIE8 = false;
+    var isIE9 = false;
+    var isIE10 = false;
+
+    isIE8 = !!navigator.userAgent.match(/MSIE 8.0/);
+    isIE9 = !!navigator.userAgent.match(/MSIE 9.0/);
+    isIE10 = !!navigator.userAgent.match(/MSIE 10.0/);
+ 
+    if (isIE10 || isIE9 || isIE8) {
+        $('#loader-wrapper').hide();
+    }
+}
+
