@@ -48,8 +48,7 @@ Route::get('user/getDistrict/{id}/{id2}', 'ScreenController@getDistrict');
 
 
 
-
-
+Route::get('downloads/{path}/{namefile}', 'DownloadController@index');
 Route::resource('screen', 'ScreenController');
 
 

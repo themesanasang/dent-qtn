@@ -29,6 +29,13 @@
      * sideNav Menu
      */
     $(".button-collapse").sideNav();
+
+
+
+    /**
+     * image Box
+     */
+     $('.materialboxed').materialbox();
     
     
     
@@ -844,7 +851,15 @@
         $('.cd-popup').removeClass('is-visible');		
 	});
     $('.c-ok').on('click', function(){	
-        $.ajax({type:'POST', url: 'screen', data:$('#screenform').serialize(),
+
+        //var formdata = $('#screenform').serialize();
+
+        var formdata = new FormData($('#screenform')[0]);
+            //formdata.append('file1', $('input[type=file]')[0].files[0]); 
+
+        $.ajax({type:'POST', url: 'screen', data:formdata,
+          processData: false,
+          contentType: false,
             success: function(result) {
                 $('.cd-popup').removeClass('is-visible');
                 

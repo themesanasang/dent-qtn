@@ -6153,7 +6153,7 @@ a.waves-effect .waves-ripple {
   cursor: zoom-out; }
 
 #materialbox-overlay {
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   right: 0;
@@ -6172,7 +6172,7 @@ a.waves-effect .waves-ripple {
   text-align: center;
   padding: 0% 15%;
   height: 50px;
-  z-index: 1000;
+  z-index: 10000;
   -webkit-font-smoothing: antialiased; }
 
 /* Remove Focus Boxes */

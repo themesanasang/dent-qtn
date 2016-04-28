@@ -20,14 +20,15 @@
                  @if( Session::get('status') == '1' || Session::get('status') == '2' ) 
                     <li class="tab-top tab col s3"><a href="#tab4">ส่วนที่ 4</a></li>
                  @endif 
-                  
+
+                 <li class="tab-top tab col s3"><a href="#tab5">ข้อมูลอื่น ๆ</a></li> 
               </ul>
             </div>
             </div>
             </div>
                 
             
-            {!! Form::open( array('route' => ['screen.update', e($screen->id)], 'class' => 'form-horizontal', 'method' => 'PATCH') ) !!}
+            {!! Form::open( array('route' => ['screen.update', e($screen->id)], 'class' => 'form-horizontal', 'method' => 'PATCH', 'files'=>true) ) !!}
             
             <!-- ============== Part 1 =============== -->
             <!-- ============== Part 1 =============== -->
@@ -187,18 +188,30 @@
                 <div class="row">
                     <div class="col l4 s12">
                         <label>จังหวัด:</label>
-                        {!! Form::select('chwpart', [null=>$nProvince->PROVINCE_NAME] + $province, null, ['id' => 'e-chwpart', 'class' => 'browser-default']) !!}
+                        @if( $nProvince != '' )
+                          {!! Form::select('chwpart', [null=>$nProvince->PROVINCE_NAME] + $province, null, ['id' => 'e-chwpart', 'class' => 'browser-default']) !!}
+                        @else
+                          {!! Form::select('chwpart', [null=>'กรุณาเลือก'] + $province, null, ['id' => 'e-chwpart', 'class' => 'browser-default']) !!}
+                        @endif
                     </div>
                     <div class="col l4 s12"> 
                        <label>อำเภอ:</label>
                        <select name="amppart" id="e-amppart" class="browser-default">
-                           <option value="" disabled selected>{!! $nAmphur->AMPHUR_NAME !!}</option>                                        
+                          @if( $nProvince != '' )
+                            <option value="" disabled selected>{!! $nAmphur->AMPHUR_NAME !!}</option>  
+                          @else
+                            <option value="" disabled selected>กรุณาเลือก</option>  
+                          @endif                                                                 
                        </select>                       
                     </div>
                     <div class="col l4 s12">
                         <label>ตำบล:</label>
-                       <select name="tmbpart" id="e-tmbpart" class="browser-default">
-                            <option value="" disabled selected>{!! $nDistrict->DISTRICT_NAME !!}</option>                          
+                       <select name="tmbpart" id="e-tmbpart" class="browser-default">                              
+                          @if( $nProvince != '' )
+                            <option value="" disabled selected>{!! $nDistrict->DISTRICT_NAME !!}</option> 
+                          @else
+                            <option value="" disabled selected>กรุณาเลือก</option>  
+                          @endif                          
                        </select>                       
                     </div>
                 </div> <!-- address --> 
@@ -847,6 +860,162 @@
 
 
 
+
+            <!-- ============== แนบ File =============== -->
+            <!-- ============== แนบ File =============== -->
+            <!-- ============== แนบ File =============== -->
+            <div id="tab5" class="row">
+            <h4 class="header part center">ข้อมูลอื่น ๆ</h4>
+            <div class="form-body">
+                
+                <!-- Image All -->
+                <div class="row">
+                   <div class="col s12">
+                      <h2 class="header">ข้อมูลภาพจากระบบ DT-SCREEN</h2>
+
+                      @if( $screen->pic_1 != '' || $screen->pic_2 != '' || $screen->pic_3 != '' )
+
+
+                          <div class="row">
+
+                            <div class="col s4">
+                              @if( $screen->pic_1 != '' )
+                                <?php 
+                                  $source_img = imagecreatefromstring(base64_decode($screen->pic_1));
+                                  $rotated_img = imagerotate($source_img, 360, 0); 
+                                  $file = storage_path().'/images-dtscreen/'. $screen->cid.'_pic_1'. '.jpg';
+                                  $imageSave = imagejpeg($rotated_img, $file, 10);
+                                  imagedestroy($source_img);
+                                ?>
+                                
+                                {!! Html::image('storage/images-dtscreen/6_pic_1.jpg', 'pic1', array('class' => 'materialboxed', 'width' => '260' ))!!}
+                              @endif
+                            </div>
+                            <div class="col s4">
+                               @if( $screen->pic_2 != '' )
+                                <?php 
+                                  $source_img2 = imagecreatefromstring(base64_decode($screen->pic_2));
+                                  $rotated_img2 = imagerotate($source_img2, 360, 0); 
+                                  $file2 = storage_path().'/images-dtscreen/'. $screen->cid.'_pic_2'. '.jpg';
+                                  $imageSave2 = imagejpeg($rotated_img2, $file2, 10);
+                                  imagedestroy($source_img2);
+                                ?>
+                                
+                                {!! Html::image('storage/images-dtscreen/6_pic_2.jpg', 'pic2', array('class' => 'materialboxed', 'width' => '260' ))!!}
+                              @endif
+                            </div>
+                            <div class="col s4">
+                              @if( $screen->pic_3 != '' )
+                                <?php 
+                                  $source_img3 = imagecreatefromstring(base64_decode($screen->pic_3));
+                                  $rotated_img3 = imagerotate($source_img3, 360, 0); 
+                                  $file3 = storage_path().'/images-dtscreen/'. $screen->cid.'_pic_3'. '.jpg';
+                                  $imageSave3 = imagejpeg($rotated_img3, $file3, 10);
+                                  imagedestroy($source_img3);
+                                ?>
+                                
+                                {!! Html::image('storage/images-dtscreen/6_pic_3.jpg', 'pic3', array('class' => 'materialboxed', 'width' => '260' ))!!}
+                              @endif
+                            </div>
+
+                          </div>
+
+                      @else
+                          - ไม่มีข้อมูลภาพ
+                      @endif
+
+                   </div>
+                </div>
+
+                <hr/>
+                
+                <!-- File All -->
+                <div class="row">
+                   <div class="col s12">
+                      <h2 class="header">ข้อมูลไฟล์เอกสาร</h2>
+
+                        <div class="collection">
+                          @if($screen->name_file1 != '')
+                            <li class="collection-item">
+                              <div>{!! $screen->name_file1 !!}<a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file1) !!}/{!! $screen->name_file1 !!}" class="secondary-content"><i class="mdi-file-file-download"></i></a></div>
+                            </li>
+                          @endif
+                          @if($screen->name_file2 != '')
+                            <li class="collection-item">
+                              <div>{!! $screen->name_file2 !!}<a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file2) !!}/{!! $screen->name_file2 !!}" class="secondary-content"><i class="mdi-file-file-download"></i></a></div>
+                            </li>
+                          @endif
+                          @if($screen->name_file3 != '')
+                            <li class="collection-item">
+                              <div>{!! $screen->name_file3 !!}<a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file3) !!}/{!! $screen->name_file3 !!}" class="secondary-content"><i class="mdi-file-file-download"></i></a></div>
+                            </li>
+                          @endif
+                          @if($screen->name_file4 != '')
+                            <li class="collection-item">
+                              <div>{!! $screen->name_file4 !!}<a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file4) !!}/{!! $screen->name_file4 !!}" class="secondary-content"><i class="mdi-file-file-download"></i></a></div>
+                            </li>
+                          @endif
+                          @if($screen->name_file5 != '')                           
+                            <li class="collection-item">
+                              <div>{!! $screen->name_file5 !!}<a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file5) !!}/{!! $screen->name_file5 !!}" class="secondary-content"><i class="mdi-file-file-download"></i></a></div>
+                            </li>
+                          @endif
+                        </div>
+                        
+                        <div class="file-field input-field">
+                            <div class="btn">
+                              <span>แนบไฟล์ 1</span>
+                              <input name="file1" id="efile1" type="file">
+                            </div>
+                            <div class="file-path-wrapper">
+                              <input class="file-path validate" type="text" placeholder="เลือกไฟล์ที่ต้องการ">
+                            </div>
+                          </div>
+                          <div class="file-field input-field">
+                            <div class="btn">
+                              <span>แนบไฟล์ 2</span>
+                              <input name="file2" id="efile2" type="file">
+                            </div>
+                            <div class="file-path-wrapper">
+                              <input class="file-path validate" type="text" placeholder="เลือกไฟล์ที่ต้องการ">
+                            </div>
+                          </div>
+                        <div class="file-field input-field">
+                            <div class="btn">
+                              <span>แนบไฟล์ 3</span>
+                              <input name="file3" id="efile3" type="file">
+                            </div>
+                            <div class="file-path-wrapper">
+                              <input class="file-path validate" type="text" placeholder="เลือกไฟล์ที่ต้องการ">
+                            </div>
+                          </div>
+                          <div class="file-field input-field">
+                            <div class="btn">
+                              <span>แนบไฟล์ 4</span>
+                              <input name="file4" id="efile4" type="file">
+                            </div>
+                            <div class="file-path-wrapper">
+                              <input class="file-path validate" type="text" placeholder="เลือกไฟล์ที่ต้องการ">
+                            </div>
+                          </div>
+                          <div class="file-field input-field">
+                            <div class="btn">
+                              <span>แนบไฟล์ 5</span>
+                              <input name="file5" id="efile5" type="file">
+                            </div>
+                            <div class="file-path-wrapper">
+                              <input class="file-path validate" type="text" placeholder="เลือกไฟล์ที่ต้องการ">
+                            </div>
+                          </div>
+                              
+                   </div>
+                </div>
+            
+            </div><!-- .form-body แนบ File -->  
+            </div>
+
+
+
             <div class="row">
             <div class="col s12 center">
                 
@@ -867,3 +1036,5 @@
     </div> 
 
 @endsection
+
+

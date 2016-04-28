@@ -20,14 +20,15 @@
                  @if( Session::get('status') == '1' || Session::get('status') == '2' ) 
                     <li class="tab-top tab col s3"><a href="#tab4">ส่วนที่ 4</a></li>
                  @endif 
-                  
+
+                 <li class="tab-top tab col s3"><a href="#tab5">ข้อมูลอื่น ๆ</a></li> 
               </ul>
             </div>
             </div>
             </div>
                
             
-            {!! Form::open( array('route' => 'screen.store', 'class' => 'form-horizontal', 'id' => 'screenform') ) !!}
+            {!! Form::open( array('route' => 'screen.store', 'class' => 'form-horizontal', 'id' => 'screenform', 'files'=>true) ) !!}
             
             <!-- ============== Part 1 =============== -->
             <!-- ============== Part 1 =============== -->
@@ -844,6 +845,73 @@
             </div><!-- .form-body 4 -->  
             </div>
             @endif
+
+
+
+
+            <!-- ============== แนบ File =============== -->
+            <!-- ============== แนบ File =============== -->
+            <!-- ============== แนบ File =============== -->
+            <div id="tab5" class="row">
+            <h4 class="header part center">ข้อมูลอื่น ๆ</h4>
+            <div class="form-body">
+                
+                <!-- File All -->
+                <div class="row">
+                   <div class="col s12">
+                      <h2 class="header">ข้อมูลไฟล์เอกสาร</h2>
+                        
+                        <div class="file-field input-field">
+                            <div class="btn">
+                              <span>แนบไฟล์ 1</span>
+                              <input name="file1" id="file1" type="file">
+                            </div>
+                            <div class="file-path-wrapper">
+                              <input class="file-path validate" type="text" placeholder="เลือกไฟล์ที่ต้องการ">
+                            </div>
+                          </div>
+                          <div class="file-field input-field">
+                            <div class="btn">
+                              <span>แนบไฟล์ 2</span>
+                              <input name="file2" id="file2" type="file">
+                            </div>
+                            <div class="file-path-wrapper">
+                              <input class="file-path validate" type="text" placeholder="เลือกไฟล์ที่ต้องการ">
+                            </div>
+                          </div>
+                        <div class="file-field input-field">
+                            <div class="btn">
+                              <span>แนบไฟล์ 3</span>
+                              <input name="file3" id="file3" type="file">
+                            </div>
+                            <div class="file-path-wrapper">
+                              <input class="file-path validate" type="text" placeholder="เลือกไฟล์ที่ต้องการ">
+                            </div>
+                          </div>
+                          <div class="file-field input-field">
+                            <div class="btn">
+                              <span>แนบไฟล์ 4</span>
+                              <input name="file4" id="file4" type="file">
+                            </div>
+                            <div class="file-path-wrapper">
+                              <input class="file-path validate" type="text" placeholder="เลือกไฟล์ที่ต้องการ">
+                            </div>
+                          </div>
+                          <div class="file-field input-field">
+                            <div class="btn">
+                              <span>แนบไฟล์ 5</span>
+                              <input name="file5" id="file5" type="file">
+                            </div>
+                            <div class="file-path-wrapper">
+                              <input class="file-path validate" type="text" placeholder="เลือกไฟล์ที่ต้องการ">
+                            </div>
+                          </div>
+                              
+                   </div>
+                </div>
+            
+            </div><!-- .form-body แนบ File -->  
+            </div>
 
 
 
