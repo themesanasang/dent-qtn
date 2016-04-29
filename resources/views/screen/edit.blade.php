@@ -883,12 +883,12 @@
                                 <?php 
                                   $source_img = imagecreatefromstring(base64_decode($screen->pic_1));
                                   $rotated_img = imagerotate($source_img, 360, 0); 
-                                  $file = storage_path().'/images-dtscreen/'. $screen->cid.'_pic_1'. '.jpg';
+                                  $file = storage_path().'/images-dtscreen/'. $screen->cid.'_'.$screen->id.'_pic_1'. '.jpg';
                                   $imageSave = imagejpeg($rotated_img, $file, 10);
                                   imagedestroy($source_img);
                                 ?>
                                 
-                                {!! Html::image('storage/images-dtscreen/6_pic_1.jpg', 'pic1', array('class' => 'materialboxed', 'width' => '260' ))!!}
+                                {!! Html::image('storage/images-dtscreen/'.$screen->cid.'_'.$screen->id.'_pic_1'. '.jpg', 'pic1', array('class' => 'materialboxed', 'width' => '260' ))!!}
                               @endif
                             </div>
                             <div class="col s4">
@@ -896,12 +896,12 @@
                                 <?php 
                                   $source_img2 = imagecreatefromstring(base64_decode($screen->pic_2));
                                   $rotated_img2 = imagerotate($source_img2, 360, 0); 
-                                  $file2 = storage_path().'/images-dtscreen/'. $screen->cid.'_pic_2'. '.jpg';
+                                  $file2 = storage_path().'/images-dtscreen/'. $screen->cid.'_'.$screen->id.'_pic_2'. '.jpg';
                                   $imageSave2 = imagejpeg($rotated_img2, $file2, 10);
                                   imagedestroy($source_img2);
                                 ?>
                                 
-                                {!! Html::image('storage/images-dtscreen/6_pic_2.jpg', 'pic2', array('class' => 'materialboxed', 'width' => '260' ))!!}
+                                {!! Html::image('storage/images-dtscreen/'.$screen->cid.'_'.$screen->id.'_pic_2'. '.jpg', 'pic2', array('class' => 'materialboxed', 'width' => '260' ))!!}
                               @endif
                             </div>
                             <div class="col s4">
@@ -909,12 +909,12 @@
                                 <?php 
                                   $source_img3 = imagecreatefromstring(base64_decode($screen->pic_3));
                                   $rotated_img3 = imagerotate($source_img3, 360, 0); 
-                                  $file3 = storage_path().'/images-dtscreen/'. $screen->cid.'_pic_3'. '.jpg';
+                                  $file3 = storage_path().'/images-dtscreen/'. $screen->cid.'_'.$screen->id.'_pic_3'. '.jpg';
                                   $imageSave3 = imagejpeg($rotated_img3, $file3, 10);
                                   imagedestroy($source_img3);
                                 ?>
                                 
-                                {!! Html::image('storage/images-dtscreen/6_pic_3.jpg', 'pic3', array('class' => 'materialboxed', 'width' => '260' ))!!}
+                                {!! Html::image('storage/images-dtscreen/'.$screen->cid.'_'.$screen->id.'_pic_3'. '.jpg', 'pic3', array('class' => 'materialboxed', 'width' => '260' ))!!}
                               @endif
                             </div>
 
@@ -937,27 +937,27 @@
                         <div class="collection">
                           @if($screen->name_file1 != '')
                             <li class="collection-item">
-                              <div>{!! $screen->name_file1 !!}<a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file1) !!}/{!! $screen->name_file1 !!}" class="secondary-content"><i class="mdi-file-file-download"></i></a></div>
+                              <div>แนบไฟล์ 1: {!! $screen->name_file1 !!} <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file1) !!}/{!! $screen->name_file1 !!}/{!! Crypt::encrypt($screen->id) !!}/{!! Crypt::encrypt(1) !!}" title="ลบไฟล์" class="secondary-content icon-color-red"><i class="mdi-action-delete"></i></a> <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file1) !!}/{!! $screen->name_file1 !!}" title="โหลดไฟล์" class="secondary-content"><i class="mdi-file-file-download"></i></a> </div>
                             </li>
                           @endif
                           @if($screen->name_file2 != '')
                             <li class="collection-item">
-                              <div>{!! $screen->name_file2 !!}<a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file2) !!}/{!! $screen->name_file2 !!}" class="secondary-content"><i class="mdi-file-file-download"></i></a></div>
+                              <div>แนบไฟล์ 2: {!! $screen->name_file2 !!} <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file2) !!}/{!! $screen->name_file2 !!}/{!! Crypt::encrypt($screen->id) !!}/{!! Crypt::encrypt(2) !!}" title="ลบไฟล์" class="secondary-content icon-color-red"><i class="mdi-action-delete"></i></a> <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file2) !!}/{!! $screen->name_file2 !!}" title="โหลดไฟล์" class="secondary-content"><i class="mdi-file-file-download"></i></a></div>
                             </li>
                           @endif
                           @if($screen->name_file3 != '')
                             <li class="collection-item">
-                              <div>{!! $screen->name_file3 !!}<a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file3) !!}/{!! $screen->name_file3 !!}" class="secondary-content"><i class="mdi-file-file-download"></i></a></div>
+                              <div>แนบไฟล์ 3: {!! $screen->name_file3 !!} <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file3) !!}/{!! $screen->name_file3 !!}/{!! Crypt::encrypt($screen->id) !!}/{!! Crypt::encrypt(3) !!}" title="ลบไฟล์" class="secondary-content icon-color-red"><i class="mdi-action-delete"></i></a> <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file3) !!}/{!! $screen->name_file3 !!}" title="โหลดไฟล์" class="secondary-content"><i class="mdi-file-file-download"></i></a></div>
                             </li>
                           @endif
                           @if($screen->name_file4 != '')
                             <li class="collection-item">
-                              <div>{!! $screen->name_file4 !!}<a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file4) !!}/{!! $screen->name_file4 !!}" class="secondary-content"><i class="mdi-file-file-download"></i></a></div>
+                              <div>แนบไฟล์ 4: {!! $screen->name_file4 !!} <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file4) !!}/{!! $screen->name_file4 !!}/{!! Crypt::encrypt($screen->id) !!}/{!! Crypt::encrypt(4) !!}" title="ลบไฟล์" class="secondary-content icon-color-red"><i class="mdi-action-delete"></i></a> <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file4) !!}/{!! $screen->name_file4 !!}" title="โหลดไฟล์" class="secondary-content"><i class="mdi-file-file-download"></i></a></div>
                             </li>
                           @endif
                           @if($screen->name_file5 != '')                           
                             <li class="collection-item">
-                              <div>{!! $screen->name_file5 !!}<a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file5) !!}/{!! $screen->name_file5 !!}" class="secondary-content"><i class="mdi-file-file-download"></i></a></div>
+                              <div>แนบไฟล์ 5: {!! $screen->name_file5 !!} <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file5) !!}/{!! $screen->name_file5 !!}/{!! Crypt::encrypt($screen->id) !!}/{!! Crypt::encrypt(5) !!}" title="ลบไฟล์" class="secondary-content icon-color-red"><i class="mdi-action-delete"></i></a> <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file5) !!}/{!! $screen->name_file5 !!}" title="โหลดไฟล์" class="secondary-content"><i class="mdi-file-file-download"></i></a></div>
                             </li>
                           @endif
                         </div>

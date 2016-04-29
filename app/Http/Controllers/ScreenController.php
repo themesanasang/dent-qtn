@@ -211,58 +211,46 @@ class ScreenController extends Controller {
                     $nameFile1 = Input::file('file1')->getClientOriginalName();
                     $pathFile1 = storage_path().'/uploads/'.$nameFolder;
                     Input::file('file1')->move($pathFile1, $nameFile1);
-                }else{
-                    $pathFile1='';
-                    $nameFile1='';
+
+                    $screen->name_file1         =  $nameFile1;
+                    $screen->file1              =  $pathFile1.'/'.$nameFile1;
                 }
 
                 if(Input::file('file2')) {
                     $nameFile2 = Input::file('file2')->getClientOriginalName();
                     $pathFile2 = storage_path().'/uploads/'.$nameFolder;
                     Input::file('file2')->move($pathFile2, $nameFile2);
-                }else{
-                    $pathFile2='';
-                    $nameFile2='';
+
+                    $screen->name_file2         =  $nameFile2;
+                    $screen->file2              =  $pathFile2.'/'.$nameFile2;
                 }
 
                 if(Input::file('file3')) {
                     $nameFile3 = Input::file('file3')->getClientOriginalName();
                     $pathFile3 = storage_path().'/uploads/'.$nameFolder;
                     Input::file('file3')->move($pathFile3, $nameFile3);
-                }else{
-                    $pathFile3='';
-                    $nameFile3='';
+
+                    $screen->name_file3         =  $nameFile3;
+                    $screen->file3              =  $pathFile3.'/'.$nameFile3;
                 }
 
                 if(Input::file('file4')) {
                     $nameFile4 = Input::file('file4')->getClientOriginalName();
                     $pathFile4 = storage_path().'/uploads/'.$nameFolder;
                     Input::file('file4')->move($pathFile4, $nameFile4);
-                }else{
-                    $pathFile4='';
-                    $nameFile4='';
+
+                    $screen->name_file4         =  $nameFile4;
+                    $screen->file4              =  $pathFile4.'/'.$nameFile4;
                 }
 
                 if(Input::file('file5')) {
                     $nameFile5 = Input::file('file5')->getClientOriginalName();
                     $pathFile5 = storage_path().'/uploads/'.$nameFolder;
                     Input::file('file5')->move($pathFile5, $nameFile5);
-                }else{
-                    $pathFile5='';
-                    $nameFile5='';
+
+                    $screen->name_file5         =  $nameFile5;
+                    $screen->file5              =  $pathFile5.'/'.$nameFile5;
                 }
-
-                $screen->name_file1         =  $nameFile1;
-                $screen->name_file2         =  $nameFile2;
-                $screen->name_file3         =  $nameFile3;
-                $screen->name_file4         =  $nameFile4;
-                $screen->name_file5         =  $nameFile5;
-
-                $screen->file1              =  $pathFile1.'/'.$nameFile1;
-                $screen->file2              =  $pathFile2.'/'.$nameFile2;
-                $screen->file3              =  $pathFile3.'/'.$nameFile3;
-                $screen->file4              =  $pathFile4.'/'.$nameFile4;
-                $screen->file5              =  $pathFile5.'/'.$nameFile5;
 
                 $screen->regdate            = $regdate;
                 $screen->create_by          = Session::get('username');
@@ -432,9 +420,10 @@ class ScreenController extends Controller {
             $screen->part4_43_text      = ((isset( $data['part4_43_text'] ))?$data['part4_43_text']:'');
             $screen->part4_44_text      = ((isset( $data['part4_44_text'] ))?$data['part4_44_text']:'');
 
-            /*$regdate = date('Y-m-d H:i:s');
+            $cid = $screen->cid;
+            $regdate = date('Y-m-d H:i:s');
             list($y, $m, $d, $h, $i, $s) = $this->multiexplode(array("-"," ",":"), trim($regdate)); 
-            $nameFolder = $data['cid'].'_'.$y.$m.$d.$h.$i.$s;
+            $nameFolder = $cid.'_'.$y.$m.$d.$h.$i.$s;
 
             if( !is_dir( storage_path()."/uploads/".$nameFolder ) ) {
                 mkdir(storage_path()."/uploads/".$nameFolder);
@@ -444,58 +433,46 @@ class ScreenController extends Controller {
                 $nameFile1 = Input::file('file1')->getClientOriginalName();
                 $pathFile1 = storage_path().'/uploads/'.$nameFolder;
                 Input::file('file1')->move($pathFile1, $nameFile1);
-            }else{
-                $pathFile1='';
-                $nameFile1='';
+
+                $screen->name_file1         =  $nameFile1;
+                $screen->file1              =  $pathFile1.'/'.$nameFile1;
             }
 
             if(Input::file('file2')) {
                 $nameFile2 = Input::file('file2')->getClientOriginalName();
                 $pathFile2 = storage_path().'/uploads/'.$nameFolder;
                 Input::file('file2')->move($pathFile2, $nameFile2);
-            }else{
-                $pathFile2='';
-                $nameFile2='';
+
+                $screen->name_file2         =  $nameFile2;
+                $screen->file2              =  $pathFile2.'/'.$nameFile2;
             }
 
             if(Input::file('file3')) {
                 $nameFile3 = Input::file('file3')->getClientOriginalName();
                 $pathFile3 = storage_path().'/uploads/'.$nameFolder;
                 Input::file('file3')->move($pathFile3, $nameFile3);
-            }else{
-                $pathFile3='';
-                $nameFile3='';
+
+                $screen->name_file3         =  $nameFile3;
+                $screen->file3              =  $pathFile3.'/'.$nameFile3;
             }
 
             if(Input::file('file4')) {
                 $nameFile4 = Input::file('file4')->getClientOriginalName();
                 $pathFile4 = storage_path().'/uploads/'.$nameFolder;
                 Input::file('file4')->move($pathFile4, $nameFile4);
-            }else{
-                $pathFile4='';
-                $nameFile4='';
+
+                $screen->name_file4         =  $nameFile4;
+                $screen->file4              =  $pathFile4.'/'.$nameFile4;
             }
 
             if(Input::file('file5')) {
                 $nameFile5 = Input::file('file5')->getClientOriginalName();
                 $pathFile5 = storage_path().'/uploads/'.$nameFolder;
                 Input::file('file5')->move($pathFile5, $nameFile5);
-            }else{
-                $pathFile5='';
-                $nameFile5='';
-            }
 
-            $screen->name_file1         =  $nameFile1;
-            $screen->name_file2         =  $nameFile2;
-            $screen->name_file3         =  $nameFile3;
-            $screen->name_file4         =  $nameFile4;
-            $screen->name_file5         =  $nameFile5;
-
-            $screen->file1              =  $pathFile1.'/'.$nameFile1;
-            $screen->file2              =  $pathFile2.'/'.$nameFile2;
-            $screen->file3              =  $pathFile3.'/'.$nameFile3;
-            $screen->file4              =  $pathFile4.'/'.$nameFile4;
-            $screen->file5              =  $pathFile5.'/'.$nameFile5;*/
+                $screen->name_file5         =  $nameFile5;
+                $screen->file5              =  $pathFile5.'/'.$nameFile5;
+            }          
 
             DB::transaction(function() use ($screen) {
                 $screen->save();  

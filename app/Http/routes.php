@@ -49,6 +49,7 @@ Route::get('user/getDistrict/{id}/{id2}', 'ScreenController@getDistrict');
 
 
 Route::get('downloads/{path}/{namefile}', 'DownloadController@index');
+Route::get('downloads/{path}/{namefile}/{screenid}/{fileid}', 'DownloadController@deleteFile');
 Route::resource('screen', 'ScreenController');
 
 
