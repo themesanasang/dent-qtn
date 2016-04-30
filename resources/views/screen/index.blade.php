@@ -63,7 +63,7 @@
                          <br />
                       <p>      
                           <div class="col m2 s12">  
-                              <input name="sex" type="radio" id="sex1" value="1" checked  />
+                              <input name="sex" type="radio" id="sex1" value="1" />
                               <label for="sex1">1.ชาย</label>
                           </div>
                           <div class="col m2 s12">
@@ -80,7 +80,7 @@
                      <br />
                       <p>      
                           <div class="col m3 s12">
-                              <input name="status" type="radio" id="status1" value="1" checked  />
+                              <input name="status" type="radio" id="status1" value="1" />
                               <label for="status1">1.โสด</label>
                           </div>
                          <div class="col m3 s12">
@@ -105,7 +105,7 @@
                      <br />
                       <p>
                           <div class="col m5 s12">
-                              <input name="school" type="radio" id="school1" value="1" checked  />
+                              <input name="school" type="radio" id="school1" value="1" />
                               <label for="school1">1.ประถม</label>   
                           </div>  
                           <div class="col m7 s12">
@@ -145,7 +145,7 @@
                      <br />
                      <p>    
                           <div class="col m5 s12">
-                              <input name="work" type="radio" id="work1" value="1" checked  />
+                              <input name="work" type="radio" id="work1" value="1" />
                               <label for="work1">1.เกษตรกร</label>   
                           </div>  
                           <div class="col m7 s12">
@@ -234,7 +234,7 @@
                      <br /><br />
                      <p>    
                           <div class="col s12">
-                              <input name="smoking" type="radio" id="smoking1" value="1" checked  />
+                              <input name="smoking" type="radio" id="smoking1" value="1" />
                               <label for="smoking1">1.ไม่สูบ</label>   
                           </div>                          
                           <div class="col s12">
@@ -268,7 +268,7 @@
                      <br />
                       <p>     
                           <div class="col m2 s12"> 
-                              <input name="hassmoking" type="radio" id="hassmoking1" value="1" checked  />
+                              <input name="hassmoking" type="radio" id="hassmoking1" value="1" />
                               <label for="hassmoking1">1.มี</label>
                           </div>
                           <div class="col m2 s12">
@@ -287,7 +287,7 @@
                      <br /><br />
                      <p>    
                           <div class="col s12">
-                              <input name="hasnus" type="radio" id="hasnus1" value="1" checked  />
+                              <input name="hasnus" type="radio" id="hasnus1" value="1" />
                               <label for="hasnus1">1.ไม่ใช้</label>   
                           </div>                          
                           <div class="col s12">
@@ -318,7 +318,7 @@
                      <br /><br />
                      <p>    
                           <div class="col s12">
-                              <input name="hasareca" type="radio" id="hasareca1" value="1" checked  />
+                              <input name="hasareca" type="radio" id="hasareca1" value="1" />
                               <label for="hasareca1">1.ไม่เคี้ยว</label>   
                           </div>                          
                           <div class="col s12">
@@ -349,7 +349,7 @@
                      <br /><br />
                      <p>    
                           <div class="col s12">
-                              <input name="alcohol" type="radio" id="alcohol1" value="1" checked  />
+                              <input name="alcohol" type="radio" id="alcohol1" value="1" />
                               <label for="alcohol1">1.ไม่ดื่ม</label>   
                           </div>                          
                           <div class="col s12">
@@ -464,7 +464,7 @@
                      <br />
                       <p>     
                           <div class="col s12"> 
-                              <input name="hascancer" type="radio" id="hascancer1" value="1" checked  />
+                              <input name="hascancer" type="radio" id="hascancer1" value="1" />
                               <label for="hascancer1">1.ไม่มี</label>
                           </div>
                           <div class="col s12">
@@ -514,7 +514,7 @@
                       <br /><br />     
                       <p>     
                           <div class="col s12"> 
-                              <input name="sun" type="radio" id="sun1" value="1" checked  />
+                              <input name="sun" type="radio" id="sun1" value="1"  />
                               <label for="sun1">1.ไม่ใช่</label>
                           </div>
                           <div class="col s12">
@@ -546,7 +546,7 @@
                      <br />
                       <p>      
                           <div class="col m2 s12">  
-                              <input name="part3_1" type="radio" id="part3_11" value="1" checked  />
+                              <input name="part3_1" type="radio" id="part3_11" value="1"  />
                               <label for="part3_11">1.มี</label>
                           </div>
                           <div class="col m3 s12">
@@ -563,7 +563,7 @@
                      <br />
                       <p>      
                           <div class="col m2 s12">  
-                              <input name="part3_2" type="radio" id="part3_21" value="1" checked  />
+                              <input name="part3_2" type="radio" id="part3_21" value="1"  />
                               <label for="part3_21">1.มี</label>
                           </div>
                           <div class="col m3 s12">
@@ -580,7 +580,7 @@
                      <br />
                       <p>      
                           <div class="col m2 s12">  
-                              <input name="part3_3" type="radio" id="part3_31" value="1" checked />
+                              <input name="part3_3" type="radio" id="part3_31" value="1" />
                               <label for="part3_31">1.มี</label>
                           </div>
                           <div class="col m3 s12">
@@ -597,7 +597,7 @@
                      <br />
                       <p>      
                           <div class="col m2 s12">  
-                              <input name="part3_4" type="radio" id="part3_41" value="1" checked  />
+                              <input name="part3_4" type="radio" id="part3_41" value="1"  />
                               <label for="part3_41">1.มี</label>
                           </div>
                           <div class="col m3 s12">
@@ -619,7 +619,7 @@
                      <br /><br />
                       <p>     
                           <div class="col s12"> 
-                              <input name="part3_5" type="radio" id="part3_51" value="1" checked  />
+                              <input name="part3_5" type="radio" id="part3_51" value="1"  />
                               <label for="part3_51">1.ปกติ</label>
                           </div>
                           <div class="col s12">
@@ -669,7 +669,7 @@
                      <br />
                       <p>      
                           <div class="col m2 s12">  
-                              <input name="part3_7" type="radio" id="part3_71" value="1" checked  />
+                              <input name="part3_7" type="radio" id="part3_71" value="1"  />
                               <label for="part3_71">1.มี</label>
                           </div>
                           <div class="col m3 s12">
@@ -695,7 +695,7 @@
                 <div class="row">
                     <div class="input-field col l6 s12">    
                       <label for="date_part4">23.วันที่(ว-ด-ป)</label>    
-                      <input id="date_part4" name="date_part4" type="text" class="datepicker picker__input" readonly="" tabindex="-1" aria-haspopup="true" aria-expanded="false" aria-readonly="false" />    
+                      <input id="date_part4" name="date_part4" type="text" class="datepicker picker__input" readonly="" tabindex="-1" aria-haspopup="true" aria-expanded="false" aria-readonly="false" value="<?php echo date("d-m-Y"); ?>" />    
                     </div>
                     <div class="input-field col l6 s12">
                       <input name="user_part4" id="user_part4" type="text" value="{!! Session::get('name') !!}">
@@ -711,7 +711,7 @@
                      <br /><br />
                       <p>     
                           <div class="col s12"> 
-                              <input name="part4_1" type="radio" id="part4_11" value="1" checked  />
+                              <input name="part4_1" type="radio" id="part4_11" value="1"  />
                               <label for="part4_11">1.Normol</label>
                           </div>
                           <div class="col s12">
@@ -779,7 +779,7 @@
                      <br /><br />
                       <p>     
                           <div class="col s12"> 
-                              <input name="part4_3" type="radio" id="part4_31" value="1" checked  />
+                              <input name="part4_3" type="radio" id="part4_31" value="1"  />
                               <label for="part4_31">1.Potentially malignant disorder</label>
                           </div>
                           <div class="col s12">
@@ -803,7 +803,7 @@
                       <p>     
                                                  
                           <div class="col s12">
-                                 <input name="part4_4" type="radio" id="part4_41" value="1" checked  />
+                                 <input name="part4_4" type="radio" id="part4_41" value="1"  />
                                  <label for="part4_41">1.Medication</label>
                           </div>
                           <div class="input-field col s12">

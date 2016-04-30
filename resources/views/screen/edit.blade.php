@@ -884,7 +884,7 @@
                                   $source_img = imagecreatefromstring(base64_decode($screen->pic_1));
                                   $rotated_img = imagerotate($source_img, 360, 0); 
                                   $file = storage_path().'/images-dtscreen/'. $screen->cid.'_'.$screen->id.'_pic_1'. '.jpg';
-                                  $imageSave = imagejpeg($rotated_img, $file, 10);
+                                  $imageSave = imagejpeg($rotated_img, $file, 100);
                                   imagedestroy($source_img);
                                 ?>
                                 
@@ -897,7 +897,7 @@
                                   $source_img2 = imagecreatefromstring(base64_decode($screen->pic_2));
                                   $rotated_img2 = imagerotate($source_img2, 360, 0); 
                                   $file2 = storage_path().'/images-dtscreen/'. $screen->cid.'_'.$screen->id.'_pic_2'. '.jpg';
-                                  $imageSave2 = imagejpeg($rotated_img2, $file2, 10);
+                                  $imageSave2 = imagejpeg($rotated_img2, $file2, 100);
                                   imagedestroy($source_img2);
                                 ?>
                                 
@@ -910,7 +910,7 @@
                                   $source_img3 = imagecreatefromstring(base64_decode($screen->pic_3));
                                   $rotated_img3 = imagerotate($source_img3, 360, 0); 
                                   $file3 = storage_path().'/images-dtscreen/'. $screen->cid.'_'.$screen->id.'_pic_3'. '.jpg';
-                                  $imageSave3 = imagejpeg($rotated_img3, $file3, 10);
+                                  $imageSave3 = imagejpeg($rotated_img3, $file3, 100);
                                   imagedestroy($source_img3);
                                 ?>
                                 

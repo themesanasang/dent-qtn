@@ -143,11 +143,11 @@ class ScreenController extends Controller {
                 $screen->fullname           = $data['fullname'];
                 $screen->cid                = $data['cid'];
                 $screen->age                = $data['age'];
-                $screen->sex                = $data['sex'];
-                $screen->status             = $data['status'];
-                $screen->school             = $data['school'];
+                if( isset($data['sex']) ){ $screen->sex = $data['sex']; }
+                if( isset($data['status']) ){ $screen->status = $data['status']; }
+                if( isset($data['school']) ){ $screen->school = $data['school']; }
                 $screen->textschool         = $data['textschool'];
-                $screen->work               = $data['work'];                               
+                if( isset($data['work']) ){ $screen->work = $data['work']; } 
                 $screen->textwork           = $data['textwork'];
                 $screen->address            = $data['address'];
                 $screen->chwpart            = $data['chwpart'];
@@ -155,49 +155,56 @@ class ScreenController extends Controller {
                 $screen->tmbpart            = $data['tmbpart'];
                 $screen->tel                = $data['tel'];
                 $screen->mobile             = $data['mobile'];
-                $screen->smoking            = $data['smoking'];
+
+
+                if( isset($data['smoking']) ) { $screen->smoking = $data['smoking']; }
                 $screen->smokingday         = ((isset( $data['smokingday'] ))?$data['smokingday']:'');
                 $screen->smokinglong        = ((isset( $data['smokinglong'] ))?$data['smokinglong']:'');
                 $screen->smokingstop        = ((isset( $data['smokingstop'] ))?$data['smokingstop']:'');
-                $screen->hassmoking         = $data['hassmoking'];
-                $screen->hasnus             = $data['hasnus'];
+                if( isset($data['hassmoking']) ) { $screen->hassmoking = $data['hassmoking']; }
+                if( isset($data['hasnus']) ) { $screen->hasnus = $data['hasnus']; }
                 $screen->nuslong            = ((isset( $data['nuslong'] ))?$data['nuslong']:'');
                 $screen->nusstop            = ((isset( $data['nusstop'] ))?$data['nusstop']:'');
-                $screen->hasareca           = $data['hasareca'];
+                if( isset($data['hasareca']) ) { $screen->hasareca = $data['hasareca']; }
                 $screen->arecalong          = ((isset( $data['arecalong'] ))?$data['arecalong']:'');
                 $screen->arecastop          = ((isset( $data['arecastop'] ))?$data['arecastop']:'');
-                $screen->alcohol            = $data['alcohol'];
+                if( isset($data['alcohol']) ) { $screen->alcohol = $data['alcohol']; }
                 $screen->drinktype          = ((isset( $data['drinktype'] ))?$data['drinktype']:'');
                 $screen->drinktypetext      = ((isset( $data['drinktypetext'] ))?$data['drinktypetext']:'');
                 $screen->drinkunittext      = ((isset( $data['drinkunittext'] ))?$data['drinkunittext']:'');
                 $screen->drinkunit          = ((isset( $data['drinkunit'] ))?$data['drinkunit']:'');
                 $screen->alcohollong        = ((isset( $data['alcohollong'] ))?$data['alcohollong']:'');
                 $screen->alcoholstop        = ((isset( $data['alcoholstop'] ))?$data['alcoholstop']:'');
-                $screen->hascancer          = $data['hascancer'];
-                $screen->cancer             = ((isset( $data['cancer'] ))?$data['cancer']:'');
+                if( isset($data['hascancer']) ) { $screen->hascancer = $data['hascancer']; }
+                if( isset($data['cancer']) ) { $screen->cancer = $data['cancer']; } 
                 $screen->textcancer         = ((isset( $data['textcancer'] ))?$data['textcancer']:'');
-                $screen->sun                = $data['sun'];
+                if( isset($data['sun']) ) { $screen->sun = $data['sun']; }
                 $screen->worksun            = ((isset( $data['worksun'] ))?$data['worksun']:'');
-                $screen->part3_1            = $data['part3_1'];
-                $screen->part3_2            = $data['part3_2'];
-                $screen->part3_3            = $data['part3_3'];
-                $screen->part3_4            = $data['part3_4'];
-                $screen->part3_5            = $data['part3_5']; 
-                $screen->part3_6            = ((isset( $data['part3_6'] ))?$data['part3_6']:'');
+
+
+                if( isset($data['part3_1']) ) { $screen->part3_1 = $data['part3_1']; }
+                if( isset($data['part3_2']) ) { $screen->part3_2 = $data['part3_2']; }
+                if( isset($data['part3_3']) ) { $screen->part3_3 = $data['part3_3']; }
+                if( isset($data['part3_4']) ) { $screen->part3_4 = $data['part3_4']; }
+                if( isset($data['part3_5']) ) { $screen->part3_5 = $data['part3_5']; }
+                if( isset($data['part3_6']) ) { $screen->part3_6 = $data['part3_6']; }
                 $screen->textpart3_6        = ((isset( $data['textpart3_6'] ))?$data['textpart3_6']:'');
-                $screen->part3_7            = $data['part3_7'];
+                if( isset($data['part3_7']) ) { $screen->part3_7 = $data['part3_7']; }
+                
+
                 $screen->date_part4         = ((isset( $data['date_part4'] ))?date("Y-m-d", strtotime($data['date_part4'])):'');
                 $screen->user_part4         = ((isset( $data['user_part4'] ))?$data['user_part4']:'');
-                $screen->part4_1            = ((isset( $data['part4_1'] ))?$data['part4_1']:'');
+                if( isset($data['part4_1']) ) { $screen->part4_1 = $data['part4_1']; }
                 $screen->part4_1text        = ((isset( $data['part4_1text'] ))?$data['part4_1text']:'');
-                $screen->part4_2            = ((isset( $data['part4_2'] ))?$data['part4_2']:'');
+                if( isset($data['part4_2']) ) { $screen->part4_2 = $data['part4_2']; }
                 $screen->definitive_diag    = ((isset( $data['definitive_diag'] ))?$data['definitive_diag']:'');
                 $screen->part4_3            = ((isset( $data['part4_3'] ))?$data['part4_3']:'');
-                $screen->part4_4            = ((isset( $data['part4_4'] ))?$data['part4_4']:'');
+                if( isset($data['part4_4']) ) { $screen->part4_4 = $data['part4_4']; }
                 $screen->part4_41_text      = ((isset( $data['part4_41_text'] ))?$data['part4_41_text']:'');
                 $screen->part4_42_text      = ((isset( $data['part4_42_text'] ))?$data['part4_42_text']:'');
                 $screen->part4_43_text      = ((isset( $data['part4_43_text'] ))?$data['part4_43_text']:'');
                 $screen->part4_44_text      = ((isset( $data['part4_44_text'] ))?$data['part4_44_text']:'');
+
 
                 $regdate = date('Y-m-d H:i:s');
                 list($y, $m, $d, $h, $i, $s) = $this->multiexplode(array("-"," ",":"), trim($regdate)); 
@@ -359,66 +366,72 @@ class ScreenController extends Controller {
 
             $screen = Screen::find( e($id) );              
             $screen->age                = $data['age'];
-            $screen->sex                = $data['sex'];
-            $screen->status             = $data['status'];
-            $screen->school             = $data['school'];
+
+            if( isset($data['sex']) ){ $screen->sex = $data['sex']; }
+            if( isset($data['status']) ){ $screen->status = $data['status']; }
+            if( isset($data['school']) ){ $screen->school = $data['school']; }
             $screen->textschool         = $data['textschool'];
-            $screen->work               = $data['work'];                               
+            if( isset($data['work']) ){ $screen->work = $data['work']; }  
             $screen->textwork           = $data['textwork'];
             $screen->address            = $data['address'];
-
             //เช็คจังหวัด อำเภอ ตำบล ก่อน update
             if( isset($data['chwpart']) && isset($data['amppart']) && isset($data['tmbpart']) ){
                 $screen->chwpart            = $data['chwpart'];
                 $screen->amppart            = $data['amppart'];
                 $screen->tmbpart            = $data['tmbpart'];
             }
-
             $screen->tel                = $data['tel'];
             $screen->mobile             = $data['mobile'];
-            $screen->smoking            = $data['smoking'];
+            
+
+            if( isset($data['smoking']) ) { $screen->smoking = $data['smoking']; }
             $screen->smokingday         = ((isset( $data['smokingday'] ))?$data['smokingday']:'');
             $screen->smokinglong        = ((isset( $data['smokinglong'] ))?$data['smokinglong']:'');
             $screen->smokingstop        = ((isset( $data['smokingstop'] ))?$data['smokingstop']:'');
-            $screen->hassmoking         = $data['hassmoking'];
-            $screen->hasnus             = $data['hasnus'];
+            if( isset($data['hassmoking']) ) { $screen->hassmoking = $data['hassmoking']; }
+            if( isset($data['hasnus']) ) { $screen->hasnus = $data['hasnus']; }
             $screen->nuslong            = ((isset( $data['nuslong'] ))?$data['nuslong']:'');
             $screen->nusstop            = ((isset( $data['nusstop'] ))?$data['nusstop']:'');
-            $screen->hasareca           = $data['hasareca'];
+            if( isset($data['hasareca']) ) { $screen->hasareca = $data['hasareca']; }
             $screen->arecalong          = ((isset( $data['arecalong'] ))?$data['arecalong']:'');
             $screen->arecastop          = ((isset( $data['arecastop'] ))?$data['arecastop']:'');
-            $screen->alcohol            = $data['alcohol'];
+            if( isset($data['alcohol']) ) { $screen->alcohol = $data['alcohol']; }
             $screen->drinktype          = ((isset( $data['drinktype'] ))?$data['drinktype']:'');
             $screen->drinktypetext      = ((isset( $data['drinktypetext'] ))?$data['drinktypetext']:'');
             $screen->drinkunittext      = ((isset( $data['drinkunittext'] ))?$data['drinkunittext']:'');
             $screen->drinkunit          = ((isset( $data['drinkunit'] ))?$data['drinkunit']:'');
             $screen->alcohollong        = ((isset( $data['alcohollong'] ))?$data['alcohollong']:'');
             $screen->alcoholstop        = ((isset( $data['alcoholstop'] ))?$data['alcoholstop']:'');
-            $screen->hascancer          = $data['hascancer'];
-            $screen->cancer             = ((isset( $data['cancer'] ))?$data['cancer']:'');
+            if( isset($data['hascancer']) ) { $screen->hascancer = $data['hascancer']; }
+            if( isset($data['cancer']) ) { $screen->cancer = $data['cancer']; } 
             $screen->textcancer         = ((isset( $data['textcancer'] ))?$data['textcancer']:'');
-            $screen->sun                = $data['sun'];
+            if( isset($data['sun']) ) { $screen->sun = $data['sun']; }
             $screen->worksun            = ((isset( $data['worksun'] ))?$data['worksun']:'');
-            $screen->part3_1            = $data['part3_1'];
-            $screen->part3_2            = $data['part3_2'];
-            $screen->part3_3            = $data['part3_3'];
-            $screen->part3_4            = $data['part3_4'];
-            $screen->part3_5            = $data['part3_5']; 
-            $screen->part3_6            = ((isset( $data['part3_6'] ))?$data['part3_6']:'');
+            
+
+            if( isset($data['part3_1']) ) { $screen->part3_1 = $data['part3_1']; }
+            if( isset($data['part3_2']) ) { $screen->part3_2 = $data['part3_2']; }
+            if( isset($data['part3_3']) ) { $screen->part3_3 = $data['part3_3']; }
+            if( isset($data['part3_4']) ) { $screen->part3_4 = $data['part3_4']; }
+            if( isset($data['part3_5']) ) { $screen->part3_5 = $data['part3_5']; }
+            if( isset($data['part3_6']) ) { $screen->part3_6 = $data['part3_6']; }
             $screen->textpart3_6        = ((isset( $data['textpart3_6'] ))?$data['textpart3_6']:'');
-            $screen->part3_7            = $data['part3_7'];
+            if( isset($data['part3_7']) ) { $screen->part3_7 = $data['part3_7']; }
+            
+
             $screen->date_part4         = ((isset( $data['date_part4'] ))?date("Y-m-d", strtotime($data['date_part4'])):'');
             $screen->user_part4         = ((isset( $data['user_part4'] ))?$data['user_part4']:'');
-            $screen->part4_1            = ((isset( $data['part4_1'] ))?$data['part4_1']:'');
+            if( isset($data['part4_1']) ) { $screen->part4_1 = $data['part4_1']; }
             $screen->part4_1text        = ((isset( $data['part4_1text'] ))?$data['part4_1text']:'');
-            $screen->part4_2            = ((isset( $data['part4_2'] ))?$data['part4_2']:'');
+            if( isset($data['part4_2']) ) { $screen->part4_2 = $data['part4_2']; }
             $screen->definitive_diag    = ((isset( $data['definitive_diag'] ))?$data['definitive_diag']:'');
             $screen->part4_3            = ((isset( $data['part4_3'] ))?$data['part4_3']:'');
-            $screen->part4_4            = ((isset( $data['part4_4'] ))?$data['part4_4']:'');
+            if( isset($data['part4_4']) ) { $screen->part4_4 = $data['part4_4']; }
             $screen->part4_41_text      = ((isset( $data['part4_41_text'] ))?$data['part4_41_text']:'');
             $screen->part4_42_text      = ((isset( $data['part4_42_text'] ))?$data['part4_42_text']:'');
             $screen->part4_43_text      = ((isset( $data['part4_43_text'] ))?$data['part4_43_text']:'');
             $screen->part4_44_text      = ((isset( $data['part4_44_text'] ))?$data['part4_44_text']:'');
+
 
             $cid = $screen->cid;
             $regdate = date('Y-m-d H:i:s');
