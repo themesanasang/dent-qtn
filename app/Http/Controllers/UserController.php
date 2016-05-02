@@ -291,12 +291,16 @@ class UserController extends Controller {
                     $user->password     = $encrypted_password;
                     $user->salt         = $salt;
                 }
-                
+
                 $user->address      = $data['address'];
-                $user->chwpart      = $data['chwpart'];
-                $user->amppart      = $data['amppart'];
-                $user->tmbpart      = $data['tmbpart'];
-                $user->workat       = $data['workat'];
+                
+                if( isset($data['chwpart']) && isset($data['amppart']) && isset($data['tmbpart']) ){
+                    $user->chwpart      = $data['chwpart'];
+                    $user->amppart      = $data['amppart'];
+                    $user->tmbpart      = $data['tmbpart'];
+                }
+                
+                if( isset($data['workat']) ) { $user->workat = $data['workat']; }
                 
                 if( Session::get('status') == '1' ){
                     $user->activated    = $data['activated'];

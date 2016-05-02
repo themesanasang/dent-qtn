@@ -89,6 +89,9 @@ class LoginController extends Controller {
                     Session::put( 'name', $model->username );
                     Session::put( 'uid', $model->id );
 
+                    //0=โรงพยาบาลส่งเสริมสุขภาพตำบล , 1=โรงพยาบาลชุมชน , 2=โรงพยาบาลทั่วไป , 3=โรงพยาบาลศูนย์
+                    Session::put( 'workat', $model->workat );
+
                     //1=admin, 2=ผู้วิจัย, 3=ทั่วไป 
                     Session::put( 'status', $model->status );
                     Session::put( 'fingerprint', md5($_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR']) );					

@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Models\Province;
 use App\Models\Amphur;
 use App\Models\District;
@@ -18,7 +19,6 @@ use Response;
 use Crypt;
 
 class ScreenController extends Controller {
-    
     
     
     
@@ -62,16 +62,61 @@ class ScreenController extends Controller {
     {
        if(  Session::get('status') != ''  && Session::get('fingerprint') == md5($_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR']) )
         {   
+            $user = User::find(Session::get('uid'));
+
+            $chwpart = $user->chwpart;
+            $amppart = $user->amppart;
+            $tmbpart = $user->tmbpart;
+
+            $type_w = Session::get('workat');
+
            if( Session::get('status') == 3 )
            {
                //ผูใช้ทั่วไป
-                $screen = Screen::where('create_by', '=', Session::get('username'))->get();
+                //$screen = Screen::where('create_by', '=', Session::get('username'))->get();
+
+                if( $type_w == '0' ){
+                    //โรงพยาบาลส่งเสริมสุขภาพตำบล
+                    $sql = 'select * from screen where create_by='."'".Session::get('username')."'";
+                }else if( $type_w == '1' ){
+                    //โรงพยาบาลชุมชน
+                    $alluser = DB::table('users')->where('chwpart', '=', $chwpart)->where('amppart', '=', $amppart)->select('username')->get();
+                    $idkey = '(';
+                    foreach($alluser as $key => $value){
+                        $idkey .= "'".$value->username."'".',';
+                    }
+                    $idkey .= '"0")';
+
+                    $sql = 'select * from screen where create_by in '.$idkey;
+                }else if( $type_w == '2' ){
+                    //โรงพยาบาลทั่วไป
+                    $alluser = DB::table('users')->where('chwpart', '=', $chwpart)->where('amppart', '=', $amppart)->select('username')->get();
+                    $idkey = '(';
+                    foreach($alluser as $key => $value){
+                        $idkey .= "'".$value->username."'".',';
+                    }
+                    $idkey .= '"0")';
+
+                    $sql = 'select * from screen where create_by in '.$idkey;
+                }else{
+                    //โรงพยาบาลศูนย์
+                    $alluser = DB::table('users')->where('chwpart', '=', $chwpart)->select('username')->get();
+                    $idkey = '(';
+                    foreach($alluser as $key => $value){
+                        $idkey .= "'".$value->username."'".',';
+                    }
+                    $idkey .= '"0")';
+
+                    $sql = 'select * from screen where create_by in '.$idkey;
+                }
            }
            else
            {
                //admin & ผู้วิจัย
-                $screen = Screen::all();
+                $sql = 'select * from screen';
            }
+
+           $screen = DB::select($sql);
                         
             return View::make( 'screen.list', array('screen' => $screen) );
         }
@@ -261,6 +306,7 @@ class ScreenController extends Controller {
 
                 $screen->regdate            = $regdate;
                 $screen->create_by          = Session::get('username');
+                $screen->user_type_workat   = Session::get('workat');
                                  
                 DB::transaction(function() use ($screen) {
                     $screen->save();  

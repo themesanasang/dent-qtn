@@ -31,8 +31,6 @@ Route::get('screen/getDistrict/{id}/{id2}', 'ScreenController@getDistrict');
 
 
 
-
-
 Route::resource('login', 'LoginController');
 Route::get('logout', 'LoginController@logout');
 
@@ -56,5 +54,6 @@ Route::resource('screen', 'ScreenController');
 
 
 
-
+Route::get('report/pmd', 'ReportController@report_pmd');
+Route::post('report/export_pmd', 'ReportController@export_pmd');
 Route::resource('report', 'ReportController');

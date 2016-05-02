@@ -75,6 +75,7 @@
                   </div>
               </div>
 
+            @if( Session::get('status') == '1' )
               <div class="row">  
                   <div class="input-field col s6">
                       <label> ทำงานที่: </label>
@@ -97,8 +98,6 @@
                       </p> 
                   </div>
               </div>
-                
-             @if( Session::get('status') == '1' )
               <div class="row">  
                   <div class="input-field col s6">
                        <label> สถานะการใช้งาน: </label>
