@@ -646,21 +646,25 @@
                                 <br />
                                 <p>
                                       <div class="col s12">
-                                          {!! Form::radio('part3_6', '1', $screen->part3_6 == 1, ['id' => 'e-part3_61']) !!}
+                                          {!! Form::checkbox('part3_61', '1', $screen->part3_61 == 1, ['id' => 'e-part3_61', 'class'=>'filled-in']) !!}
                                           <label for="e-part3_61">1.รอยโรคสีแดง / ขาวที่ขูดไม่ออก</label>   
                                       </div>
                                       <div class="col s12">
-                                          {!! Form::radio('part3_6', '2', $screen->part3_6 == 2, ['id' => 'e-part3_62']) !!}
+                                          {!! Form::checkbox('part3_62', '1', $screen->part3_62 == 1, ['id' => 'e-part3_62', 'class'=>'filled-in']) !!}
                                           <label for="e-part3_62">2.แผล (Uleeration)</label>   
                                       </div>
                                       <div class="col s12">
-                                          {!! Form::radio('part3_6', '3', $screen->part3_6 == 3, ['id' => 'e-part3_63']) !!}
+                                          {!! Form::checkbox('part3_63', '1', $screen->part3_63 == 1, ['id' => 'e-part3_63', 'class'=>'filled-in']) !!}
                                           <label for="e-part3_63">3.ก้อนหรือติ่งเนื้อ</label>   
-                                      </div>                                     
+                                      </div> 
                                       <div class="col s12">
-                                          {!! Form::radio('part3_6', '4', $screen->part3_6 == 4, ['id' => 'e-part3_64']) !!}
-                                          <label for="e-part3_64">4.รอยโรคอื่น ๆ ระบุ</label>   
-                                      </div>                                 
+                                          {!! Form::checkbox('part3_64', '1', $screen->part3_64 == 1, ['id' => 'e-part3_64', 'class'=>'filled-in']) !!}
+                                          <label for="e-part3_64">4.Submucous fibrosis</label>   
+                                      </div>                                      
+                                      <div class="col s12">
+                                          {!! Form::checkbox('part3_65', '1', $screen->part3_65 == 1, ['id' => 'e-part3_65', 'class'=>'filled-in']) !!}
+                                          <label for="e-part3_65">5.รอยโรคอื่น ๆ ระบุ</label>   
+                                      </div> 
                                       <div class="input-field col s12">                                        
                                           <input class="textpart3_6" name="textpart3_6" id="e-textpart3_6" type="text" value="{!! $screen->textpart3_6 !!}">
                                           <label class="textpart3_6" for="e-textpart3_6">โปรดระบุ</label>
@@ -762,11 +766,25 @@
                           </div>
                           <div class="col s12">
                               {!! Form::radio('part4_1', '5', $screen->part4_1 == 5, ['id' => 'e-part4_15']) !!}
-                              <label for="e-part4_15">5.Oral cancer</label>
+                              <label for="e-part4_15">5.Oral cancer stage1</label>
+                          </div>
+
+                          <div class="col s12">
+                              {!! Form::radio('part4_1', '6', $screen->part4_1 == 6, ['id' => 'e-part4_151']) !!}
+                              <label for="e-part4_151">6.Oral cancer stage2</label>
                           </div>
                           <div class="col s12">
-                              {!! Form::radio('part4_1', '6', $screen->part4_1 == 6, ['id' => 'e-part4_16']) !!}
-                              <label for="e-part4_16">6.Other</label>
+                              {!! Form::radio('part4_1', '7', $screen->part4_1 == 7, ['id' => 'e-part4_152']) !!}
+                              <label for="e-part4_152">7.Oral cancer stage3</label>
+                          </div>
+                          <div class="col s12">
+                              {!! Form::radio('part4_1', '8', $screen->part4_1 == 8, ['id' => 'e-part4_153']) !!}
+                              <label for="e-part4_153">8.Oral cancer stage4</label>
+                          </div>
+
+                          <div class="col s12">
+                              {!! Form::radio('part4_1', '9', $screen->part4_1 == 9, ['id' => 'e-part4_16']) !!}
+                              <label for="e-part4_16">9.Other</label>
                           </div>
                           <div class="input-field col s12">                                        
                               <input name="part4_1text" id="e-part4_1text" type="text" value="{!! $screen->part4_1text !!}">

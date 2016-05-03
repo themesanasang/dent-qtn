@@ -271,6 +271,72 @@ class ReportController extends Controller {
 
 
 
+    /**
+    * function name : get_screen_all
+    * จำนวนผู้ป่วยทั้งหมด
+    *  1
+    */
+    private function get_screen_all()
+    {
+
+    }
+
+
+    /**
+    * function name : get_screen_men
+    * จำนวนผู้ป่วย ชาย
+    *  1
+    */
+    private function get_screen_men()
+    {
+
+    }
+
+    /**
+    * function name : get_screen_girl
+    * จำนวนผู้ป่วย หญิง
+    *  1
+    */
+    private function get_screen_girl()
+    {
+    	
+    }
+
+
+    /**
+    * function name : get_screen_all_40
+    * จำนวนผู้ป่วยทั้งหมด 40 ปีขึ้นไป
+    *  2
+    */
+    private function get_screen_all_40()
+    {
+    	
+    }
+
+
+    /**
+    * function name : get_screen_men_40
+    * จำนวนผู้ป่วย ชาย 40 ปีขึ้นไป
+    *  2
+    */
+    private function get_screen_men_40()
+    {
+    	
+    }
+
+
+    /**
+    * function name : get_screen_girl_40
+    * จำนวนผู้ป่วย หญิง 40 ปีขึ้นไป
+    *  2
+    */
+    private function get_screen_girl_40()
+    {
+    	
+    }
+
+
+
 
 
     

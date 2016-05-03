@@ -232,8 +232,14 @@ class ScreenController extends Controller {
                 if( isset($data['part3_3']) ) { $screen->part3_3 = $data['part3_3']; }
                 if( isset($data['part3_4']) ) { $screen->part3_4 = $data['part3_4']; }
                 if( isset($data['part3_5']) ) { $screen->part3_5 = $data['part3_5']; }
-                if( isset($data['part3_6']) ) { $screen->part3_6 = $data['part3_6']; }
+
+                if( isset($data['part3_61']) ) { $screen->part3_61 = $data['part3_61']; }
+                if( isset($data['part3_62']) ) { $screen->part3_62 = $data['part3_62']; }
+                if( isset($data['part3_63']) ) { $screen->part3_63 = $data['part3_63']; }
+                if( isset($data['part3_64']) ) { $screen->part3_64 = $data['part3_64']; }
+                if( isset($data['part3_65']) ) { $screen->part3_65 = $data['part3_65']; }
                 $screen->textpart3_6        = ((isset( $data['textpart3_6'] ))?$data['textpart3_6']:'');
+
                 if( isset($data['part3_7']) ) { $screen->part3_7 = $data['part3_7']; }
                 
 
@@ -460,8 +466,14 @@ class ScreenController extends Controller {
             if( isset($data['part3_3']) ) { $screen->part3_3 = $data['part3_3']; }
             if( isset($data['part3_4']) ) { $screen->part3_4 = $data['part3_4']; }
             if( isset($data['part3_5']) ) { $screen->part3_5 = $data['part3_5']; }
-            if( isset($data['part3_6']) ) { $screen->part3_6 = $data['part3_6']; }
+
+            if( isset($data['part3_61']) ) { $screen->part3_61 = $data['part3_61']; } else{ $screen->part3_61 = 9; }
+            if( isset($data['part3_62']) ) { $screen->part3_62 = $data['part3_62']; } else{ $screen->part3_62 = 9; }
+            if( isset($data['part3_63']) ) { $screen->part3_63 = $data['part3_63']; } else{ $screen->part3_63 = 9; }
+            if( isset($data['part3_64']) ) { $screen->part3_64 = $data['part3_64']; } else{ $screen->part3_64 = 9; }
+            if( isset($data['part3_65']) ) { $screen->part3_65 = $data['part3_65']; } else{ $screen->part3_65 = 9; }
             $screen->textpart3_6        = ((isset( $data['textpart3_6'] ))?$data['textpart3_6']:'');
+
             if( isset($data['part3_7']) ) { $screen->part3_7 = $data['part3_7']; }
             
 
@@ -611,8 +623,20 @@ class ScreenController extends Controller {
             else
             {
                 //ทั่วไป
-                 $result = DB::table('screen')
-                             ->where( 'create_by', '=', Session::get('username') )	
+
+                $user = User::find(Session::get('uid'));
+
+                $chwpart = $user->chwpart;
+                $amppart = $user->amppart;
+                $tmbpart = $user->tmbpart;
+
+                $type_w = Session::get('workat');
+
+                if( $type_w == '0' ){
+                    //โรงพยาบาลส่งเสริมสุขภาพตำบล
+                    
+                   $result = DB::table('screen')
+                             ->where('create_by', Session::get('username'))
                              ->where(function($query) use ( $s )
                             {
                                 $query->where( 'fullname', 'like', "%$s%" )
@@ -621,7 +645,65 @@ class ScreenController extends Controller {
                             ->select('screen.*')
                             ->orderby('regdate','desc')
                             ->get();
+
+                }else if( $type_w == '1' ){
+                    //โรงพยาบาลชุมชน
+                    $result = DB::table('screen')
+                             ->whereIn('create_by', function($query) use ($chwpart, $amppart)
+                            {
+                                $query->select('username')
+                                      ->from('users')
+                                      ->where('chwpart', '=', $chwpart)
+                                      ->where('amppart', '=', $amppart);
+                            })
+                             ->where(function($query) use ( $s )
+                            {
+                                $query->where( 'fullname', 'like', "%$s%" )
+                                      ->orWhere( 'cid', 'like', "%$s%" );
+                            })
+                            ->select('screen.*')
+                            ->orderby('regdate','desc')
+                            ->get();
+                }else if( $type_w == '2' ){
+                    //โรงพยาบาลทั่วไป
+                    $result = DB::table('screen')
+                             ->whereIn('create_by', function($query) use ($chwpart, $amppart)
+                            {
+                                $query->select('username')
+                                      ->from('users')
+                                      ->where('chwpart', '=', $chwpart)
+                                      ->where('amppart', '=', $amppart);
+                            })
+                             ->where(function($query) use ( $s )
+                            {
+                                $query->where( 'fullname', 'like', "%$s%" )
+                                      ->orWhere( 'cid', 'like', "%$s%" );
+                            })
+                            ->select('screen.*')
+                            ->orderby('regdate','desc')
+                            ->get();
+                }else{
+                    //โรงพยาบาลศูนย์
+                    $result = DB::table('screen')
+                             ->whereIn('create_by', function($query) use ($chwpart)
+                            {
+                                $query->select('username')
+                                      ->from('users')
+                                      ->where('chwpart', '=', $chwpart);
+                            })
+                             ->where(function($query) use ( $s )
+                            {
+                                $query->where( 'fullname', 'like', "%$s%" )
+                                      ->orWhere( 'cid', 'like', "%$s%" );
+                            })
+                            ->select('screen.*')
+                            ->orderby('regdate','desc')
+                            ->get();
+                }
+                
             }
+
+            //return $result;
                        
             return View::make( 'screen.search', array( 'result' => $result ) ); 
         }

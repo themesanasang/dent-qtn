@@ -36,10 +36,10 @@
                             <td>{{ date("d", strtotime($value->regdate)).'-'.date("m", strtotime($value->regdate)).'-'.(date("Y", strtotime($value->regdate))+543)  }}</td>
                             <td>{{ $value->create_by }}</td>
                             <td>                           	 
-                                <a title="แก้ไข" class="" href="{{ route( 'screen.edit', e($value->id) ) }}">
+                                <a title="แก้ไข" class="" href="{{ route( 'screen.edit', Crypt::encrypt($value->id) ) }}">
                                     <i class="mdi-editor-mode-edit icon-color-qray"></i>
                                 </a>
-                                <a title="ลบ" class="btn-screen-delete" href="{{ route( 'screen.destroy', e($value->id) ) }}" data-method="delete" data-confirm="ต้องการลบผู้ใช้ {{ e($value->fullname) }}" data-remote="true" rel="nofollow">
+                                <a title="ลบ" class="btn-screen-delete" href="{{ route( 'screen.destroy', Crypt::encrypt($value->id) ) }}" data-method="delete" data-confirm="ต้องการลบผู้ใช้ {{ e($value->fullname) }}" data-remote="true" rel="nofollow">
                                     <i class="mdi-action-delete icon-color-red"></i>
                                 </a>
                             </td>

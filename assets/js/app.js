@@ -608,38 +608,52 @@
     
     
     //-----type_part3_5, 3_6
-     $('#part3_61, #part3_62, #part3_63, #part3_64, #textpart3_6').attr("disabled", "");
+     $('#part3_61, #part3_62, #part3_63, #part3_64, #part3_65, #textpart3_6').attr("disabled", "");
      $('#part3_51').click(function(){
-         $('#part3_61, #part3_62, #part3_63, #part3_64, #textpart3_6').attr("disabled", "");
+         $('#part3_61, #part3_62, #part3_63, #part3_64, #part3_65, #textpart3_6').attr("disabled", "");
     }); 
     $('#part3_52').click(function(){
-         $('#part3_61, #part3_62, #part3_63, #part3_64').removeAttr("disabled", "");
+         $('#part3_61, #part3_62, #part3_63, #part3_65, #part3_64').removeAttr("disabled", "");
     });
-    $('#part3_61, #part3_62, #part3_63').click(function(){
-         $('#textpart3_6').attr("disabled", "");
+    $('#part3_61, #part3_62, #part3_63, #part3_64').click(function(){
+         if($('#part3_65').is(':checked')){
+            $('#textpart3_6').removeAttr("disabled", "");
+         }
     }); 
-    $('#part3_64').click(function(){
-         $('#textpart3_6').removeAttr("disabled", "");
-         $('#textpart3_6').focus();
+    $('#part3_65').click(function(){
+        if($('#part3_65').is(':checked')){
+          $('#textpart3_6').removeAttr("disabled", "");
+          $('#textpart3_6').focus();
+        }else{
+          $('#textpart3_6').attr("disabled", "");
+          $('#textpart3_6').val('');
+        }
     });
     
      //-----type_part3_5, 3_6 Edit
-     $('#e-part3_61, #e-part3_62, #e-part3_63, #e-part3_64, #e-textpart3_6').attr("disabled", "");
+     $('#e-part3_61, #e-part3_62, #e-part3_63, #e-part3_64, #e-part3_65, #e-textpart3_6').attr("disabled", "");
      $('#e-part3_51').click(function(){
-         $('#e-part3_61, #e-part3_62, #e-part3_63, #e-part3_64, #e-textpart3_6').attr("disabled", "");
+         $('#e-part3_61, #e-part3_62, #e-part3_63, #e-part3_64, #e-part3_65, #e-textpart3_6').attr("disabled", "");
     }); 
     $('#e-part3_52').click(function(){
-         $('#e-part3_61, #e-part3_62, #e-part3_63, #e-part3_64').removeAttr("disabled", "");
+         $('#e-part3_61, #e-part3_62, #e-part3_63, #e-part3_64, #e-part3_65').removeAttr("disabled", "");
     });
-    $('#e-part3_61, #e-part3_62, #e-part3_63').click(function(){
-         $('#e-textpart3_6').attr("disabled", "");
+    $('#e-part3_61, #e-part3_62, #e-part3_63, #e-part3_64').click(function(){
+        if($('#part3_65').is(':checked')){
+            $('#e-textpart3_6').attr("disabled", "");
+        }
     }); 
-    $('#e-part3_64').click(function(){
-         $('#e-textpart3_6').removeAttr("disabled", "");
-         $('#e-textpart3_6').focus();
+    $('#e-part3_65').click(function(){
+        if($('#e-part3_65').is(':checked')){
+          $('#e-textpart3_6').removeAttr("disabled", "");
+          $('#e-textpart3_6').focus();
+        }else{
+          $('#e-textpart3_6').attr("disabled", "");
+          $('#e-textpart3_6').val('');
+        }
     });
      if( $('#e-part3_52').is(":checked") ){
-         $('#e-part3_61, #e-part3_62, #e-part3_63, #e-part3_64').removeAttr("disabled", "");
+         $('#e-part3_61, #e-part3_62, #e-part3_63, #e-part3_64, #e-part3_65').removeAttr("disabled", "");
      }
     if( $('#e-textpart3_6').val() != '' ){
         $('#e-textpart3_6').removeAttr("disabled", "");
@@ -718,7 +732,7 @@
     
     //-------type_part4 1  
     $('#part4_21, #part4_22, #part4_23, #part4_1text').attr("disabled", "");
-    $('#part4_11, #part4_12, #part4_14, #part4_15').click(function(){
+    $('#part4_11, #part4_12, #part4_14, #part4_15, #part4_151, #part4_152, #part4_153').click(function(){
          $('#part4_21, #part4_22, #part4_23, #part4_1text').attr("disabled", "");
     });   
     $('#part4_13').click(function(){
@@ -733,7 +747,7 @@
     
     //-------type_part4 1 Edit  
     $('#e-part4_21, #e-part4_22, #e-part4_23, #e-part4_1text').attr("disabled", "");
-    $('#e-part4_11, #e-part4_12, #e-part4_14, #e-part4_15').click(function(){
+    $('#e-part4_11, #e-part4_12, #e-part4_14, #e-part4_15, #e-part4_151, #e-part4_152, #e-part4_153').click(function(){
          $('#e-part4_21, #e-part4_22, #e-part4_23, #e-part4_1text').attr("disabled", "");
     });   
     $('#e-part4_13').click(function(){

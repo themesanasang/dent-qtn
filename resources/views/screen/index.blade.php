@@ -633,7 +633,7 @@
                                  </div>
                                 <br />
                                 <p>
-                                      <div class="col s12">
+                                      <!--<div class="col s12">
                                           <input name="part3_6" type="radio" id="part3_61" value="1" checked  />
                                           <label for="part3_61">1.รอยโรคสีแดง / ขาวที่ขูดไม่ออก</label>   
                                       </div>
@@ -644,15 +644,45 @@
                                       <div class="col s12">
                                           <input name="part3_6" type="radio" id="part3_63"  value="3" />
                                           <label for="part3_63">3.ก้อนหรือติ่งเนื้อ</label>   
+                                      </div>  
+                                      <div class="col s12">
+                                          <input name="part3_6" type="radio" id="part3_65"  value="4" />
+                                          <label for="part3_65">4.Submucous fibrosis</label>   
                                       </div>                                     
                                       <div class="col s12">
-                                          <input name="part3_6" type="radio" id="part3_64"  value="4" />
-                                          <label for="part3_64">4.รอยโรคอื่น ๆ ระบุ</label>   
+                                          <input name="part3_6" type="radio" id="part3_64"  value="5" />
+                                          <label for="part3_64">5.รอยโรคอื่น ๆ ระบุ</label>   
                                       </div>                                 
                                       <div class="input-field col s12">                                        
                                           <input class="textpart3_6" name="textpart3_6" id="textpart3_6" type="text">
                                           <label class="textpart3_6" for="textpart3_6">โปรดระบุ</label>
-                                      </div> 
+                                      </div>-->
+
+                                      <div class="col s12"> 
+                                          <input type="checkbox" name="part3_61" class="filled-in" id="part3_61" value="1" />
+                                          <label for="part3_61">1.รอยโรคสีแดง / ขาวที่ขูดไม่ออก</label>  
+                                      </div>
+                                      <div class="col s12"> 
+                                          <input type="checkbox" name="part3_62" class="filled-in" id="part3_62" value="1" />
+                                          <label for="part3_62">2.แผล (Uleeration)</label>  
+                                      </div>
+                                      <div class="col s12"> 
+                                          <input type="checkbox" name="part3_63" class="filled-in" id="part3_63" value="1" />
+                                          <label for="part3_63">3.ก้อนหรือติ่งเนื้อ</label>  
+                                      </div>
+                                      <div class="col s12"> 
+                                          <input type="checkbox" name="part3_64" class="filled-in" id="part3_64" value="1" />
+                                          <label for="part3_64">4.Submucous fibrosis</label>  
+                                      </div>
+                                      <div class="col s12"> 
+                                          <input type="checkbox" name="part3_65" class="filled-in" id="part3_65" value="1" />
+                                          <label for="part3_65">5.รอยโรคอื่น ๆ ระบุ</label>  
+                                      </div>
+                                      <div class="input-field col s12">                                        
+                                          <input class="textpart3_6" name="textpart3_6" id="textpart3_6" type="text">
+                                          <label class="textpart3_6" for="textpart3_6">โปรดระบุ</label>
+                                      </div>
+
                                 </p>
                            </div>
                          </div>    
@@ -750,11 +780,25 @@
                           </div>
                           <div class="col s12">
                               <input name="part4_1" type="radio" id="part4_15" value="5" />
-                              <label for="part4_15">5.Oral cancer</label>
+                              <label for="part4_15">5.Oral cancer stage1</label>
+                          </div>
+
+                          <div class="col s12">
+                              <input name="part4_1" type="radio" id="part4_151" value="6" />
+                              <label for="part4_151">6.Oral cancer stage2</label>
                           </div>
                           <div class="col s12">
-                              <input name="part4_1" type="radio" id="part4_16" value="6" />
-                              <label for="part4_16">6.Other</label>
+                              <input name="part4_1" type="radio" id="part4_152" value="7" />
+                              <label for="part4_152">7.Oral cancer stage3</label>
+                          </div>
+                          <div class="col s12">
+                              <input name="part4_1" type="radio" id="part4_153" value="8" />
+                              <label for="part4_153">8.Oral cancer stage4</label>
+                          </div>
+
+                          <div class="col s12">
+                              <input name="part4_1" type="radio" id="part4_16" value="9" />
+                              <label for="part4_16">9.Other</label>
                           </div>
                           <div class="input-field col s12">                                        
                               <input name="part4_1text" id="part4_1text" type="text">
