@@ -14,7 +14,7 @@
             
             <ul class="collection with-header">
                 <li class="collection-header"><h4>รายงาน</h4></li>
-                <li class="collection-item"><div>รายงาน PMD<a href="{!! url('report/pmd') !!}" class="secondary-content"><i class="mdi-content-send right"></i></a></div></li>
+                <li class="collection-item"><div>รายงาน PMD<a href="{!! url('report/export_pmd') !!}" title="โหลดรายงาน PMD" class="secondary-content"><i class="mdi-file-file-download right"></i></a></div></li>
             </ul>
             
         </div>
