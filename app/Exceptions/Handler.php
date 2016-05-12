@@ -36,14 +36,35 @@ class Handler extends ExceptionHandler {
 	 */
 	public function render($request, Exception $e)
 	{
-		if ($this->isHttpException($e))
-		{
-			return $this->renderHttpException($e);
-		}
-		else
-		{
-			return parent::render($request, $e);
-		}
+		if($this->isHttpException($e)){
+            switch ($e->getStatusCode()) {
+                case '403':/* permission denied */
+                case '404':/* not found */
+                            \Log::error($e);
+                        return \Response::view('errors.404');
+                break;
+
+                case '500':/* internal error */
+                    \Log::error($exception);
+                        return \Response::view('errors.500');   
+                break;
+
+                case '503':
+                    \Log::error($exception);
+                        return \Response::view('errors.503');   
+                break;
+
+                default:
+                    return $this->renderHttpException($e);
+                break;
+            }
+        }
+        else
+        {
+            return parent::render($request, $e);
+        }
+        
+		//return parent::render($request, $e);
 	}
 
 }

@@ -33,7 +33,7 @@ class ReportController extends Controller {
 	{
 		if( Session::get('fingerprint') == md5($_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR']) )
         {       
-            return View::make( 'report.index' );
+            return view::make( 'reports.index' );
         }
         else
         {
@@ -52,7 +52,7 @@ class ReportController extends Controller {
     {
     	if( Session::get('fingerprint') == md5($_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR']) )
         {          	    
-            return View::make( 'report.report_pmd' );
+            return View::make( 'reports.report_pmd' );
         }
         else
         {

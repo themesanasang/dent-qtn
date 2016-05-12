@@ -55,5 +55,5 @@ Route::resource('screen', 'ScreenController');
 
 
 //Route::get('report/pmd', 'ReportController@report_pmd');
-Route::get('report/export_pmd', 'ReportController@export_pmd');
-Route::resource('report', 'ReportController');
+Route::get('reports/export_pmd', 'ReportController@export_pmd');
+Route::resource('reports', 'ReportController');

@@ -43,7 +43,7 @@
                   <li class="{{ $activeurl == 'screen' ? 'active' : '' }}" ><a href="{!! url('screen') !!}"><i class="mdi-action-visibility left"></i> คัดกรอง</a></li>  
                   <li class="{{ $activeurl == 'screen.list' ? 'active' : '' }}" ><a href="{!! url('screen.list') !!}"><i class="mdi-action-list left"></i> รายการคัดกรอง</a></li>
                   @if( Session::get('status') == '1' )
-                      <li class="{{ $activeurl == 'report' ? 'active' : '' }}{{ $activeurl == 'report/pmd' ? 'active' : '' }}"  ><a href="{!! url('report') !!}"><i class="mdi-action-description left"></i> รายงาน</a></li>
+                      <li class="{{ $activeurl == 'reports' ? 'active' : '' }}"  ><a href="{!! url('reports') !!}"><i class="mdi-action-description left"></i> รายงาน</a></li>
                       <li class="{{ $activeurl == 'user' ? 'active' : '' }}" ><a href="{!! url('user') !!}"><i class="mdi-action-settings-applications left"></i> จัดการผู้ใช้</a></li> 
                    @endif
                     <li class="{{ $activeurl == 'user' ? 'active' : '' }}" ><a href="{!! url('user') !!}/editprofile/{{ Crypt::encrypt(Session::get('uid')) }}"><i class="mdi-action-perm-identity left"></i> {!! Session::get('username') !!}</a></li>              
@@ -59,7 +59,7 @@
                   <li class="{{ $activeurl == 'screen' ? 'active' : '' }}" ><a href="{!! url('screen') !!}"><i class="mdi-action-visibility left"></i> คัดกรอง</a></li> 
                   <li class="{{ $activeurl == 'screen.list' ? 'active' : '' }}" ><a href="{!! url('screen.list') !!}"><i class="mdi-action-list left"></i> รายการคัดกรอง</a></li>     
                    @if( Session::get('status') == '1' )
-                      <li class="{{ $activeurl == 'report' ? 'active' : '' }}{{ $activeurl == 'report/pmd' ? 'active' : '' }}" ><a href="{!! url('report') !!}"><i class="mdi-action-description left"></i> รายงาน</a></li>
+                      <li class="{{ $activeurl == 'reports' ? 'active' : '' }}" ><a href="{!! url('reports') !!}"><i class="mdi-action-description left"></i> รายงาน</a></li>
                       <li class="{{ $activeurl == 'user' ? 'active' : '' }}" ><a href="{!! url('user') !!}"><i class="mdi-action-settings-applications left"></i> จัดการผู้ใช้</a></li> 
                    @endif
                   <li class="{{ $activeurl == 'user' ? 'active' : '' }}" ><a href="{!! url('user') !!}/editprofile/{{ Crypt::encrypt(Session::get('uid')) }}"><i class="mdi-action-perm-identity left"></i> ข้อมูลส่วนตัว</a></li>

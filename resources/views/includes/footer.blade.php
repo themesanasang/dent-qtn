@@ -15,7 +15,7 @@
               <li><a class="grey-text text-lighten-3" href="{!! url('screen') !!}">คัดกรอง</a></li>   
               <li><a class="grey-text text-lighten-3" href="{!! url('screen.list') !!}">รายการคัดกรอง</a></li>    
                @if( Session::get('status') == '1' ) 
-                  <li><a class="grey-text text-lighten-3" href="{!! url('report') !!}">รายงาน</a></li>
+                  <li><a class="grey-text text-lighten-3" href="{!! url('reports') !!}">รายงาน</a></li>
                   <li><a class="grey-text text-lighten-3" href="{!! url('user') !!}">จัดการผู้ใช้</a></li> 
                @endif
                <li><a class="grey-text text-lighten-3" href="{!! url('user') !!}/editprofile/{{ Crypt::encrypt(Session::get('uid')) }}">ข้อมูลส่วนตัว</a></li>
