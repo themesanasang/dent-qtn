@@ -896,7 +896,7 @@
 
                           <div class="row">
 
-                            <div class="col s4">
+                            <div class="col s12 m4 l8">
                               @if( $screen->pic_1 != '' )
                                 <?php 
                                   $source_img = imagecreatefromstring(base64_decode($screen->pic_1));
@@ -905,11 +905,12 @@
                                   $imageSave = imagejpeg($rotated_img, $file, 100);
                                   imagedestroy($source_img);
                                 ?>
-                                
-                                {!! Html::image('storage/images-dtscreen/'.$screen->cid.'_'.$screen->id.'_pic_1'. '.jpg', 'pic1', array('class' => 'materialboxed', 'width' => '260' ))!!}
+
+                                <i id="c_pic_1" class="small mdi-device-screen-rotation"></i>
+                                {!! Html::image('storage/images-dtscreen/'.$screen->cid.'_'.$screen->id.'_pic_1'. '.jpg', 'pic1', array('class' => 'materialboxed responsive-img', 'id' => 'p_pic_1' ))!!}
                               @endif
                             </div>
-                            <div class="col s4">
+                            <div class="col s12 m4 l8">
                                @if( $screen->pic_2 != '' )
                                 <?php 
                                   $source_img2 = imagecreatefromstring(base64_decode($screen->pic_2));
@@ -919,10 +920,11 @@
                                   imagedestroy($source_img2);
                                 ?>
                                 
-                                {!! Html::image('storage/images-dtscreen/'.$screen->cid.'_'.$screen->id.'_pic_2'. '.jpg', 'pic2', array('class' => 'materialboxed', 'width' => '260' ))!!}
+                                <i id="c_pic_2" class="small mdi-device-screen-rotation"></i>
+                                {!! Html::image('storage/images-dtscreen/'.$screen->cid.'_'.$screen->id.'_pic_2'. '.jpg', 'pic2', array('class' => 'materialboxed responsive-img', 'id' => 'p_pic_2' ))!!}
                               @endif
                             </div>
-                            <div class="col s4">
+                            <div class="col s12 m4 l8">
                               @if( $screen->pic_3 != '' )
                                 <?php 
                                   $source_img3 = imagecreatefromstring(base64_decode($screen->pic_3));
@@ -932,7 +934,8 @@
                                   imagedestroy($source_img3);
                                 ?>
                                 
-                                {!! Html::image('storage/images-dtscreen/'.$screen->cid.'_'.$screen->id.'_pic_3'. '.jpg', 'pic3', array('class' => 'materialboxed', 'width' => '260' ))!!}
+                                <i id="c_pic_3" class="small mdi-device-screen-rotation"></i>
+                                {!! Html::image('storage/images-dtscreen/'.$screen->cid.'_'.$screen->id.'_pic_3'. '.jpg', 'pic3', array('class' => 'materialboxed responsive-img', 'id' => 'p_pic_3' ))!!}
                               @endif
                             </div>
 

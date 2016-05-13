@@ -10,6 +10,7 @@
 {!! Html::script('assets/js/formatter.js') !!}
 {!! Html::script('assets/js/rails.js') !!}
 {!! Html::script('assets/js/jquery.sticky.js') !!}
+{!! Html::script('assets/js/jQueryRotate.js') !!}
 {!! Html::script('assets/js/app.js') !!}
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

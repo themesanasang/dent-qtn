@@ -227,6 +227,11 @@ p {
 
 
 
+#c_pic_1, #c_pic_2, #c_pic_3:hover {
+  cursor: pointer;
+}
+
+
 
 
 /* color */

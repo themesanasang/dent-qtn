@@ -73,10 +73,10 @@
      /**
      * loaded page
      */
-	setTimeout(function(){
+	/*setTimeout(function(){
 		$('body').addClass('loaded');
 		$('h1').css('color','#212121');
-	}, 700);
+	}, 500);*/
     
     
     
@@ -838,6 +838,35 @@
     
     
     
+
+
+
+
+
+//==================== Image pic1, pic2, pic3 ======================//
+var value_pic1 = 0
+$('#c_pic_1').click(function(){
+  value_pic1 +=90;
+  $("#p_pic_1").rotate({ animateTo:value_pic1 });
+});
+
+var value_pic2 = 0
+$('#c_pic_2').click(function(){
+  value_pic2 +=90;
+  $("#p_pic_2").rotate({ animateTo:value_pic2 });
+});
+
+var value_pic3 = 0
+$('#c_pic_3').click(function(){
+  value_pic3 +=90;
+  $("#p_pic_3").rotate({ animateTo:value_pic3 });
+});
+
+
+
+
+
+
     
     
     
