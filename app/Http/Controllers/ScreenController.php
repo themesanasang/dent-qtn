@@ -6,6 +6,7 @@ use App\Models\Province;
 use App\Models\Amphur;
 use App\Models\District;
 use App\Models\Screen;
+use App\Logs;
 use Input;
 use Image;
 use Request;
@@ -317,6 +318,8 @@ class ScreenController extends Controller {
                 DB::transaction(function() use ($screen) {
                     $screen->save();  
                 }); 
+
+                Logs::createlog(Session::get('username'), 'create screen patient name = '.$data['fullname'] );
                 
                 return Response::json(['success' => 'ok']);
                 
@@ -549,6 +552,8 @@ class ScreenController extends Controller {
                 $screen->save();  
             }); 
 
+            Logs::createlog(Session::get('username'), 'update screen patient name = '.$screen->fullname );
+
             return Redirect::to('screen.list');
         }
         else
@@ -573,6 +578,9 @@ class ScreenController extends Controller {
 		if( Session::get('status') != '' && Session::get('fingerprint') == md5($_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR']) )
         {   
             $id = Crypt::decrypt($id);
+
+            $screen = Screen::find($id);
+            Logs::createlog(Session::get('username'), 'delete screen patient name = '.$screen->fullname );
 
             DB::transaction(function() use ($id) {  
                 DB::table('screen')

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Logs;
 use Input;
 use Image;
 use Request;
@@ -131,6 +132,8 @@ class UserController extends Controller {
                     DB::transaction(function() use ($user) {
                         $user->save();  
                     }); 
+
+                    Logs::createlog(Session::get('username'), 'create username = '.$data['username'] );
 
                     Session::flash( 'savedata', save_data );  
                 }
@@ -311,6 +314,8 @@ class UserController extends Controller {
                     $user->save();  
                 }); 
 
+                Logs::createlog(Session::get('username'), 'update username = '.$user->username );
+
                 if( Session::get('status') == '1' ){
                     Session::flash( 'savedata', save_data );       
                     return Redirect::to('user');
@@ -341,6 +346,9 @@ class UserController extends Controller {
 		if( Session::get('status') == '1'  && Session::get('fingerprint') == md5($_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR']) )
         {   
             $id = Crypt::decrypt($id);
+
+            $user = User::find( e($id) );
+            Logs::createlog(Session::get('username'), 'delete username = '.$user->username );
 
             DB::transaction(function() use ($id) {  
                 DB::table('users')

@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Screen;
+use App\Logs;
 use Session;
 use View;
 use Redirect;
@@ -261,6 +262,8 @@ class ReportController extends Controller {
 
 		$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5'); // Set excel version 2007	  		
 	    $objWriter->save(storage_path()."/excel/reportPMD".Session::get('uid').".xls");
+
+	    Logs::createlog(Session::get('username'), 'open report PMD' );
 
 	    return Response::download( storage_path()."/excel/reportPMD".Session::get('uid').".xls", "reportPMD".Session::get('uid').".xls");
 

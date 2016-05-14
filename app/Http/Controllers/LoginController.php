@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Logs;
 use Input;
 use Image;
 use Request;
@@ -94,7 +95,9 @@ class LoginController extends Controller {
 
                     //1=admin, 2=ผู้วิจัย, 3=ทั่วไป 
                     Session::put( 'status', $model->status );
-                    Session::put( 'fingerprint', md5($_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR']) );					
+                    Session::put( 'fingerprint', md5($_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR']) );	
+
+                    Logs::createlog(Session::get('username'), 'login by username = '.Session::get('username') );				
 
                     return Redirect::intended('screen');		
                 }
@@ -151,6 +154,7 @@ class LoginController extends Controller {
      */
     public function logout()
     {     
+    	Logs::createlog(Session::get('username'), 'logout by username = '.Session::get('username') );
     	Session::flush(); //delete the session
 		return Redirect::to( '/' ); // redirect the user to the login screen
     }
