@@ -53,7 +53,7 @@
                 <div class="row">
                     <div class="input-field col s12">
                       <input id="age" name="age" type="text">
-                      <label for="age">3.อายุ<label>
+                      <label id="er-age" for="age">3.อายุ</label>
                     </div>              
                 </div><!-- age --> 
                         

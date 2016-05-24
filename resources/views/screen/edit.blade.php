@@ -53,7 +53,7 @@
                 <div class="row">
                     <div class="input-field col s12">
                       <input name="age" id="e-age" type="text" value="{!! $screen->age !!}">
-                      <label for="e-age">3.อายุ<label>
+                      <label for="age">3.อายุ<label>
                     </div>              
                 </div><!-- age --> 
                         

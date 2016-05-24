@@ -907,8 +907,8 @@ $('#c_pic_3').click(function(){
                 $('.cd-popup').removeClass('is-visible');
                 
                 if ($.isEmptyObject(result.error)) {
-                   
-                    $('#er-fullname, #er-cid, #er-chwpart, #er-amppart, #er-tmbpart').removeClass('validate');
+
+                    $('#er-fullname, #er-cid, #er-age, #er-chwpart, #er-amppart, #er-tmbpart').removeClass('validate');
                                      
                     //=======save data ok========//
                     if(result.success == 'ok')
@@ -917,7 +917,7 @@ $('#c_pic_3').click(function(){
                     }                                                   
                 }
                 else{
-                     $('#er-fullname, #er-cid, #er-chwpart, #er-amppart, #er-tmbpart').removeClass('validate');
+                     $('#er-fullname, #er-cid, #er-age, #er-chwpart, #er-amppart, #er-tmbpart').removeClass('validate');
                     
                     //=======save data error========//
                     for (var key in result.error) {
@@ -926,6 +926,9 @@ $('#c_pic_3').click(function(){
                         }
                         if( typeof result.error.cid !== "undefined" ){
                             $('#er-cid').addClass('validate');
+                        }
+                        if( typeof result.error.age !== "undefined" ){
+                            $('#er-age').addClass('validate');
                         }
                          if( typeof result.error.chwpart !== "undefined" ){
                             $('#er-chwpart').addClass('validate');

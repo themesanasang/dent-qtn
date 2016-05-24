@@ -162,6 +162,7 @@ class ScreenController extends Controller {
             $messages = [
                 'fullname.required'     => 'กรุณากรอก:',
                 'cid.required'          => 'กรุณากรอก:',
+                'age.required'          => 'กรุณากรอก:',
                 'chwpart.required'      => 'กรุณาเลือก:',
                 'amppart.required'      => 'กรุณาเลือก:',
                 'tmbpart.required'      => 'กรุณาเลือก:',
@@ -170,6 +171,7 @@ class ScreenController extends Controller {
              $rules = [
                 'fullname'    => 'required', 
                 'cid'         => 'required', 
+                'age'         => 'required', 
                 'chwpart'     => 'required',
                 'amppart'     => 'required',
                 'tmbpart'     => 'required',
