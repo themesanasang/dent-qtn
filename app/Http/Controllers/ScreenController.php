@@ -6,6 +6,8 @@ use App\Models\Province;
 use App\Models\Amphur;
 use App\Models\District;
 use App\Models\Screen;
+use App\Models\ScreenTnm;
+use App\Models\Patient;
 use App\Logs;
 use Input;
 use Image;
@@ -251,9 +253,13 @@ class ScreenController extends Controller {
                 if( isset($data['part4_1']) ) { $screen->part4_1 = $data['part4_1']; }
                 $screen->part4_1text        = ((isset( $data['part4_1text'] ))?$data['part4_1text']:'');
                 if( isset($data['part4_2']) ) { $screen->part4_2 = $data['part4_2']; }
+
+                $screen->part4_5            = ((isset( $data['part4_5'] ))?$data['part4_5']:'');
+                $screen->part4_12text        = ((isset( $data['part4_12text'] ))?$data['part4_12text']:'');
+
                 $screen->definitive_diag    = ((isset( $data['definitive_diag'] ))?$data['definitive_diag']:'');
                 $screen->part4_3            = ((isset( $data['part4_3'] ))?$data['part4_3']:'');
-                if( isset($data['part4_4']) ) { $screen->part4_4 = $data['part4_4']; }
+                if( isset($data['part4_4']) ) { $screen->part4_4 = $data['part4_4']; }                
                 $screen->part4_41_text      = ((isset( $data['part4_41_text'] ))?$data['part4_41_text']:'');
                 $screen->part4_42_text      = ((isset( $data['part4_42_text'] ))?$data['part4_42_text']:'');
                 $screen->part4_43_text      = ((isset( $data['part4_43_text'] ))?$data['part4_43_text']:'');
@@ -316,11 +322,52 @@ class ScreenController extends Controller {
                 $screen->regdate            = $regdate;
                 $screen->create_by          = Session::get('username');
                 $screen->user_type_workat   = Session::get('workat');
-                                 
+                 
+                //===>add table screen                 
                 DB::transaction(function() use ($screen) {
                     $screen->save();  
                 }); 
 
+                //===>add table patient
+                $checkPatient = DB::table('patient')->where('cid', $data['cid'])->first();
+                if( count($checkPatient) == 0 ){
+                    $patient = new Patient;
+                    $patient->cid         = $data['cid'];
+                    $patient->fullname    = $data['fullname'];
+                    $patient->address     = $data['address'];
+                    $patient->chwpart     = $data['chwpart'];
+                    $patient->amppart     = $data['amppart'];
+                    $patient->tmbpart     = $data['tmbpart'];
+                    $patient->mobile      = $data['mobile'];
+                    $patient->regdate     = $regdate;
+                    $patient->last_screen = $regdate;
+
+                    DB::transaction(function() use ($patient) {
+                        $patient->save();  
+                    }); 
+                }else{
+                    DB::table('patient')->where('cid', $data['cid'])->update(['last_screen' => $regdate]);
+                }
+
+                //===>add table screen_tnm
+                $screen_max_id = DB::table('screen')->where('cid', $data['cid'])->where('regdate', $regdate)->select('id')->first();
+                if( count($screen_max_id) > 0 ){
+                    if( isset($data['part4_1']) ) { 
+                        if( $data['part4_1'] == '6'){
+                            $screen_tnm = new ScreenTnm;
+                            $screen_tnm->id = $screen_max_id->id;
+                            $screen_tnm->tumor = $data['tumorAll'];
+                            $screen_tnm->nodes = $data['nodesAll'];
+                            $screen_tnm->met = $data['metAll'];
+
+                            DB::transaction(function() use ($screen_tnm) {
+                                $screen_tnm->save();  
+                            }); 
+                        } 
+                    }
+                }
+               
+                //===> add table logs
                 Logs::createlog(Session::get('username'), 'create screen patient name = '.$data['fullname'] );
                 
                 return Response::json(['success' => 'ok']);
@@ -373,7 +420,18 @@ class ScreenController extends Controller {
         {   
             $id = Crypt::decrypt($id);
 
-            $screen  = Screen::find( e($id) );          
+            $screen  = Screen::find( e($id) );  
+            $screen_tnm =  ScreenTnm::find( e($id) ); 
+
+            if( count($screen_tnm) > 0 ){
+                $tumor = $screen_tnm->tumor;
+                $nodes = $screen_tnm->nodes;
+                $met = $screen_tnm->met;
+            }else{
+                $tumor = '0';
+                $nodes = '0';
+                $met = '0';
+            }   
             
             //ดึงจังหวัด
             $province = DB::table( 'province' )->select( DB::raw('PROVINCE_ID, PROVINCE_NAME') )->get();
@@ -395,7 +453,7 @@ class ScreenController extends Controller {
                 $nDistrict = '';
             }
 
-            return View::make( 'screen.edit', array( 'screen' => $screen, 'province' => $province_name, 'nProvince' => $nProvince, 'nAmphur' => $nAmphur, 'nDistrict' => $nDistrict ) );
+            return View::make( 'screen.edit', array( 'screen' => $screen, 'tumor' => $tumor, 'nodes' => $nodes, 'met' => $met , 'province' => $province_name, 'nProvince' => $nProvince, 'nAmphur' => $nAmphur, 'nDistrict' => $nDistrict ) );
         }
         else
         {
@@ -487,6 +545,10 @@ class ScreenController extends Controller {
             if( isset($data['part4_1']) ) { $screen->part4_1 = $data['part4_1']; }
             $screen->part4_1text        = ((isset( $data['part4_1text'] ))?$data['part4_1text']:'');
             if( isset($data['part4_2']) ) { $screen->part4_2 = $data['part4_2']; }
+
+            $screen->part4_5            = ((isset( $data['part4_5'] ))?$data['part4_5']:'');
+            $screen->part4_12text        = ((isset( $data['part4_12text'] ))?$data['part4_12text']:'');
+
             $screen->definitive_diag    = ((isset( $data['definitive_diag'] ))?$data['definitive_diag']:'');
             $screen->part4_3            = ((isset( $data['part4_3'] ))?$data['part4_3']:'');
             if( isset($data['part4_4']) ) { $screen->part4_4 = $data['part4_4']; }
@@ -553,6 +615,29 @@ class ScreenController extends Controller {
             DB::transaction(function() use ($screen) {
                 $screen->save();  
             }); 
+
+            if( isset($data['part4_1']) ) { 
+                if( $data['part4_1'] == '6'){
+                    $screen_tnm = ScreenTnm::find( e($id) );
+
+                    if( count($screen_tnm) > 0 ){
+                        $screen_tnm->id = e($id);
+                        $screen_tnm->tumor = $data['tumorAll'];
+                        $screen_tnm->nodes = $data['nodesAll'];
+                        $screen_tnm->met = $data['metAll'];
+                    }else{
+                        $screen_tnm = new ScreenTnm;
+                        $screen_tnm->id = e($id);
+                        $screen_tnm->tumor = $data['tumorAll'];
+                        $screen_tnm->nodes = $data['nodesAll'];
+                        $screen_tnm->met = $data['metAll'];
+                    }
+                   
+                    DB::transaction(function() use ($screen_tnm) {
+                        $screen_tnm->save();  
+                    }); 
+                } 
+            }      
 
             Logs::createlog(Session::get('username'), 'update screen patient name = '.$screen->fullname );
 

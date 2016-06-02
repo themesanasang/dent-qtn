@@ -180,6 +180,18 @@
             'pattern': '{{99}}-{{9999}}-{{9999}}'
         });
       }
+    var nexttimeInput = document.getElementById('nexttime');
+      if (nexttimeInput) {
+        new Formatter(nexttimeInput, {
+            'pattern': '{{99}}:{{99}}:{{99}}'
+        });
+      }
+    var nexttimeInput = document.getElementById('e-nexttime');
+      if (nexttimeInput) {
+        new Formatter(nexttimeInput, {
+            'pattern': '{{99}}:{{99}}:{{99}}'
+        });
+      }
     
    
     
@@ -731,28 +743,73 @@
     
     
     //-------type_part4 1  
-    $('#part4_21, #part4_22, #part4_23, #part4_1text').attr("disabled", "");
-    $('#part4_11, #part4_12, #part4_14, #part4_15, #part4_151, #part4_152, #part4_153').click(function(){
-         $('#part4_21, #part4_22, #part4_23, #part4_1text').attr("disabled", "");
+    $('#part4_21, #part4_22, #part4_23, #part4_1text, #part4_171, #part4_172, #part4_173 ,#part4_151text').attr("disabled", "");
+    $('#part4_11, #part4_12, #part4_13, #part4_14, #part4_15, #part4_16, #part4_17').click(function(){
+         $('#part4_21, #part4_22, #part4_23, #part4_1text, #part4_171, #part4_172, #part4_173 ,#part4_151text').attr("disabled", "");
+         $('#part4_1text, #part4_151text').val('');
     });   
     $('#part4_13').click(function(){
         $('#part4_21, #part4_22, #part4_23').removeAttr("disabled", "");
-        $('#part4_1text').attr("disabled", "");
+        $('#part4_1text, #part4_151text').attr("disabled", "");
+        $('#part4_1text, #part4_151text').val('');
     });
+    $('#part4_17').click(function(){
+        $('#part4_171, #part4_172, #part4_173').removeAttr("disabled", "");
+        $('#part4_1text, #part4_151text').attr("disabled", "");
+        $('#part4_1text, #part4_151text').val('');
+    });
+    $('#part4_15').click(function(){
+        $('#part4_151text').removeAttr("disabled", "");
+        $('#part4_151text').attr("readonly", "");
+        $('#part4_1text, #part4_151text').val('');
+        $('#part4_21, #part4_22, #part4_23, #part4_1text').attr("disabled", "");
+
+        //Model box
+        //$('#modal1').openModal(); 
+        $('#modal1').openModal({
+            dismissible: false, // Modal can be dismissed by clicking outside of the modal
+            opacity: .5, // Opacity of modal background
+            in_duration: 300, // Transition in duration
+            out_duration: 200, // Transition out duration
+            ready: function() { 
+
+            }, // Callback for Modal open
+            complete: function() { 
+
+            } // Callback for Modal close
+          }
+        );
+
+    });
+
     $('#part4_16').click(function(){
         $('#part4_1text').removeAttr("disabled", "");
         $('#part4_1text').focus();
         $('#part4_21, #part4_22, #part4_23').attr("disabled", "");
+        $('#part4_1text, #part4_151text').val('');
     });
+
+    $('#modalClose').click(function(){
+      $('#part4_15').removeAttr("checked", "");
+      $('#part4_151text').attr("disabled", "");
+    });
+
+    $('#modalSave').click(function(){
+        viewStageNew();
+    });
+
+
+    
     
     //-------type_part4 1 Edit  
-    $('#e-part4_21, #e-part4_22, #e-part4_23, #e-part4_1text').attr("disabled", "");
-    $('#e-part4_11, #e-part4_12, #e-part4_14, #e-part4_15, #e-part4_151, #e-part4_152, #e-part4_153').click(function(){
-         $('#e-part4_21, #e-part4_22, #e-part4_23, #e-part4_1text').attr("disabled", "");
+    $('#e-part4_21, #e-part4_22, #e-part4_23, #e-part4_1text, #e-part4_171, #e-part4_172, #e-part4_173 ,#e-part4_151text').attr("disabled", "");
+    $('#e-part4_11, #e-part4_12, #e-part4_13, #e-part4_14, #e-part4_15, #e-part4_16, #e-part4_17').click(function(){
+         $('#e-part4_21, #e-part4_22, #e-part4_23, #e-part4_1text, #e-part4_171, #e-part4_172, #e-part4_173 ,#e-part4_151text').attr("disabled", "");
     });   
     $('#e-part4_13').click(function(){
         $('#e-part4_21, #e-part4_22, #e-part4_23').removeAttr("disabled", "");
-        $('#e-part4_1text').attr("disabled", "");
+        $('#e-part4_1text, #e-part4_151text').attr("disabled", "");
+        $('#e-part4_1text, #e-part4_151text').val('');
     });
     $('#e-part4_16').click(function(){
         $('#e-part4_1text').removeAttr("disabled", "");
@@ -764,6 +821,52 @@
         $('#e-part4_1text').focus();
         $('#e-part4_21, #e-part4_22, #e-part4_23').attr("disabled", "");
     }
+    $('#e-part4_17').click(function(){
+        $('#e-part4_171, #e-part4_172, #e-part4_173').removeAttr("disabled", "");
+        $('#e-part4_1text, #e-part4_151text').attr("disabled", "");
+        $('#e-part4_1text, #e-part4_151text').val('');
+    });
+    $('#e-part4_15').click(function(){
+        $('#e-part4_151text').removeAttr("disabled", "");
+        $('#e-part4_151text').attr("readonly", "");
+        $('#e-part4_151text').focus();
+        $('#e-part4_1text, #e-part4_151text').val('');
+        $('#e-part4_21, #e-part4_22, #e-part4_23, #e-part4_1text').attr("disabled", "");
+
+
+
+        $('#modal2').openModal({
+            dismissible: false, // Modal can be dismissed by clicking outside of the modal
+            opacity: .5, // Opacity of modal background
+            in_duration: 300, // Transition in duration
+            out_duration: 200, // Transition out duration
+            ready: function() { 
+
+            }, // Callback for Modal open
+            complete: function() { 
+
+            } // Callback for Modal close
+          }
+        );
+
+    });
+
+    $('#modalCloseEdit').click(function(){
+        viewStageEdit();
+    });
+
+    $('#modalSaveEdit').click(function(){
+        viewStageEdit();
+    });
+
+    if( $('#e-part4_13').is(":checked") ){
+        $('#e-part4_21, #e-part4_22, #e-part4_23').removeAttr("disabled", "");
+    }
+
+    if( $('#e-part4_17').is(":checked") ){
+        $('#e-part4_171, #e-part4_172, #e-part4_173').removeAttr("disabled", "");
+     }
+
     
     
     
@@ -950,18 +1053,142 @@ $('#c_pic_3').click(function(){
             }
         });		
 	});
+
+
+
+
+
+
+
+
+//======================  Treatment page  ==================//
+
+$('.datepicker_vstdate').pickadate({
+        selectMonths: true,// Creates a dropdown to control month
+        selectYears: 15,// Creates a dropdown of 15 years to control year
+        // The title label to use for the month nav buttons
+        labelMonthNext: 'เดือนถัดไป',
+        labelMonthPrev: 'เดือนก่อนหน้า',
+        // The title label to use for the dropdown selectors
+        labelMonthSelect: 'เลือกเดือน',
+        labelYearSelect: 'เลือกปี',
+        // Months and weekdays
+        monthsFull: [ 'มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม' ],
+        monthsShort: [ 'ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.' ],
+        weekdaysFull: [ 'อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์' ],
+        weekdaysShort: [ 'อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส' ],
+        // Materialize modified
+        weekdaysLetter: [ 'อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส' ],
+        // Today and clear
+        today: 'วันนี้',
+        clear: 'ลบ',
+        close: 'ปิด',
+        // The format to show on the `input` element
+        format: 'd-mm-yyyy',
+        onOpen: function() {            
+            if( $('.datepicker').val() != "" ){  
+                var arrayDate=$('.datepicker').val().split("-");       
+                arrayDate[2] = parseInt(arrayDate[2]);  
+                $('.datepicker').val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);  
+            }  
+            setTimeout(function(){  
+                $.each($(".picker__select--year option"),function(j,k){                 
+                    var textYear = parseInt($(".picker__select--year option").eq(j).val())+543;  
+                    $(".picker__select--year option").eq(j).text(textYear);  
+                });              
+            },50); 
+            
+            $('.picker__year-display').html( parseInt($(".picker__select--year option:selected").val())+543 );
+        },
+        onSet: function(event) {   
+             setTimeout(function(){  
+                $.each($(".picker__select--year option"),function(j,k){                 
+                    var textYear = parseInt($(".picker__select--year option").eq(j).val())+543;  
+                    $(".picker__select--year option").eq(j).text(textYear);  
+                });               
+            },50);  
+            
+            $('.picker__year-display').html( parseInt($(".picker__select--year option:selected").val())+543 );
+        },
+        onClose: function() {          
+            if( $('.datepicker').val() != "" ){           
+                var arrayDate = $('.datepicker').val().split("-");  
+                arrayDate[2] = parseInt(arrayDate[2]);  
+                $('.datepicker').val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);      
+            }  
+        }         
+    });
+
+
+    $('.datepicker_nextdate').pickadate({
+        selectMonths: true,// Creates a dropdown to control month
+        selectYears: 15,// Creates a dropdown of 15 years to control year
+        // The title label to use for the month nav buttons
+        labelMonthNext: 'เดือนถัดไป',
+        labelMonthPrev: 'เดือนก่อนหน้า',
+        // The title label to use for the dropdown selectors
+        labelMonthSelect: 'เลือกเดือน',
+        labelYearSelect: 'เลือกปี',
+        // Months and weekdays
+        monthsFull: [ 'มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม' ],
+        monthsShort: [ 'ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.' ],
+        weekdaysFull: [ 'อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์' ],
+        weekdaysShort: [ 'อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส' ],
+        // Materialize modified
+        weekdaysLetter: [ 'อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส' ],
+        // Today and clear
+        today: 'วันนี้',
+        clear: 'ลบ',
+        close: 'ปิด',
+        // The format to show on the `input` element
+        format: 'd-mm-yyyy',
+        onOpen: function() {            
+            if( $('.datepicker').val() != "" ){  
+                var arrayDate=$('.datepicker').val().split("-");       
+                arrayDate[2] = parseInt(arrayDate[2]);  
+                $('.datepicker').val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);  
+            }  
+            setTimeout(function(){  
+                $.each($(".picker__select--year option"),function(j,k){                 
+                    var textYear = parseInt($(".picker__select--year option").eq(j).val())+543;  
+                    $(".picker__select--year option").eq(j).text(textYear);  
+                });              
+            },50); 
+            
+            $('.picker__year-display').html( parseInt($(".picker__select--year option:selected").val())+543 );
+        },
+        onSet: function(event) {   
+             setTimeout(function(){  
+                $.each($(".picker__select--year option"),function(j,k){                 
+                    var textYear = parseInt($(".picker__select--year option").eq(j).val())+543;  
+                    $(".picker__select--year option").eq(j).text(textYear);  
+                });               
+            },50);  
+            
+            $('.picker__year-display').html( parseInt($(".picker__select--year option:selected").val())+543 );
+        },
+        onClose: function() {          
+            if( $('.datepicker').val() != "" ){           
+                var arrayDate = $('.datepicker').val().split("-");  
+                arrayDate[2] = parseInt(arrayDate[2]);  
+                $('.datepicker').val(arrayDate[0]+"-"+arrayDate[1]+"-"+arrayDate[2]);      
+            }  
+        }         
+    });
     
     
     
-    
-    
+
+
+
+
     
     //============= userTable ===================//
     
     var userTable = $('#userTable').dataTable( {              
         "bLengthChange": false,  
         "ordering": true,
-        "iDisplayLength": 10,
+        "iDisplayLength": 20,
         "language": {
             "lengthMenu": "",
             "zeroRecords": "ไม่มีข้อมูล",
@@ -985,10 +1212,10 @@ $('#c_pic_3').click(function(){
     
     //============= screenTable ===================//
     
-    var userTable = $('#screenTable').dataTable( {              
+    var screenTable = $('#screenTable').dataTable( {              
         "bLengthChange": false,  
         "ordering": true,
-        "iDisplayLength": 10,
+        "iDisplayLength": 20,
         "language": {
             "lengthMenu": "",
             "zeroRecords": "ไม่มีข้อมูล",
@@ -1000,7 +1227,7 @@ $('#c_pic_3').click(function(){
         }
     } );
     
-     $('.btn-screen-delete').bind('ajax:success', function(e, data, status, xhr){        	      		
+    $('.btn-screen-delete').bind('ajax:success', function(e, data, status, xhr){        	      		
       	 $(e.target).closest('tr').remove();      	   
 	 });	
     
@@ -1011,7 +1238,7 @@ $('#c_pic_3').click(function(){
     
      //============= searchTable ===================//
     
-    var userTable = $('#searchTable').dataTable( {              
+    var searchTable = $('#searchTable').dataTable( {              
         "bLengthChange": false,
         "bFilter": false,
         "ordering": true,
@@ -1026,10 +1253,57 @@ $('#c_pic_3').click(function(){
            //$('#userTable_filter').addClass('input-field');  
         }
     } );
+
        	
     
     
     
+    //============= patientTable ===================//
+    
+    var patientTable = $('#patientTable').dataTable( {              
+        "bLengthChange": false,  
+        "ordering": true,
+        "iDisplayLength": 20,
+        "language": {
+            "lengthMenu": "",
+            "zeroRecords": "ไม่มีข้อมูล",
+            "info": "หน้า _PAGE_ จาก _PAGES_",
+            "infoEmpty": "ไม่มีข้อมูล",
+            "sSearch": "ค้นหา: "            
+        },"fnPreDrawCallback": function(oSettings, json) {   
+           //$('#userTable_filter').addClass('input-field');  
+        }
+    } );
+
+    $('.btn-patient-delete').bind('ajax:success', function(e, data, status, xhr){                    
+         $(e.target).closest('tr').remove();           
+    });
+
+
+
+
+
+    //============= treatmentTable ===================//
+    
+    var treatmentTable = $('#treatmentTable').dataTable( {              
+        "bLengthChange": false,  
+        "ordering": true,
+        "iDisplayLength": 20,
+        "language": {
+            "lengthMenu": "",
+            "zeroRecords": "ไม่มีข้อมูล",
+            "info": "หน้า _PAGE_ จาก _PAGES_",
+            "infoEmpty": "ไม่มีข้อมูล",
+            "sSearch": "ค้นหา: "            
+        },"fnPreDrawCallback": function(oSettings, json) {   
+           //$('#userTable_filter').addClass('input-field');  
+        }
+    } );
+
+    $('.btn-treatment-delete').bind('ajax:success', function(e, data, status, xhr){                    
+         $(e.target).closest('tr').remove();           
+    });
+     
     
     
     
@@ -1040,11 +1314,149 @@ $('#c_pic_3').click(function(){
 
 
 
+
+/**
+* view stage new
+*/
+function viewStageNew(){
+  var tumor;
+  var nodes;
+  var met;
+
+  tumor = $("input[type='radio'][name='tumor']:checked");
+  if (tumor.length > 0) {
+      tumor = tumor.val();
+  }else{
+    tumor = 0;
+  }
+
+  nodes = $("input[type='radio'][name='nodes']:checked");
+  if (nodes.length > 0) {
+      nodes = nodes.val();
+  }else{
+    nodes = 0;
+  }
+
+  met = $("input[type='radio'][name='met']:checked");
+  if (met.length > 0) {
+      met = met.val();
+  }else{
+    met = 0;
+  }
+
+  $('#tumorAll').val(tumor);
+  $('#nodesAll').val(nodes);
+  $('#metAll').val(met);
+  var resultStage = check_stage(tumor, nodes, met);
+  $('#part4_151text').focus();
+  $('#part4_151text').val(resultStage);
+}
+
+
+
+
+
+
+/**
+* view stage edit
+*/
+function viewStageEdit(){
+  var tumor;
+  var nodes;
+  var met;
+
+  tumor = $("input[type='radio'][name='e_tumor']:checked");
+  if (tumor.length > 0) {
+      tumor = tumor.val();
+  }else{
+    tumor = 0;
+  }
+
+  nodes = $("input[type='radio'][name='e_nodes']:checked");
+  if (nodes.length > 0) {
+      nodes = nodes.val();
+  }else{
+    nodes = 0;
+  }
+
+  met = $("input[type='radio'][name='e_met']:checked");
+  if (met.length > 0) {
+      met = met.val();
+  }else{
+    met = 0;
+  }
+
+  $('#e-tumorAll').val(tumor);
+  $('#e-nodesAll').val(nodes);
+  $('#e-metAll').val(met);
+  var resultStage = check_stage(tumor, nodes, met);
+  $('#e-part4_151text').focus();
+  $('#e-part4_151text').val(resultStage);
+}
+
+
+
+
+
+
+
+/**
+* check stage
+*/
+function check_stage(tumor, nodes, met){
+
+  var resultStage;
+
+  if( tumor == '3' && nodes == '2' && met == '2' ){
+    resultStage = 'Stage O';
+  }
+
+  if( tumor == '4' && nodes == '2' && met == '2' ){
+    resultStage = 'Stage I';
+  }
+
+  if( tumor == '5' && nodes == '2' && met == '2' ){
+    resultStage = 'Stage II';
+  }
+
+  if( tumor == '6' && nodes == '3' && met == '2' ){
+    resultStage = 'Stage III';
+  }
+
+  if( tumor == '4' && nodes == '3' && met == '2' ){
+    resultStage = 'Stage IV';
+  }
+
+  if( tumor == '5' && nodes == '3' && met == '2' ){
+    resultStage = 'Stage IV';
+  }
+
+  if( (tumor == '7' || tumor == '8') && nodes == '3' && met == '2' ){
+    resultStage = 'Stage IV';
+  }
+
+  if( tumor != '0' && (nodes == '4' || nodes == '5' || nodes == '6' || nodes == '7') && met == '2' ){
+    resultStage = 'Stage IV';
+  }
+
+  if( tumor != '0' && nodes == '8' && met == '2' ){
+    resultStage = 'Stage IV';
+  }
+
+  if( tumor != '0' && nodes != '0' && met == '3' ){
+    resultStage = 'Stage IV';
+  }
+
+  return resultStage;
+
+}
+
+
+
 /**
  * check ie
  */
-function check_ie()
-{
+function check_ie(){
 	var isIE8 = false;
     var isIE9 = false;
     var isIE10 = false;

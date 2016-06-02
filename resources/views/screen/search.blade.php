@@ -21,6 +21,7 @@
                     <th>ชื่อ-นามสกุล</th>
                     <th>วันที่คัดกรอง</th>
                     <th>คัดกรองโดย</th>
+                    <th>ตรวจวินิจฉัย</th>
                     <th>จัดการ</th>
                 </tr>
             </thead>
@@ -35,11 +36,20 @@
                             <td>{{ $value->fullname }}</td>
                             <td>{{ date("d", strtotime($value->regdate)).'-'.date("m", strtotime($value->regdate)).'-'.(date("Y", strtotime($value->regdate))+543)  }}</td>
                             <td>{{ $value->create_by }}</td>
+                             <td>
+                                <?php
+                                    if( $value->user_part4 == '' ){
+                                        echo '<div class="btn-floating waves-effect waves-light yellow tooltipped" data-position="top" data-delay="50" data-tooltip="ยังไม่ตรวจ"><i class="mdi-alert-warning icon-color-qray"></i></div>';
+                                    }else{
+                                        echo '<div class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-delay="50" data-tooltip="ตรวจแล้ว"><i class="mdi-action-done icon-color-qray"></i></div>';
+                                    }
+                                ?>
+                            </td>
                             <td>                           	 
-                                <a title="แก้ไข" class="" href="{{ route( 'screen.edit', Crypt::encrypt($value->id) ) }}">
+                                <a class="btn-floating waves-effect waves-light green tooltipped" data-position="top" data-delay="50" data-tooltip="แก้ไข" href="{{ route( 'screen.edit', Crypt::encrypt($value->id) ) }}">
                                     <i class="mdi-editor-mode-edit icon-color-qray"></i>
                                 </a>
-                                <a title="ลบ" class="btn-screen-delete" href="{{ route( 'screen.destroy', Crypt::encrypt($value->id) ) }}" data-method="delete" data-confirm="ต้องการลบผู้ใช้ {{ e($value->fullname) }}" data-remote="true" rel="nofollow">
+                                <a class="btn-floating waves-effect waves-light red btn-screen-delete tooltipped" data-position="top" data-delay="50" data-tooltip="ลบ" href="{{ route( 'screen.destroy', Crypt::encrypt($value->id) ) }}" data-method="delete" data-confirm="ต้องการลบผู้ใช้ {{ e($value->fullname) }}" data-remote="true" rel="nofollow">
                                     <i class="mdi-action-delete icon-color-red"></i>
                                 </a>
                             </td>

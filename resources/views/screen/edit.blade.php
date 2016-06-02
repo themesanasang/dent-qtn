@@ -699,6 +699,10 @@
             </div><!-- .form-body 3 --> 
             </div>
             
+
+
+
+            
             
             @if( Session::get('status') == '1' || Session::get('status') == '2' )
             <!-- ============== Part 4 =============== -->
@@ -711,7 +715,7 @@
                 <div class="row">
                     <div class="input-field col l6 s12">    
                       <label for="date_part4">23.วันที่(ว-ด-ป)</label>    
-                      <input id="e-date_part4" name="date_part4" type="text" class="datepicker picker__input" readonly="" tabindex="-1" aria-haspopup="true" aria-expanded="false" aria-readonly="false" value="<?php echo date("d-m-Y", strtotime($screen->date_part4)); ?>" />    
+                      <input id="e-date_part4" name="date_part4" type="text" class="datepicker picker__input" readonly="" tabindex="-1" aria-haspopup="true" aria-expanded="false" aria-readonly="false" value="<?php echo (( ($screen->date_part4 != null) && ($screen->date_part4 != '0000-00-00 00:00:00') )?date("d-m-Y", strtotime($screen->date_part4)):date("d-m-Y")); ?>" />    
                     </div>
                     <div class="input-field col l6 s12">
                       <input name="user_part4" id="e-user_part4" type="text" value="{!! (($screen->user_part4 == '')?Session::get('name'):$screen->user_part4) !!}">
@@ -760,31 +764,53 @@
                                 </p>
                            </div>
                          </div> 
-                        <div class="col s12"> 
+                         <div class="col s12"> 
                             {!! Form::radio('part4_1', '4', $screen->part4_1 == 4, ['id' => 'e-part4_14']) !!}
                               <label for="e-part4_14">4.Carcinoma in situ</label>
                           </div>
-                          <div class="col s12">
-                              {!! Form::radio('part4_1', '5', $screen->part4_1 == 5, ['id' => 'e-part4_15']) !!}
-                              <label for="e-part4_15">5.Oral cancer stage1</label>
-                          </div>
+
 
                           <div class="col s12">
-                              {!! Form::radio('part4_1', '6', $screen->part4_1 == 6, ['id' => 'e-part4_151']) !!}
-                              <label for="e-part4_151">6.Oral cancer stage2</label>
+                              {!! Form::radio('part4_1', '5', $screen->part4_1 == 5, ['id' => 'e-part4_17']) !!}
+                              <label for="e-part4_17">5.Sqnamons cell csrcinoms</label>
                           </div>
                           <div class="col s12">
-                              {!! Form::radio('part4_1', '7', $screen->part4_1 == 7, ['id' => 'e-part4_152']) !!}
-                              <label for="e-part4_152">7.Oral cancer stage3</label>
+                            <div class="leftup">  
+                                <p>
+                                      <div class="col s12">
+                                          {!! Form::radio('part4_5', '1', $screen->part4_5 == 1, ['id' => 'e-part4_171']) !!}
+                                          <label for="e-part4_171">1.Well differentisted</label>   
+                                      </div>
+                                      <div class="col s12">
+                                          {!! Form::radio('part4_5', '2', $screen->part4_5 == 2, ['id' => 'e-part4_172']) !!}
+                                          <label for="e-part4_172">2.Moderately differentisted</label>   
+                                      </div>
+                                      <div class="col s12">
+                                          {!! Form::radio('part4_5', '3', $screen->part4_5 == 3, ['id' => 'e-part4_173']) !!}
+                                          <label for="e-part4_173">3.poorly differentisted</label>   
+                                      </div>                                     
+                                </p>
+                           </div>
+                         </div> 
+
+
+                         <div class="col s12">                           
+                              {!! Form::radio('part4_1', '6', $screen->part4_1 == 6, ['id' => 'e-part4_15']) !!}
+                              <label for="e-part4_15">6.TNM Stage</label>
                           </div>
-                          <div class="col s12">
-                              {!! Form::radio('part4_1', '8', $screen->part4_1 == 8, ['id' => 'e-part4_153']) !!}
-                              <label for="e-part4_153">8.Oral cancer stage4</label>
-                          </div>
+                          <div class="input-field col s12">
+                            <input name="part4_12text" id="e-part4_151text" type="text" value="{!! $screen->part4_12text !!}">
+                            <label for="e-part4_151text">Result Stage</label>
+                          </div> 
+
+                          <input type="hidden" id="e-tumorAll" name="tumorAll" />
+                          <input type="hidden" id="e-nodesAll" name="nodesAll" />
+                          <input type="hidden" id="e-metAll" name="metAll" />
+
 
                           <div class="col s12">
-                              {!! Form::radio('part4_1', '9', $screen->part4_1 == 9, ['id' => 'e-part4_16']) !!}
-                              <label for="e-part4_16">9.Other</label>
+                              {!! Form::radio('part4_1', '7', $screen->part4_1 == 7, ['id' => 'e-part4_16']) !!}
+                              <label for="e-part4_16">7.Other oral cancer</label>
                           </div>
                           <div class="input-field col s12">                                        
                               <input name="part4_1text" id="e-part4_1text" type="text" value="{!! $screen->part4_1text !!}">
@@ -955,33 +981,33 @@
                    <div class="col s12">
                       <h2 class="header">ข้อมูลไฟล์เอกสาร</h2>
 
-                        <div class="collection">
+                        <ul class="collection">
                           @if($screen->name_file1 != '')
                             <li class="collection-item">
-                              <div>แนบไฟล์ 1: {!! $screen->name_file1 !!} <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file1) !!}/{!! $screen->name_file1 !!}/{!! Crypt::encrypt($screen->id) !!}/{!! Crypt::encrypt(1) !!}" title="ลบไฟล์" class="secondary-content icon-color-red"><i class="mdi-action-delete"></i></a> <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file1) !!}/{!! $screen->name_file1 !!}" title="โหลดไฟล์" class="secondary-content"><i class="mdi-file-file-download"></i></a> </div>
+                              <div>แนบไฟล์ 1: {!! $screen->name_file1 !!} <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file1) !!}/{!! $screen->name_file1 !!}/{!! Crypt::encrypt($screen->id) !!}/{!! Crypt::encrypt(1) !!}" data-position="top" data-delay="50" data-tooltip="ลบไฟล์" class="secondary-content btn-floating waves-effect waves-light tooltipped red left10"><i class="mdi-action-delete"></i></a> <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file1) !!}/{!! $screen->name_file1 !!}" data-position="top" data-delay="50" data-tooltip="โหลดไฟล์" class="secondary-content btn-floating waves-effect waves-light tooltipped"><i class="mdi-file-file-download"></i></a> </div>
                             </li>
                           @endif
                           @if($screen->name_file2 != '')
                             <li class="collection-item">
-                              <div>แนบไฟล์ 2: {!! $screen->name_file2 !!} <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file2) !!}/{!! $screen->name_file2 !!}/{!! Crypt::encrypt($screen->id) !!}/{!! Crypt::encrypt(2) !!}" title="ลบไฟล์" class="secondary-content icon-color-red"><i class="mdi-action-delete"></i></a> <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file2) !!}/{!! $screen->name_file2 !!}" title="โหลดไฟล์" class="secondary-content"><i class="mdi-file-file-download"></i></a></div>
+                              <div>แนบไฟล์ 2: {!! $screen->name_file2 !!} <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file2) !!}/{!! $screen->name_file2 !!}/{!! Crypt::encrypt($screen->id) !!}/{!! Crypt::encrypt(2) !!}" data-position="top" data-delay="50" data-tooltip="ลบไฟล์" class="secondary-content btn-floating waves-effect waves-light tooltipped red left10"><i class="mdi-action-delete"></i></a> <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file2) !!}/{!! $screen->name_file2 !!}" data-position="top" data-delay="50" data-tooltip="โหลดไฟล์" class="secondary-content btn-floating waves-effect waves-light tooltipped"><i class="mdi-file-file-download"></i></a></div>
                             </li>
                           @endif
                           @if($screen->name_file3 != '')
                             <li class="collection-item">
-                              <div>แนบไฟล์ 3: {!! $screen->name_file3 !!} <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file3) !!}/{!! $screen->name_file3 !!}/{!! Crypt::encrypt($screen->id) !!}/{!! Crypt::encrypt(3) !!}" title="ลบไฟล์" class="secondary-content icon-color-red"><i class="mdi-action-delete"></i></a> <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file3) !!}/{!! $screen->name_file3 !!}" title="โหลดไฟล์" class="secondary-content"><i class="mdi-file-file-download"></i></a></div>
+                              <div>แนบไฟล์ 3: {!! $screen->name_file3 !!} <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file3) !!}/{!! $screen->name_file3 !!}/{!! Crypt::encrypt($screen->id) !!}/{!! Crypt::encrypt(3) !!}" data-position="top" data-delay="50" data-tooltip="ลบไฟล์" class="secondary-content btn-floating waves-effect waves-light tooltipped red left10"><i class="mdi-action-delete"></i></a> <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file3) !!}/{!! $screen->name_file3 !!}" data-position="top" data-delay="50" data-tooltip="โหลดไฟล์" class="secondary-content btn-floating waves-effect waves-light tooltipped"><i class="mdi-file-file-download"></i></a></div>
                             </li>
                           @endif
                           @if($screen->name_file4 != '')
                             <li class="collection-item">
-                              <div>แนบไฟล์ 4: {!! $screen->name_file4 !!} <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file4) !!}/{!! $screen->name_file4 !!}/{!! Crypt::encrypt($screen->id) !!}/{!! Crypt::encrypt(4) !!}" title="ลบไฟล์" class="secondary-content icon-color-red"><i class="mdi-action-delete"></i></a> <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file4) !!}/{!! $screen->name_file4 !!}" title="โหลดไฟล์" class="secondary-content"><i class="mdi-file-file-download"></i></a></div>
+                              <div>แนบไฟล์ 4: {!! $screen->name_file4 !!} <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file4) !!}/{!! $screen->name_file4 !!}/{!! Crypt::encrypt($screen->id) !!}/{!! Crypt::encrypt(4) !!}" data-position="top" data-delay="50" data-tooltip="ลบไฟล์" class="secondary-content btn-floating waves-effect waves-light tooltipped red left10"><i class="mdi-action-delete"></i></a> <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file4) !!}/{!! $screen->name_file4 !!}" data-position="top" data-delay="50" data-tooltip="โหลดไฟล์" class="secondary-content btn-floating waves-effect waves-light tooltipped"><i class="mdi-file-file-download"></i></a></div>
                             </li>
                           @endif
                           @if($screen->name_file5 != '')                           
                             <li class="collection-item">
-                              <div>แนบไฟล์ 5: {!! $screen->name_file5 !!} <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file5) !!}/{!! $screen->name_file5 !!}/{!! Crypt::encrypt($screen->id) !!}/{!! Crypt::encrypt(5) !!}" title="ลบไฟล์" class="secondary-content icon-color-red"><i class="mdi-action-delete"></i></a> <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file5) !!}/{!! $screen->name_file5 !!}" title="โหลดไฟล์" class="secondary-content"><i class="mdi-file-file-download"></i></a></div>
+                              <div>แนบไฟล์ 5: {!! $screen->name_file5 !!} <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file5) !!}/{!! $screen->name_file5 !!}/{!! Crypt::encrypt($screen->id) !!}/{!! Crypt::encrypt(5) !!}" data-position="top" data-delay="50" data-tooltip="ลบไฟล์" class="secondary-content btn-floating waves-effect waves-light tooltipped red left10"><i class="mdi-action-delete"></i></a> <a href="{!! url('downloads') !!}/{!! Crypt::encrypt($screen->file5) !!}/{!! $screen->name_file5 !!}" data-position="top" data-delay="50" data-tooltip="โหลดไฟล์" class="secondary-content btn-floating waves-effect waves-light tooltipped"><i class="mdi-file-file-download"></i></a></div>
                             </li>
                           @endif
-                        </div>
+                        </ul>
                         
                         <div class="file-field input-field">
                             <div class="btn">
@@ -1057,5 +1083,119 @@
     </div> 
 
 @endsection
+
+
+
+<!-- Modal Structure -->
+  <div id="modal2" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>TNM Clinical Stage Grouping</h4>
+      <p>โปรดเลือกข้อมูล <span class="blue-text text-darken-2">Primary Tumor(T)</span>, <span class="red-text text-darken-2">regional Lymph Nodes(N)</span>, <span class="teal-text text-darken-2">Distant Metastasis(M)</span> </p>
+
+      <form>
+        <ul class="collection">
+          <li class="collection-item">
+            {!! Form::radio('e_tumor', '1', $tumor == 1, ['id' => 'e-tumor1']) !!}
+            <label for="e-tumor1"><span class="blue-text text-darken-2">TX</span> <span class="grey-text">Primary tumor cannot be assessed</span></label>
+          </li>
+          <li class="collection-item">
+            {!! Form::radio('e_tumor', '2', $tumor == 2, ['id' => 'e-tumor2']) !!}
+            <label for="e-tumor2"><span class="blue-text text-darken-2">T0</span> <span class="grey-text">No evidence of primary tumor</span></label>
+          </li>
+          <li class="collection-item">
+            {!! Form::radio('e_tumor', '3', $tumor == 3, ['id' => 'e-tumor3']) !!}
+            <label for="e-tumor3"><span class="blue-text text-darken-2">Tis</span> <span class="grey-text">Carcinoma in situ</span></label>
+          </li>
+          <li class="collection-item">
+            {!! Form::radio('e_tumor', '4', $tumor == 4, ['id' => 'e-tumor4']) !!}
+            <label for="e-tumor4"><span class="blue-text text-darken-2">T1</span> <span class="grey-text">Tumor 2 cm or less in greatest dimension</span></label>
+          </li>
+          <li class="collection-item">
+            {!! Form::radio('e_tumor', '5', $tumor == 5, ['id' => 'e-tumor5']) !!}
+            <label for="e-tumor5"><span class="blue-text text-darken-2">T2</span> <span class="grey-text">Tumor more than 2 cm but not more than 4 cm in greatest dimension</span></label>
+          </li>
+          <li class="collection-item"> 
+            {!! Form::radio('e_tumor', '6', $tumor == 6, ['id' => 'e-tumor6']) !!}
+            <label for="e-tumor6"><span class="blue-text text-darken-2">T3</span> <span class="grey-text">Tumor more than 4 cm in greatest dimension</span></label>
+          </li>
+          <li class="collection-item">
+            {!! Form::radio('e_tumor', '7', $tumor == 7, ['id' => 'e-tumor7']) !!}
+            <label for="e-tumor7"><span class="blue-text text-darken-2">T4(lip)</span> <span class="grey-text">Tumor invades adjacent structres</span></label>
+          </li>
+          <li class="collection-item">
+            {!! Form::radio('e_tumor', '8', $tumor == 8, ['id' => 'e-tumor8']) !!}
+            <label for="e-tumor8"><span class="blue-text text-darken-2">T4(oral cavity)</span> <span class="grey-text">Tumor invades adjacent structres</span></label>
+          </li>
+        </ul>
+
+        <!-- ============================================== -->
+
+        <ul class="collection">
+          <li class="collection-item">
+            {!! Form::radio('e_nodes', '1', $nodes == 1, ['id' => 'e-nodes1']) !!}
+            <label for="e-nodes1"><span class="red-text text-darken-2">NX</span> <span class="grey-text">Regional Lymph nodes cannot be assessed</span></label>
+          </li>
+          <li class="collection-item">
+            {!! Form::radio('e_nodes', '2', $nodes == 2, ['id' => 'e-nodes2']) !!}
+            <label for="e-nodes2"><span class="red-text text-darken-2">N0</span> <span class="grey-text">No Regional Lymph nodes metastasis</span></label>
+          </li>
+          <li class="collection-item">
+            {!! Form::radio('e_nodes', '3', $nodes == 3, ['id' => 'e-nodes3']) !!}
+            <label for="e-nodes3"><span class="red-text text-darken-2">N1</span> <span class="grey-text">Metastasis in a single ipsilateral lymph node, 3 cm or less in greater dimension</span></label>
+          </li>
+          <li class="collection-item">
+            {!! Form::radio('e_nodes', '4', $nodes == 4, ['id' => 'e-nodes4']) !!}
+            <label for="e-nodes4"><span class="red-text text-darken-2">N2</span> 
+              <span class="grey-text">
+                  Metastasis in a single ipsilateral lymph node, more than 3 cm but not more than 6 cm in greater dimension;
+                  in multiple ipsilatral limph nodes, none more than 6 cm in greater dimension;in bilateral or contralateral lymph nodes, 
+                  none more than 6 cm in greater dimension
+              </span>
+            </label>
+          </li>
+          <li class="collection-item">
+            {!! Form::radio('e_nodes', '5', $nodes == 5, ['id' => 'e-nodes5']) !!}
+            <label for="e-nodes5"><span class="red-text text-darken-2">N2a</span> <span class="grey-text">Metastasis in single ipsilateral lymph node more 3 cm or but not more than 6 cm in greater dimension</span></label>
+          </li>
+          <li class="collection-item">
+            {!! Form::radio('e_nodes', '6', $nodes == 6, ['id' => 'e-nodes6']) !!}
+            <label for="e-nodes6"><span class="red-text text-darken-2">N2b</span> <span class="grey-text">Metastasis in multiple ipsilateral lymph node, none more than 6 cm in greater dimension</span></label>
+          </li>
+          <li class="collection-item">
+            {!! Form::radio('e_nodes', '7', $nodes == 7, ['id' => 'e-nodes7']) !!}
+            <label for="e-nodes7"><span class="red-text text-darken-2">N2c</span> <span class="grey-text">Metastasis in bilateral or contralateral lymph node, none more than 6 cm in greater dimension</span></label>
+          </li>
+          <li class="collection-item">
+            {!! Form::radio('e_nodes', '8', $nodes == 8, ['id' => 'e-nodes8']) !!}
+            <label for="e-nodes8"><span class="red-text text-darken-2">N3</span> <span class="grey-text">Metastasis in lymph node more than 6 cm in greater dimension</span></label>
+          </li>
+        </ul>
+
+        <!-- ============================================== -->
+
+        <ul class="collection">
+          <li class="collection-item">
+            {!! Form::radio('e_met', '1', $met == 1, ['id' => 'e-met1']) !!}
+            <label for="e-met1"><span class="teal-text text-darken-2">MX</span> <span class="grey-text">Presence of distant metastasis cannot be assessed</span></label>
+          </li>
+          <li class="collection-item">
+            {!! Form::radio('e_met', '2', $met == 2, ['id' => 'e-met2']) !!}
+            <label for="e-met2"><span class="teal-text text-darken-2">M0</span> <span class="grey-text">No distant metastasis</span></label>
+          </li>
+          <li class="collection-item">
+            {!! Form::radio('e_met', '3', $met == 3, ['id' => 'e-met3']) !!}
+            <label for="e-met3"><span class="teal-text text-darken-2">M1</span> <span class="grey-text">Distant metastasis</span></label>
+          </li>
+        </ul>
+
+      </form>
+
+    </div>
+    <div class="modal-footer">
+      <a class="modal-action modal-close waves-effect waves-red btn-flat " id="modalCloseEdit" href="#!">ยกเลิก</a>
+      <a class="modal-action modal-close waves-effect waves-green btn-flat " id="modalSaveEdit" href="#!">บันทึก</a>
+    </div>
+  </div>
+
 
 

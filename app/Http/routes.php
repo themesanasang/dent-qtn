@@ -38,7 +38,6 @@ Route::get('logout', 'LoginController@logout');
 
 
 
-
 Route::resource('user', 'UserController');
 Route::get('user/editprofile/{id}', 'UserController@editprofile');
 Route::get('user/getAmphur/{id}', 'ScreenController@getAmphur');
@@ -47,6 +46,7 @@ Route::get('user/getDistrict/{id}/{id2}', 'ScreenController@getDistrict');
 
 
 Route::get('downloads/{path}/{namefile}', 'DownloadController@index');
+Route::get('downloads/app', 'DownloadController@loadApp');
 Route::get('downloads/{path}/{namefile}/{screenid}/{fileid}', 'DownloadController@deleteFile');
 Route::resource('screen', 'ScreenController');
 
@@ -54,6 +54,24 @@ Route::resource('screen', 'ScreenController');
 
 
 
+Route::resource('patient', 'PatientController');
+Route::get('patient/treatment/{id}', 'PatientController@treatment');
+Route::get('patient/listscreen/{cid}/{id}', 'PatientController@listscreen');
+
+
+
+
+
+Route::resource('treatment', 'TreatmentController');
+Route::get('treatment/create/{id}', 'TreatmentController@create');
+
+
+
+
 //Route::get('report/pmd', 'ReportController@report_pmd');
 Route::get('reports/export_pmd', 'ReportController@export_pmd');
 Route::resource('reports', 'ReportController');
+
+
+
+

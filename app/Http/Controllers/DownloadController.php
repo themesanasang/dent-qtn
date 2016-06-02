@@ -30,6 +30,23 @@ class DownloadController extends Controller {
 	}
 
 
+
+
+
+	public function loadApp()
+	{
+		$filename = 'dt-screen.apk';
+		$headers = array();
+		$disposition = 'attachment';
+		$response = new BinaryFileResponse(storage_path().'/'.$filename, 200, $headers, true);
+
+		Logs::createlog(Session::get('username'), 'load file '.$filename );
+
+		return $response->setContentDisposition($disposition, $filename, Str::ascii($filename));
+	}
+
+
+
 	public function deleteFile($path, $filename, $screenid, $fileid)
 	{
 		$flgDelete = unlink(Crypt::decrypt($path));

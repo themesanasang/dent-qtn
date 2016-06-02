@@ -41,9 +41,9 @@
                             <td>{{ $value->address }}</td>
                             <td>
                                 @if( $value->activated == 1 )
-                                    <i class="mdi-action-done icon-color-green"></i>
+                                    <div class="btn-floating waves-effect waves-light green tooltipped" data-position="top" data-delay="50" data-tooltip="เปิด"><i class="mdi-action-done"></i></div>
                                 @else
-                                    <i class="mdi-action-highlight-remove icon-color-red"></i>
+                                    <div class="btn-floating waves-effect waves-light red tooltipped" data-position="top" data-delay="50" data-tooltip="ปิด"><i class="mdi-action-highlight-remove"></i></div>
                                 @endif
                             </td>   
                             <td>
@@ -56,10 +56,10 @@
                                 @endif
                             </td>                       
                             <td>                           	 
-                                <a title="แก้ไข" class="" href="{{ route( 'user.edit', Crypt::encrypt($value->id) ) }}">
+                                <a  class="btn-floating waves-effect waves-light green tooltipped" data-position="top" data-delay="50" data-tooltip="แก้ไข" href="{{ route( 'user.edit', Crypt::encrypt($value->id) ) }}">
                                     <i class="mdi-editor-mode-edit icon-color-qray"></i>
                                 </a>
-                                <a title="ลบ" class="btn-user-delete" href="{{ route( 'user.destroy', Crypt::encrypt($value->id) ) }}" data-method="delete" data-confirm="ต้องการลบผู้ใช้ {{ e($value->name) }}" data-remote="true" rel="nofollow">
+                                <a class="btn-floating waves-effect waves-light red btn-user-delete tooltipped" data-position="top" data-delay="50" data-tooltip="ลบ" href="{{ route( 'user.destroy', Crypt::encrypt($value->id) ) }}" data-method="delete" data-confirm="ต้องการลบผู้ใช้ {{ e($value->name) }}" data-remote="true" rel="nofollow">
                                     <i class="mdi-action-delete icon-color-red"></i>
                                 </a>
                             </td>

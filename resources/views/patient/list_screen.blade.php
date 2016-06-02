@@ -4,8 +4,9 @@
 
     <div class="row">
         <ol class="cd-breadcrumb custom-separator">
-            <li><a href="{!! url('screen') !!}">หน้าหลัก</a></li>         
-            <li class="current"><em>รายการคัดกรอง</em></li>
+            <li><a href="{!! url('screen') !!}">หน้าหลัก</a></li> 
+            <li><a href="{!! url('patient') !!}">ทะเบียนคนไข้</a></li>        
+            <li class="current"><em>รายการคัดกรอง : {{ $patient->fullname }}</em></li>
         </ol>
     </div>
 
