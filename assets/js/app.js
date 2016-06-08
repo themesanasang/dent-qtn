@@ -141,7 +141,7 @@
     var creditInput = document.getElementById('cid');
       if (creditInput) {
         new Formatter(creditInput, {
-            'pattern': '{{9}}-{{9999}}-{{99999}}-{{9}}-{{99}}'
+            'pattern': '{{9}}-{{9999}}-{{99999}}-{{99}}-{{9}}'
         });
       }
     var ageInput = document.getElementById('age');

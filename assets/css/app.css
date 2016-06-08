@@ -392,8 +392,14 @@ p {
 }
 
 @media (max-width: 1024px) {
+    .wrapper-login h1 {
+        font-size: 24px;
+    }
     .nav-wrapper ul li a {
-      font-size: 14px;
+      font-size: 15px;
+    }
+    .nav-wrapper ul li a i {
+      font-size: 15px;
     }
 }
 

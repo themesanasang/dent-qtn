@@ -201,61 +201,49 @@ class ReportController extends Controller {
 		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (3, 27,  'คน');
 		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (4, 27,  $this->get_screen_meat_carcinoma());
 
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (1, 28,  'Oral cancer stage1');
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (1, 28,  'Oral cancer stage');
 		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (3, 28,  'คน');
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (4, 28,  $this->get_screen_meat_stage1());
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (4, 28,  $this->get_screen_meat_stage());
 
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (1, 29,  'Oral cancer stage2');
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (1, 29,  'อื่น ๆ');
 		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (3, 29,  'คน');
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (4, 29,  $this->get_screen_meat_stage2());
-
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (1, 30,  'Oral cancer stage3');
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (3, 30,  'คน');
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (4, 30,  $this->get_screen_meat_stage3());
-
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (1, 31,  'Oral cancer stage4');
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (3, 31,  'คน');
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (4, 31,  $this->get_screen_meat_stage4());
-
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (1, 32,  'อื่น ๆ');
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (3, 32,  'คน');
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (4, 32,  $this->get_screen_meat_other());
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (4, 29,  $this->get_screen_meat_other());
 
 		// ==>5
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (0, 33,  '5');
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (1, 33,  'การจัดกลุ่มรอยโรค');
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (0, 30,  '5');
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (1, 30,  'การจัดกลุ่มรอยโรค');
 
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (1, 34,  'Potentially malignant disorder');
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (3, 34,  'คน');
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (4, 34,  $this->get_screen_potentially());
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (1, 31,  'Potentially malignant disorder');
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (3, 31,  'คน');
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (4, 31,  $this->get_screen_potentially());
 
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (1, 35,  'Oral cancer');
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (3, 35,  'คน');
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (4, 35,  $this->get_screen_cancer());
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (1, 32,  'Oral cancer');
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (3, 32,  'คน');
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (4, 32,  $this->get_screen_cancer());
 
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (1, 36,  'Other');
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (3, 36,  'คน');
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (4, 36,  $this->get_screen_other());
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (1, 33,  'Other');
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (3, 33,  'คน');
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (4, 33,  $this->get_screen_other());
 
 		// ==>6
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (0, 37,  '6');
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (1, 37,  'การให้การรักษา');
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (0, 34,  '6');
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (1, 34,  'การให้การรักษา');
 
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (1, 38,  'Medication');
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (1, 35,  'Medication');
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (3, 35,  'คน');
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (4, 35,  $this->get_screen_medication());
+
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (1, 36,  'Surgery');
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (3, 36,  'คน');
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (4, 36,  $this->get_screen_surgery());
+
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (1, 37,  'Follow up');
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (3, 37,  'คน');
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (4, 37,  $this->get_screen_follow());
+
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (1, 38,  'Refer');
 		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (3, 38,  'คน');
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (4, 38,  $this->get_screen_medication());
-
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (1, 39,  'Surgery');
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (3, 39,  'คน');
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (4, 39,  $this->get_screen_surgery());
-
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (1, 40,  'Follow up');
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (3, 40,  'คน');
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (4, 40,  $this->get_screen_follow());
-
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (1, 41,  'Refer');
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (3, 41,  'คน');
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (4, 41,  $this->get_screen_refer());
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (4, 38,  $this->get_screen_refer());
 
 
 		//End Detail	
@@ -653,39 +641,9 @@ class ReportController extends Controller {
     * Oral cancer stage1
     *  4
     */
-    private function get_screen_meat_stage1()
-    {
-    	return DB::table('screen')->where('part4_1', 5)->count(DB::raw('DISTINCT cid'));
-    }
-
-    /**
-    * function name : get_screen_meat_stage2
-    * Oral cancer stage2
-    *  4
-    */
-    private function get_screen_meat_stage2()
+    private function get_screen_meat_stage()
     {
     	return DB::table('screen')->where('part4_1', 6)->count(DB::raw('DISTINCT cid'));
-    }
-
-    /**
-    * function name : get_screen_meat_stage3
-    * Oral cancer stage3
-    *  4
-    */
-    private function get_screen_meat_stage3()
-    {
-    	return DB::table('screen')->where('part4_1', 7)->count(DB::raw('DISTINCT cid'));
-    }
-
-    /**
-    * function name : get_screen_meat_stage4
-    * Oral cancer stage4
-    *  4
-    */
-    private function get_screen_meat_stage4()
-    {
-    	return DB::table('screen')->where('part4_1', 8)->count(DB::raw('DISTINCT cid'));
     }
 
     /**
@@ -695,7 +653,7 @@ class ReportController extends Controller {
     */
     private function get_screen_meat_other()
     {
-    	return DB::table('screen')->where('part4_1', 9)->count(DB::raw('DISTINCT cid'));
+    	return DB::table('screen')->where('part4_1', 7)->count(DB::raw('DISTINCT cid'));
     }
 
 

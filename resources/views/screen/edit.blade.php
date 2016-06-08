@@ -965,6 +965,51 @@
                               @endif
                             </div>
 
+                            <div class="col s12 m4 l8">
+                              @if( $screen->pic_4 != '' )
+                                <?php 
+                                  $source_img4 = imagecreatefromstring(base64_decode($screen->pic_4));
+                                  $rotated_img4 = imagerotate($source_img4, 360, 0); 
+                                  $file4 = storage_path().'/images-dtscreen/'. $screen->cid.'_'.$screen->id.'_pic_4'. '.jpg';
+                                  $imageSave4 = imagejpeg($rotated_img4, $file4, 100);
+                                  imagedestroy($source_img4);
+                                ?>
+                                
+                                <i id="c_pic_4" class="small mdi-device-screen-rotation"></i>
+                                {!! Html::image('storage/images-dtscreen/'.$screen->cid.'_'.$screen->id.'_pic_4'. '.jpg', 'pic4', array('class' => 'materialboxed responsive-img', 'id' => 'p_pic_4' ))!!}
+                              @endif
+                            </div>
+
+                            <div class="col s12 m4 l8">
+                              @if( $screen->pic_5 != '' )
+                                <?php 
+                                  $source_img5 = imagecreatefromstring(base64_decode($screen->pic_5));
+                                  $rotated_img5 = imagerotate($source_img5, 360, 0); 
+                                  $file5 = storage_path().'/images-dtscreen/'. $screen->cid.'_'.$screen->id.'_pic_5'. '.jpg';
+                                  $imageSave5 = imagejpeg($rotated_img5, $file5, 100);
+                                  imagedestroy($source_img5);
+                                ?>
+                                
+                                <i id="c_pic_5" class="small mdi-device-screen-rotation"></i>
+                                {!! Html::image('storage/images-dtscreen/'.$screen->cid.'_'.$screen->id.'_pic_5'. '.jpg', 'pic5', array('class' => 'materialboxed responsive-img', 'id' => 'p_pic_5' ))!!}
+                              @endif
+                            </div>
+
+                            <div class="col s12 m4 l8">
+                              @if( $screen->pic_6 != '' )
+                                <?php 
+                                  $source_img6 = imagecreatefromstring(base64_decode($screen->pic_6));
+                                  $rotated_img6 = imagerotate($source_img6, 360, 0); 
+                                  $file6 = storage_path().'/images-dtscreen/'. $screen->cid.'_'.$screen->id.'_pic_6'. '.jpg';
+                                  $imageSave6 = imagejpeg($rotated_img6, $file6, 100);
+                                  imagedestroy($source_img6);
+                                ?>
+                                
+                                <i id="c_pic_6" class="small mdi-device-screen-rotation"></i>
+                                {!! Html::image('storage/images-dtscreen/'.$screen->cid.'_'.$screen->id.'_pic_6'. '.jpg', 'pic6', array('class' => 'materialboxed responsive-img', 'id' => 'p_pic_6' ))!!}
+                              @endif
+                            </div>
+
                           </div>
 
                       @else
@@ -1085,6 +1130,8 @@
 @endsection
 
 
+
+<!-- ====================== Page screen Edit ======================== -->
 
 <!-- Modal Structure -->
   <div id="modal2" class="modal modal-fixed-footer">
