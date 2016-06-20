@@ -296,7 +296,7 @@
                           </div>  
                           <div class="input-field col s12">                              
                               <input name="nuslong" id="nuslong" type="text">   
-                              <label for="nuslong">ใช้ยานัต์ / ยาเส้นมานาน กี่ปี</label>
+                              <label for="nuslong">ใช้ยานัตถุ์ / ยาเส้นมานาน กี่ปี</label>
                           </div> 
                           <div class="col s12">
                               <input name="hasnus" type="radio" id="hasnus3" value="3"  />
@@ -304,7 +304,7 @@
                           </div>  
                           <div class="input-field col s12">    
                                 <input name="nusstop" id="nusstop" type="text"> 
-                                <label for="nusstop">เลิกใช้ยานัต์ / ยาเส้นมานาน กี่ปี</label>
+                                <label for="nusstop">เลิกใช้ยานัตถุ์ / ยาเส้นมานาน กี่ปี</label>
                           </div> 
                       </p>
                     </div>
@@ -343,7 +343,7 @@
 
                 <div class="row">
                     <div class="input-field">    
-                        <label>14.ปัจจุบันท่านดืมเครื่องดืมผสมแอลกอฮอล์หรือไม่:</label>
+                        <label>14.ปัจจุบันท่านดื่มเครื่องดืมผสมแอลกอฮอล์หรือไม่:</label>
                      </div>
                     <div class="col s12">                       
                      <br /><br />
@@ -664,7 +664,7 @@
                                       </div>
                                       <div class="col s12"> 
                                           <input type="checkbox" name="part3_62" class="filled-in" id="part3_62" value="1" />
-                                          <label for="part3_62">2.แผล (Uleeration)</label>  
+                                          <label for="part3_62">2.แผล (Ulceration)</label>  
                                       </div>
                                       <div class="col s12"> 
                                           <input type="checkbox" name="part3_63" class="filled-in" id="part3_63" value="1" />
@@ -742,7 +742,7 @@
                       <p>     
                           <div class="col s12"> 
                               <input name="part4_1" type="radio" id="part4_11" value="1"  />
-                              <label for="part4_11">1.Normol</label>
+                              <label for="part4_11">1.Normal</label>
                           </div>
                           <div class="col s12">
                               <input name="part4_1" type="radio" id="part4_12" value="2" />
@@ -781,22 +781,22 @@
 
                           <div class="col s12"> 
                               <input name="part4_1" type="radio" id="part4_17" value="5" />
-                              <label for="part4_17">5.Sqnamons cell csrcinoms</label>
+                              <label for="part4_17">5.Squamous cell carcinoma</label>
                           </div>
                           <div class="col s12">
                             <div class="leftup">  
                                 <p>
                                       <div class="col s12">
                                           <input name="part4_5" type="radio" id="part4_171" value="1" checked  />
-                                          <label for="part4_171">1.Well differentisted</label>   
+                                          <label for="part4_171">1.Well differentiated</label>   
                                       </div>
                                       <div class="col s12">
                                           <input name="part4_5" type="radio" id="part4_172"  value="2" />
-                                          <label for="part4_172">2.Moderately differentisted</label>   
+                                          <label for="part4_172">2.Moderately differentiated</label>   
                                       </div>
                                       <div class="col s12">
                                           <input name="part4_5" type="radio" id="part4_173"  value="3" />
-                                          <label for="part4_173">3.poorly differentisted</label>   
+                                          <label for="part4_173">3.poorly differentiated</label>   
                                       </div>                                     
                                 </p>
                            </div>
@@ -845,7 +845,7 @@
                       <p>     
                           <div class="col s12"> 
                               <input name="part4_3" type="radio" id="part4_31" value="1"  />
-                              <label for="part4_31">1.Potentially malignant disorder</label>
+                              <label for="part4_31">1.Potentially malignant disorders</label>
                           </div>
                           <div class="col s12">
                               <input name="part4_3" type="radio" id="part4_32" value="2" />
@@ -853,7 +853,7 @@
                           </div>
                           <div class="col s12">
                               <input name="part4_3" type="radio" id="part4_33" value="3" />
-                              <label for="part4_33">3.Other (Reactive, Autoimmune, Infeetion)</label>
+                              <label for="part4_33">3.Other (Reactive, Autoimmune, Infection)</label>
                           </div>
                       </p>                         
                     </div>                                       

@@ -308,7 +308,7 @@
                           </div>  
                           <div class="input-field col s12">                              
                               <input name="nuslong" id="e-nuslong" type="text" value="{!! $screen->nuslong !!}">   
-                              <label for="e-nuslong">ใช้ยานัต์ / ยาเส้นมานาน กี่ปี</label>
+                              <label for="e-nuslong">ใช้ยานัตถุ์ / ยาเส้นมานาน กี่ปี</label>
                           </div> 
                           <div class="col s12">
                               {!! Form::radio('hasnus', '2', $screen->hasnus == 2, ['id' => 'e-hasnus3']) !!}
@@ -316,7 +316,7 @@
                           </div>  
                           <div class="input-field col s12">    
                                 <input name="nusstop" id="e-nusstop" type="text" value="{!! $screen->nusstop !!}"> 
-                                <label for="e-nusstop">เลิกใช้ยานัต์ / ยาเส้นมานาน กี่ปี</label>
+                                <label for="e-nusstop">เลิกใช้ยานัตถุ์ / ยาเส้นมานาน กี่ปี</label>
                           </div> 
                       </p>
                     </div>
@@ -355,7 +355,7 @@
 
                 <div class="row">
                     <div class="input-field">    
-                        <label>14.ปัจจุบันท่านดืมเครื่องดืมผสมแอลกอฮอล์หรือไม่:</label>
+                        <label>14.ปัจจุบันท่านดื่มเครื่องดืมผสมแอลกอฮอล์หรือไม่:</label>
                      </div>
                     <div class="col s12">                       
                      <br /><br />
@@ -651,7 +651,7 @@
                                       </div>
                                       <div class="col s12">
                                           {!! Form::checkbox('part3_62', '1', $screen->part3_62 == 1, ['id' => 'e-part3_62', 'class'=>'filled-in']) !!}
-                                          <label for="e-part3_62">2.แผล (Uleeration)</label>   
+                                          <label for="e-part3_62">2.แผล (Ulceration)</label>   
                                       </div>
                                       <div class="col s12">
                                           {!! Form::checkbox('part3_63', '1', $screen->part3_63 == 1, ['id' => 'e-part3_63', 'class'=>'filled-in']) !!}
@@ -732,7 +732,7 @@
                       <p>     
                           <div class="col s12"> 
                               {!! Form::radio('part4_1', '1', $screen->part4_1 == 1, ['id' => 'e-part4_11']) !!}
-                              <label for="e-part4_11">1.Normol</label>
+                              <label for="e-part4_11">1.Normal</label>
                           </div>
                           <div class="col s12">
                               {!! Form::radio('part4_1', '2', $screen->part4_1 == 2, ['id' => 'e-part4_12']) !!}
@@ -772,22 +772,22 @@
 
                           <div class="col s12">
                               {!! Form::radio('part4_1', '5', $screen->part4_1 == 5, ['id' => 'e-part4_17']) !!}
-                              <label for="e-part4_17">5.Sqnamons cell csrcinoms</label>
+                              <label for="e-part4_17">5.Squamous cell carcinoma</label>
                           </div>
                           <div class="col s12">
                             <div class="leftup">  
                                 <p>
                                       <div class="col s12">
                                           {!! Form::radio('part4_5', '1', $screen->part4_5 == 1, ['id' => 'e-part4_171']) !!}
-                                          <label for="e-part4_171">1.Well differentisted</label>   
+                                          <label for="e-part4_171">1.Well differentiated</label>   
                                       </div>
                                       <div class="col s12">
                                           {!! Form::radio('part4_5', '2', $screen->part4_5 == 2, ['id' => 'e-part4_172']) !!}
-                                          <label for="e-part4_172">2.Moderately differentisted</label>   
+                                          <label for="e-part4_172">2.Moderately differentiated</label>   
                                       </div>
                                       <div class="col s12">
                                           {!! Form::radio('part4_5', '3', $screen->part4_5 == 3, ['id' => 'e-part4_173']) !!}
-                                          <label for="e-part4_173">3.poorly differentisted</label>   
+                                          <label for="e-part4_173">3.poorly differentiated</label>   
                                       </div>                                     
                                 </p>
                            </div>
@@ -836,7 +836,7 @@
                       <p>     
                           <div class="col s12"> 
                               {!! Form::radio('part4_3', '1', $screen->part4_3 == 1, ['id' => 'e-part4_31']) !!}
-                              <label for="e-part4_31">1.Potentially malignant disorder</label>
+                              <label for="e-part4_31">1.Potentially malignant disorders</label>
                           </div>
                           <div class="col s12">
                               {!! Form::radio('part4_3', '2', $screen->part4_3 == 2, ['id' => 'e-part4_32']) !!}
@@ -844,7 +844,7 @@
                           </div>
                           <div class="col s12">
                               {!! Form::radio('part4_3', '3', $screen->part4_3 == 3, ['id' => 'e-part4_33']) !!}
-                              <label for="e-part4_33">3.Other (Reactive, Autoimmune, Infeetion)</label>
+                              <label for="e-part4_33">3.Other (Reactive, Autoimmune, Infection)</label>
                           </div>
                       </p>                         
                     </div>                                       
@@ -917,7 +917,7 @@
                    <div class="col s12">
                       <h2 class="header">ข้อมูลภาพจากระบบ DT-SCREEN</h2>
 
-                      @if( $screen->pic_1 != '' || $screen->pic_2 != '' || $screen->pic_3 != '' )
+                      @if( $screen->pic_1 != '' || $screen->pic_2 != '' || $screen->pic_3 != '' || $screen->pic_4 != '' || $screen->pic_5 != '' || $screen->pic_6 != '' )
 
 
                           <div class="row">
