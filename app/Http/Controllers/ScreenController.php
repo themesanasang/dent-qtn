@@ -352,8 +352,8 @@ class ScreenController extends Controller {
                 //===>add table screen_tnm
                 $screen_max_id = DB::table('screen')->where('cid', $data['cid'])->where('regdate', $regdate)->select('id')->first();
                 if( count($screen_max_id) > 0 ){
-                    if( isset($data['part4_1']) ) { 
-                        if( $data['part4_1'] == '6'){
+                    if( isset($data['part4_12text']) ) { 
+                        if( $data['part4_12text'] != ''){
                             $screen_tnm = new ScreenTnm;
                             $screen_tnm->id = $screen_max_id->id;
                             $screen_tnm->tumor = $data['tumorAll'];
@@ -474,8 +474,7 @@ class ScreenController extends Controller {
 	 */
 	public function update($id)
 	{
-		if( Session::get('status') != ''  && Session::get('fingerprint') == md5($_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR']) )
-        {           
+		if( Session::get('status') != ''  && Session::get('fingerprint') == md5($_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR']) ) {           
             //update ข้อมูลลงฐาน 
             $data = Request::all();               
 
@@ -616,8 +615,8 @@ class ScreenController extends Controller {
                 $screen->save();  
             }); 
 
-            if( isset($data['part4_1']) ) { 
-                if( $data['part4_1'] == '6'){
+            if( isset($data['part4_12text']) ) { 
+                if( $data['part4_12text'] != ''){
                     $screen_tnm = ScreenTnm::find( e($id) );
 
                     if( count($screen_tnm) > 0 ){
@@ -643,11 +642,57 @@ class ScreenController extends Controller {
 
             return Redirect::to('screen.list');
         }
-        else
-        {
+        else {
             return Redirect::to('login');
         }
 	}
+
+
+
+
+
+
+    /**
+     * update image ที่มาจาก mobile
+     *
+     * @param  int  $id, $type
+     * @return Response
+     */
+    public function deleteImage($id, $type)
+    {
+        if( Session::get('status') != ''  && Session::get('fingerprint') == md5($_SERVER['HTTP_USER_AGENT'] . $_SERVER['REMOTE_ADDR']) ) { 
+            
+            $id = Crypt::decrypt($id);
+            $type = Crypt::decrypt($type);
+
+            $screen = Screen::find( e($id) ); 
+
+            if( $type == 1 ){
+                $screen->pic_1 = "";
+            }elseif ( $type == 2 ) {
+                $screen->pic_2 = "";
+            }elseif ( $type == 3 ) {
+                $screen->pic_3 = "";
+            }elseif ( $type == 4 ) {
+                $screen->pic_4 = "";
+            }elseif ( $type == 5 ) {
+                $screen->pic_5 = "";
+            }else {
+                $screen->pic_6 = "";
+            }
+
+            DB::transaction(function() use ($screen) {
+                $screen->save();  
+            }); 
+
+            Logs::createlog(Session::get('username'), 'update img in screen patient name = '.$screen->fullname );
+
+            return redirect()->route('screen.edit', [Crypt::encrypt($id)]);
+
+        }else{
+            return Redirect::to('login');
+        }
+    }
 
     
     

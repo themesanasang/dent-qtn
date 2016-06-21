@@ -27,6 +27,7 @@ Route::get('getAmphur/{id}', 'ScreenController@getAmphur');
 Route::get('getDistrict/{id}/{id2}', 'ScreenController@getDistrict');
 Route::get('screen/getAmphur/{id}', 'ScreenController@getAmphur');
 Route::get('screen/getDistrict/{id}/{id2}', 'ScreenController@getDistrict');
+Route::get('screen/image/delete/{id}/{id2}', 'ScreenController@deleteImage');
 
 
 

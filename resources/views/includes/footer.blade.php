@@ -75,11 +75,15 @@
           </li>
           <li class="collection-item">
             <input name="tumor" type="radio" id="tumor7" value="7" />
-            <label for="tumor7"><span class="blue-text text-darken-2">T4(lip)</span> <span class="grey-text">Tumor invades adjacent structres</span></label>
+            <label for="tumor7"><span class="blue-text text-darken-2">T4a(lip)</span> <span class="grey-text">Tumor invades through cortical bone, interior alveolar nerve, floor of mouth or skin</span></label>
           </li>
           <li class="collection-item">
             <input name="tumor" type="radio" id="tumor8" value="8" />
-            <label for="tumor8"><span class="blue-text text-darken-2">T4(oral cavity)</span> <span class="grey-text">Tumor invades adjacent structres</span></label>
+            <label for="tumor8"><span class="blue-text text-darken-2">T4a(oral cavity)</span> <span class="grey-text">Tumor invades through cortical bone, into deep/extrinsic muscle of tongue, maxillary sinus, or skin of face</span></label>
+          </li>
+          <li class="collection-item">
+            <input name="tumor" type="radio" id="tumor9" value="9" />
+            <label for="tumor9"><span class="blue-text text-darken-2">T4b(lib and oral cavity)</span> <span class="grey-text">Tumor invades adjacent masticator space, pterygoid plates , or skull base, or encases internal carotid artery</span></label>
           </li>
         </ul>
 
@@ -131,15 +135,11 @@
         <ul class="collection">
           <li class="collection-item">
             <input name="met" type="radio" id="met1" value="1" />
-            <label for="met1"><span class="teal-text text-darken-2">MX</span> <span class="grey-text">Presence of distant metastasis cannot be assessed</span></label>
+            <label for="met1"><span class="teal-text text-darken-2">M0</span> <span class="grey-text">No distant metastasis</span></label>
           </li>
           <li class="collection-item">
             <input name="met" type="radio" id="met2" value="2" />
-            <label for="met2"><span class="teal-text text-darken-2">M0</span> <span class="grey-text">No distant metastasis</span></label>
-          </li>
-          <li class="collection-item">
-            <input name="met" type="radio" id="met3" value="3" />
-            <label for="met3"><span class="teal-text text-darken-2">M1</span> <span class="grey-text">Distant metastasis</span></label>
+            <label for="met2"><span class="teal-text text-darken-2">M1</span> <span class="grey-text">Distant metastasis</span></label>
           </li>
         </ul>
 

@@ -801,25 +801,9 @@
                                 </p>
                            </div>
                          </div> 
-
-
-                          <div class="col s12">
-                              <input class="modal-trigger" name="part4_1" type="radio" id="part4_15" value="6" />
-                              <label for="part4_15">6.TNM Stage</label>
-                          </div>
-                          <div class="input-field col s12">
-                            <input name="part4_12text" id="part4_151text" type="text">
-                            <label for="part4_151text">Result Stage</label>
-                          </div> 
-
-                          <input type="hidden" id="tumorAll" name="tumorAll" />
-                          <input type="hidden" id="nodesAll" name="nodesAll" />
-                          <input type="hidden" id="metAll" name="metAll" />
-                         
-
                           <div class="col s12">
                               <input name="part4_1" type="radio" id="part4_16" value="7" />
-                              <label for="part4_16">7.Other oral cancer</label>
+                              <label for="part4_16">6.Other oral cancer</label>
                           </div>
                           <div class="input-field col s12">                                        
                               <input name="part4_1text" id="part4_1text" type="text">
@@ -829,16 +813,37 @@
                     </div>                                       
                 </div><!-- type_part4_1, 4_2 -->
 
+                <div class="row">
+                  <div class="input-field">
+                     <label>25.TNM Stage:</label>
+                  </div>
+                  <div class="col s12">
+                    <br /><br />
+                      <div class="col s12">
+                          <input class="modal-trigger" type="radio" id="part4_15" value="6" />
+                          <label for="part4_15">TNM Stage</label>
+                      </div>
+                      <div class="input-field col s12">
+                        <input name="part4_12text" id="part4_151text" type="text">
+                        <label for="part4_151text">Result Stage</label>
+                      </div> 
+                   </div> 
+
+                  <input type="hidden" id="tumorAll" name="tumorAll" />
+                  <input type="hidden" id="nodesAll" name="nodesAll" />
+                  <input type="hidden" id="metAll" name="metAll" />
+                </div><!-- TNM Stage -->
+
                  <div class="row">
                     <div class="input-field col s12">
                       <input name="definitive_diag" id="definitive_diag" type="text">
-                      <label for="definitive_diag">25.Defintive diagnosis</label>
+                      <label for="definitive_diag">26.Defintive diagnosis</label>
                     </div>
                 </div> <!-- definitive_diag -->  
 
                 <div class="row">
                     <div class="input-field">                     
-                     <label>26.Group of lesion:</label>
+                     <label>27.Group of lesion:</label>
                     </div>
                     <div class="col s12">
                      <br /><br />
@@ -861,7 +866,7 @@
 
                 <div class="row">
                     <div class="input-field">                     
-                     <label>27.Treatment:</label>
+                     <label>28.Treatment:</label>
                     </div>
                     <div class="col s12">
                      <br /><br />

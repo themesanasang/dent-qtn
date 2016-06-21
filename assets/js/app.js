@@ -743,26 +743,33 @@
     
     
     //-------type_part4 1  
-    $('#part4_21, #part4_22, #part4_23, #part4_1text, #part4_171, #part4_172, #part4_173 ,#part4_151text').attr("disabled", "");
-    $('#part4_11, #part4_12, #part4_13, #part4_14, #part4_15, #part4_16, #part4_17').click(function(){
-         $('#part4_21, #part4_22, #part4_23, #part4_1text, #part4_171, #part4_172, #part4_173 ,#part4_151text').attr("disabled", "");
-         $('#part4_1text, #part4_151text').val('');
+    $('#part4_21, #part4_22, #part4_23, #part4_1text, #part4_171, #part4_172, #part4_173').attr("disabled", "");
+    $('#part4_11, #part4_12, #part4_13, #part4_14, #part4_16, #part4_17').click(function(){
+         $('#part4_21, #part4_22, #part4_23, #part4_1text, #part4_171, #part4_172, #part4_173').attr("disabled", "");
+         $('#part4_1text').val('');
     });   
     $('#part4_13').click(function(){
         $('#part4_21, #part4_22, #part4_23').removeAttr("disabled", "");
-        $('#part4_1text, #part4_151text').attr("disabled", "");
-        $('#part4_1text, #part4_151text').val('');
+        $('#part4_1text').attr("disabled", "");
+        $('#part4_1text').val('');
     });
     $('#part4_17').click(function(){
         $('#part4_171, #part4_172, #part4_173').removeAttr("disabled", "");
-        $('#part4_1text, #part4_151text').attr("disabled", "");
-        $('#part4_1text, #part4_151text').val('');
+        $('#part4_1text').attr("disabled", "");
+        $('#part4_1text').val('');
+    });  
+
+    $('#part4_16').click(function(){
+        $('#part4_1text').removeAttr("disabled", "");
+        $('#part4_1text').focus();
+        $('#part4_21, #part4_22, #part4_23').attr("disabled", "");
+        $('#part4_1text').val('');
     });
+
     $('#part4_15').click(function(){
         $('#part4_151text').removeAttr("disabled", "");
         $('#part4_151text').attr("readonly", "");
-        $('#part4_1text, #part4_151text').val('');
-        $('#part4_21, #part4_22, #part4_23, #part4_1text').attr("disabled", "");
+        $('#part4_151text').val('');
 
         //Model box
         //$('#modal1').openModal(); 
@@ -782,16 +789,9 @@
 
     });
 
-    $('#part4_16').click(function(){
-        $('#part4_1text').removeAttr("disabled", "");
-        $('#part4_1text').focus();
-        $('#part4_21, #part4_22, #part4_23').attr("disabled", "");
-        $('#part4_1text, #part4_151text').val('');
-    });
-
     $('#modalClose').click(function(){
       $('#part4_15').removeAttr("checked", "");
-      $('#part4_151text').attr("disabled", "");
+      //$('#part4_151text').attr("disabled", "");
     });
 
     $('#modalSave').click(function(){
@@ -802,14 +802,14 @@
     
     
     //-------type_part4 1 Edit  
-    $('#e-part4_21, #e-part4_22, #e-part4_23, #e-part4_1text, #e-part4_171, #e-part4_172, #e-part4_173 ,#e-part4_151text').attr("disabled", "");
-    $('#e-part4_11, #e-part4_12, #e-part4_13, #e-part4_14, #e-part4_15, #e-part4_16, #e-part4_17').click(function(){
-         $('#e-part4_21, #e-part4_22, #e-part4_23, #e-part4_1text, #e-part4_171, #e-part4_172, #e-part4_173 ,#e-part4_151text').attr("disabled", "");
+    $('#e-part4_21, #e-part4_22, #e-part4_23, #e-part4_1text, #e-part4_171, #e-part4_172, #e-part4_173').attr("disabled", "");
+    $('#e-part4_11, #e-part4_12, #e-part4_13, #e-part4_14, #e-part4_16, #e-part4_17').click(function(){
+         $('#e-part4_21, #e-part4_22, #e-part4_23, #e-part4_1text, #e-part4_171, #e-part4_172, #e-part4_173').attr("disabled", "");
     });   
     $('#e-part4_13').click(function(){
         $('#e-part4_21, #e-part4_22, #e-part4_23').removeAttr("disabled", "");
-        $('#e-part4_1text, #e-part4_151text').attr("disabled", "");
-        $('#e-part4_1text, #e-part4_151text').val('');
+        $('#e-part4_1text').attr("disabled", "");
+        $('#e-part4_1text').val('');
     });
     $('#e-part4_16').click(function(){
         $('#e-part4_1text').removeAttr("disabled", "");
@@ -823,17 +823,23 @@
     }
     $('#e-part4_17').click(function(){
         $('#e-part4_171, #e-part4_172, #e-part4_173').removeAttr("disabled", "");
-        $('#e-part4_1text, #e-part4_151text').attr("disabled", "");
-        $('#e-part4_1text, #e-part4_151text').val('');
+        $('#e-part4_1text').attr("disabled", "");
+        $('#e-part4_1text').val('');
     });
+
+    if( $('#e-part4_13').is(":checked") ){
+        $('#e-part4_21, #e-part4_22, #e-part4_23').removeAttr("disabled", "");
+    }
+
+    if( $('#e-part4_17').is(":checked") ){
+        $('#e-part4_171, #e-part4_172, #e-part4_173').removeAttr("disabled", "");
+     }
+
     $('#e-part4_15').click(function(){
         $('#e-part4_151text').removeAttr("disabled", "");
         $('#e-part4_151text').attr("readonly", "");
         $('#e-part4_151text').focus();
-        $('#e-part4_1text, #e-part4_151text').val('');
-        $('#e-part4_21, #e-part4_22, #e-part4_23, #e-part4_1text').attr("disabled", "");
-
-
+        $('#e-part4_151text').val('');
 
         $('#modal2').openModal({
             dismissible: false, // Modal can be dismissed by clicking outside of the modal
@@ -859,13 +865,7 @@
         viewStageEdit();
     });
 
-    if( $('#e-part4_13').is(":checked") ){
-        $('#e-part4_21, #e-part4_22, #e-part4_23').removeAttr("disabled", "");
-    }
-
-    if( $('#e-part4_17').is(":checked") ){
-        $('#e-part4_171, #e-part4_172, #e-part4_173').removeAttr("disabled", "");
-     }
+    
 
     
     
@@ -963,6 +963,24 @@ var value_pic3 = 0
 $('#c_pic_3').click(function(){
   value_pic3 +=90;
   $("#p_pic_3").rotate({ animateTo:value_pic3 });
+});
+
+var value_pic4 = 0
+$('#c_pic_4').click(function(){
+  value_pic4 +=90;
+  $("#p_pic_4").rotate({ animateTo:value_pic4 });
+});
+
+var value_pic5 = 0
+$('#c_pic_5').click(function(){
+  value_pic5 +=90;
+  $("#p_pic_5").rotate({ animateTo:value_pic5 });
+});
+
+var value_pic6 = 0
+$('#c_pic_6').click(function(){
+  value_pic6 +=90;
+  $("#p_pic_6").rotate({ animateTo:value_pic6 });
 });
 
 
@@ -1407,44 +1425,70 @@ function check_stage(tumor, nodes, met){
 
   var resultStage;
 
-  if( tumor == '3' && nodes == '2' && met == '2' ){
-    resultStage = 'Stage O';
-  }
+  //--------------1------------//
 
-  if( tumor == '4' && nodes == '2' && met == '2' ){
+  if( tumor == '4' && nodes == '2' && met == '1' ){
     resultStage = 'Stage I';
   }
 
-  if( tumor == '5' && nodes == '2' && met == '2' ){
+  //--------------2------------//
+
+  if( tumor == '5' && nodes == '2' && met == '1' ){
     resultStage = 'Stage II';
   }
 
-  if( tumor == '6' && nodes == '3' && met == '2' ){
+  //-------------3-------------//
+
+  if( tumor == '6' && nodes == '2' && met == '1' ){
+    resultStage = 'Stage III';
+  }
+  if( tumor == '4' && nodes == '3' && met == '1' ){
+    resultStage = 'Stage III';
+  }
+  if( tumor == '5' && nodes == '3' && met == '1' ){
+    resultStage = 'Stage III';
+  }
+  if( tumor == '6' && nodes == '3' && met == '1' ){
     resultStage = 'Stage III';
   }
 
-  if( tumor == '4' && nodes == '3' && met == '2' ){
-    resultStage = 'Stage IV';
+  //-------------4-------------//
+
+  if( tumor == '4' && nodes == '4' && met == '1' ){
+    resultStage = 'Stage IVa';
+  }
+  if( tumor == '5' && nodes == '4' && met == '1' ){
+    resultStage = 'Stage IVa';
+  }
+  if( tumor == '6' && nodes == '4' && met == '1' ){
+    resultStage = 'Stage IVa';
+  }
+  if( (tumor == '7' || tumor == '8') && (nodes == '2' || nodes == '3' || nodes == '4') && met == '1' ){
+    resultStage = 'Stage IVa';
   }
 
-  if( tumor == '5' && nodes == '3' && met == '2' ){
-    resultStage = 'Stage IV';
+  //-------------5-------------//
+
+  if( tumor == '9' && (nodes == '2' || nodes == '3' || nodes == '4' || nodes == '8') && met == '1' ){
+    resultStage = 'Stage IVb';
+  }
+  if( tumor == '4' && nodes == '8' && met == '1' ){
+    resultStage = 'Stage IVb';
+  }
+  if( tumor == '5' && nodes == '8' && met == '1' ){
+    resultStage = 'Stage IVb';
+  }
+  if( tumor == '6' && nodes == '8' && met == '1' ){
+    resultStage = 'Stage IVb';
+  }
+  if( (tumor == '7' || tumor == '8') && nodes == '8' && met == '1' ){
+    resultStage = 'Stage IVb';
   }
 
-  if( (tumor == '7' || tumor == '8') && nodes == '3' && met == '2' ){
-    resultStage = 'Stage IV';
-  }
+  //-------------6-------------//
 
-  if( tumor != '0' && (nodes == '4' || nodes == '5' || nodes == '6' || nodes == '7') && met == '2' ){
-    resultStage = 'Stage IV';
-  }
-
-  if( tumor != '0' && nodes == '8' && met == '2' ){
-    resultStage = 'Stage IV';
-  }
-
-  if( tumor != '0' && nodes != '0' && met == '3' ){
-    resultStage = 'Stage IV';
+  if( met == '2' ){
+    resultStage = 'Stage IVc';
   }
 
   return resultStage;

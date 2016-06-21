@@ -792,22 +792,6 @@
                                 </p>
                            </div>
                          </div> 
-
-
-                         <div class="col s12">                           
-                              {!! Form::radio('part4_1', '6', $screen->part4_1 == 6, ['id' => 'e-part4_15']) !!}
-                              <label for="e-part4_15">6.TNM Stage</label>
-                          </div>
-                          <div class="input-field col s12">
-                            <input name="part4_12text" id="e-part4_151text" type="text" value="{!! $screen->part4_12text !!}">
-                            <label for="e-part4_151text">Result Stage</label>
-                          </div> 
-
-                          <input type="hidden" id="e-tumorAll" name="tumorAll" />
-                          <input type="hidden" id="e-nodesAll" name="nodesAll" />
-                          <input type="hidden" id="e-metAll" name="metAll" />
-
-
                           <div class="col s12">
                               {!! Form::radio('part4_1', '7', $screen->part4_1 == 7, ['id' => 'e-part4_16']) !!}
                               <label for="e-part4_16">7.Other oral cancer</label>
@@ -820,16 +804,37 @@
                     </div>                                       
                 </div><!-- type_part4_1, 4_2 -->
 
+                <div class="row">
+                  <div class="input-field">
+                     <label>25.TNM Stage:</label>
+                  </div>
+                  <div class="col s12">
+                    <br /><br />
+                      <div class="col s12">                           
+                          {!! Form::radio('', '6', $screen->part4_12text != '', ['id' => 'e-part4_15']) !!}
+                          <label for="e-part4_15">6.TNM Stage</label>
+                      </div>
+                      <div class="input-field col s12">
+                        <input name="part4_12text" id="e-part4_151text" type="text" value="{!! $screen->part4_12text !!}">
+                        <label for="e-part4_151text">Result Stage</label>
+                      </div> 
+                   </div> 
+
+                  <input type="hidden" id="e-tumorAll" name="tumorAll" />
+                  <input type="hidden" id="e-nodesAll" name="nodesAll" />
+                  <input type="hidden" id="e-metAll" name="metAll" />
+                </div><!-- TNM Stage -->
+
                  <div class="row">
                     <div class="input-field col s12">
                       <input name="definitive_diag" id="e-definitive_diag" type="text" value="{!! $screen->definitive_diag !!}">
-                      <label for="e-definitive_diag">25.Defintive diagnosis</label>
+                      <label for="e-definitive_diag">26.Defintive diagnosis</label>
                     </div>
                 </div> <!-- definitive_diag -->  
 
                 <div class="row">
                     <div class="input-field">                     
-                     <label>26.Group of lesion:</label>
+                     <label>27.Group of lesion:</label>
                     </div>
                     <div class="col s12">
                      <br /><br />
@@ -852,7 +857,7 @@
 
                 <div class="row">
                     <div class="input-field">                     
-                     <label>27.Treatment:</label>
+                     <label>28.Treatment:</label>
                     </div>
                     <div class="col s12">
                      <br /><br />
@@ -932,7 +937,8 @@
                                   imagedestroy($source_img);
                                 ?>
 
-                                <i id="c_pic_1" class="small mdi-device-screen-rotation"></i>
+                                <i id="c_pic_1" data-position="top" data-delay="50" data-tooltip="หมุนภาพ" class="small mdi-device-screen-rotation tooltipped"></i>
+                                <a href="{!! url('screen') !!}/image/delete/{!! Crypt::encrypt($screen->id) !!}/{!! Crypt::encrypt(1) !!}" data-position="top" data-delay="50" data-tooltip="ลบภาพ" class="tooltipped"><i class="small mdi-action-delete"></i></a>
                                 {!! Html::image('storage/images-dtscreen/'.$screen->cid.'_'.$screen->id.'_pic_1'. '.jpg', 'pic1', array('class' => 'materialboxed responsive-img', 'id' => 'p_pic_1' ))!!}
                               @endif
                             </div>
@@ -946,7 +952,8 @@
                                   imagedestroy($source_img2);
                                 ?>
                                 
-                                <i id="c_pic_2" class="small mdi-device-screen-rotation"></i>
+                                <i id="c_pic_2" data-position="top" data-delay="50" data-tooltip="หมุนภาพ" class="small mdi-device-screen-rotation tooltipped"></i>
+                                <a href="{!! url('screen') !!}/image/delete/{!! Crypt::encrypt($screen->id) !!}/{!! Crypt::encrypt(2) !!}" data-position="top" data-delay="50" data-tooltip="ลบภาพ" class="tooltipped"><i class="small mdi-action-delete"></i></a>
                                 {!! Html::image('storage/images-dtscreen/'.$screen->cid.'_'.$screen->id.'_pic_2'. '.jpg', 'pic2', array('class' => 'materialboxed responsive-img', 'id' => 'p_pic_2' ))!!}
                               @endif
                             </div>
@@ -960,7 +967,8 @@
                                   imagedestroy($source_img3);
                                 ?>
                                 
-                                <i id="c_pic_3" class="small mdi-device-screen-rotation"></i>
+                                <i id="c_pic_3" data-position="top" data-delay="50" data-tooltip="หมุนภาพ" class="small mdi-device-screen-rotation tooltipped"></i>
+                                <a href="{!! url('screen') !!}/image/delete/{!! Crypt::encrypt($screen->id) !!}/{!! Crypt::encrypt(3) !!}" data-position="top" data-delay="50" data-tooltip="ลบภาพ" class="tooltipped"><i class="small mdi-action-delete"></i></a>
                                 {!! Html::image('storage/images-dtscreen/'.$screen->cid.'_'.$screen->id.'_pic_3'. '.jpg', 'pic3', array('class' => 'materialboxed responsive-img', 'id' => 'p_pic_3' ))!!}
                               @endif
                             </div>
@@ -975,7 +983,8 @@
                                   imagedestroy($source_img4);
                                 ?>
                                 
-                                <i id="c_pic_4" class="small mdi-device-screen-rotation"></i>
+                                <i id="c_pic_4" data-position="top" data-delay="50" data-tooltip="หมุนภาพ" class="small mdi-device-screen-rotation tooltipped"></i>
+                                <a href="{!! url('screen') !!}/image/delete/{!! Crypt::encrypt($screen->id) !!}/{!! Crypt::encrypt(4) !!}" data-position="top" data-delay="50" data-tooltip="ลบภาพ" class="tooltipped"><i class="small mdi-action-delete"></i></a>
                                 {!! Html::image('storage/images-dtscreen/'.$screen->cid.'_'.$screen->id.'_pic_4'. '.jpg', 'pic4', array('class' => 'materialboxed responsive-img', 'id' => 'p_pic_4' ))!!}
                               @endif
                             </div>
@@ -990,7 +999,8 @@
                                   imagedestroy($source_img5);
                                 ?>
                                 
-                                <i id="c_pic_5" class="small mdi-device-screen-rotation"></i>
+                                <i id="c_pic_5" data-position="top" data-delay="50" data-tooltip="หมุนภาพ" class="small mdi-device-screen-rotation tooltipped"></i>
+                                <a href="{!! url('screen') !!}/image/delete/{!! Crypt::encrypt($screen->id) !!}/{!! Crypt::encrypt(5) !!}" data-position="top" data-delay="50" data-tooltip="ลบภาพ" class="tooltipped"><i class="small mdi-action-delete"></i></a>
                                 {!! Html::image('storage/images-dtscreen/'.$screen->cid.'_'.$screen->id.'_pic_5'. '.jpg', 'pic5', array('class' => 'materialboxed responsive-img', 'id' => 'p_pic_5' ))!!}
                               @endif
                             </div>
@@ -1005,7 +1015,8 @@
                                   imagedestroy($source_img6);
                                 ?>
                                 
-                                <i id="c_pic_6" class="small mdi-device-screen-rotation"></i>
+                                <i id="c_pic_6" data-position="top" data-delay="50" data-tooltip="หมุนภาพ" class="small mdi-device-screen-rotation tooltipped"></i>
+                                <a href="{!! url('screen') !!}/image/delete/{!! Crypt::encrypt($screen->id) !!}/{!! Crypt::encrypt(6) !!}" data-position="top" data-delay="50" data-tooltip="ลบภาพ" class="tooltipped"><i class="small mdi-action-delete"></i></a>
                                 {!! Html::image('storage/images-dtscreen/'.$screen->cid.'_'.$screen->id.'_pic_6'. '.jpg', 'pic6', array('class' => 'materialboxed responsive-img', 'id' => 'p_pic_6' ))!!}
                               @endif
                             </div>
@@ -1167,11 +1178,15 @@
           </li>
           <li class="collection-item">
             {!! Form::radio('e_tumor', '7', $tumor == 7, ['id' => 'e-tumor7']) !!}
-            <label for="e-tumor7"><span class="blue-text text-darken-2">T4(lip)</span> <span class="grey-text">Tumor invades adjacent structres</span></label>
+            <label for="e-tumor7"><span class="blue-text text-darken-2">T4(lip)</span> <span class="grey-text">Tumor invades through cortical bone, interior alveolar nerve, floor of mouth or skin</span></label>
           </li>
           <li class="collection-item">
             {!! Form::radio('e_tumor', '8', $tumor == 8, ['id' => 'e-tumor8']) !!}
-            <label for="e-tumor8"><span class="blue-text text-darken-2">T4(oral cavity)</span> <span class="grey-text">Tumor invades adjacent structres</span></label>
+            <label for="e-tumor8"><span class="blue-text text-darken-2">T4(oral cavity)</span> <span class="grey-text">Tumor invades through cortical bone, into deep/extrinsic muscle of tongue, maxillary sinus, or skin of face</span></label>
+          </li>
+          <li class="collection-item">
+            {!! Form::radio('e_tumor', '9', $tumor == 9, ['id' => 'e-tumor9']) !!}
+            <label for="e-tumor9"><span class="blue-text text-darken-2">T4b(lib and oral cavity)</span> <span class="grey-text">Tumor invades adjacent masticator space, pterygoid plates , or skull base, or encases internal carotid artery</span></label>
           </li>
         </ul>
 
@@ -1223,15 +1238,11 @@
         <ul class="collection">
           <li class="collection-item">
             {!! Form::radio('e_met', '1', $met == 1, ['id' => 'e-met1']) !!}
-            <label for="e-met1"><span class="teal-text text-darken-2">MX</span> <span class="grey-text">Presence of distant metastasis cannot be assessed</span></label>
+            <label for="e-met1"><span class="teal-text text-darken-2">M0</span> <span class="grey-text">No distant metastasis</span></label>
           </li>
           <li class="collection-item">
             {!! Form::radio('e_met', '2', $met == 2, ['id' => 'e-met2']) !!}
-            <label for="e-met2"><span class="teal-text text-darken-2">M0</span> <span class="grey-text">No distant metastasis</span></label>
-          </li>
-          <li class="collection-item">
-            {!! Form::radio('e_met', '3', $met == 3, ['id' => 'e-met3']) !!}
-            <label for="e-met3"><span class="teal-text text-darken-2">M1</span> <span class="grey-text">Distant metastasis</span></label>
+            <label for="e-met2"><span class="teal-text text-darken-2">M1</span> <span class="grey-text">Distant metastasis</span></label>
           </li>
         </ul>
 
